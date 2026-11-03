@@ -22,11 +22,19 @@ An original-sample tutoring request and a separate claim-support review both rec
 
 The [recorded evidence](evaluation/live-original-2026-11-03.json) includes original source/question/code, actual model reply, returned response IDs/token counts and execution traces. Two requests reserved US$0.20 against the existing operator allowance; no bulk content regeneration or semantic batch was performed. Reservation amounts are not actual billed charges. No key or private account/learner data is included in the published evidence.
 
-This check used the application's HTTP endpoints in a local test client and the real Meta HTTP adapter. It was not a screen recording of a native live-tutor interaction. The final demo video must still show fresh live calls in the actual UI.
+This check used the application's HTTP endpoints in a local test client and the real Meta HTTP adapter. It was separate from the later native-UI screen recording described below.
 
 ## Native interface inspection
 
 Opened the isolated release on port 8898 with separate sample data. Checked the course page, original sample launch, both quiz questions, transition to the editor, failing starter, edited solution, three-case pass, step navigation, returned value, names/objects and boxes/fingers. Inspected both the narrow in-app-browser layout and a 1280-pixel desktop layout. The screenshot in the README is the actual corrected original-sample run, with prepared notes explicitly labelled.
+
+## Recorded native-UI demo
+
+The completed English-narrated demo is **173.978 seconds** (under three minutes), 1920×1080, with H.264 video and AAC audio. Its opening highlights bounded Meta teaching/research agents and the October 26 event build date. It shows original prepared notes, prediction, a deliberately failing program, actual Python trace visualisation, live Muse Spark tutoring plus separate review, and edited code passing three checks, including empty rows.
+
+Two accepted tutoring takes produced **four real Meta requests**, separate from the earlier test-client check. The final cut uses the closer second take. [Matching recorded evidence](evaluation/demo-video-2026-11-03.json) retains source code, model replies, all four request receipts, actual Python run reports, the video SHA-256 and editing disclosures. Video production made no additional Meta requests. API waiting is accelerated where labelled; result frames pause for explanation. The Hub segment shows its setup, not a new research run.
+
+The full movie decoded without errors. All **39 caption cues** are within the movie and do not overlap. Audio is present (mean −16.9 dB; peak −1.4 dB). The MP4 is a local artifact and has not been uploaded or submitted; a hosted video link and the completed submission form remain required. These checks establish media integrity and recorded behavior, not student learning gains or organizer approval.
 
 ## Publication checks and limits
 

@@ -98,6 +98,8 @@ Tests use controlled model responses and **real bounded Python**. They do not co
 
 A separate [recorded original-sample run](evaluation/live-original-2026-11-03.json) contains an accepted **live Muse Spark tutor reply plus its independent review**, provider-returned response IDs, original input/question and real failing/corrected Python traces. It is recorded evidence, not a live replay or a substitute for showing fresh API calls in the demo video.
 
+The [demo-video evidence](evaluation/demo-video-2026-11-03.json) matches the **2:54 screen recording**: two accepted tutoring takes, four actual Meta request receipts, the observed failing/corrected Python runs, editing disclosures and the final video hash. The video shows live tutoring and review; its Hub segment shows setup rather than a new research run. The English AI narration identifies the teaching and research agents and the work built during the hackathon.
+
 ## Rights and scope
 
 Our application code is **MIT licensed**. Third-party material retains its own terms. Course files containing CS50 anchors have a separate **CC BY-NC-SA 4.0** content licence; Python documentation and editor/runtime dependencies have separate notices. These assets are **not** all MIT. See [content licensing](CONTENT_LICENSE.md), [third-party notices](THIRD_PARTY_NOTICES.md), and [licence texts](licenses/).
