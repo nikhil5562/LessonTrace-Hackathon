@@ -6,7 +6,7 @@ LessonTrace combines a source-linked course, optional topic quizzes, an editable
 
 ![Original prepared sample with an editable program, actual execution state and all three coding checks passed](docs/screenshots/original-sample.jpg)
 
-This is the standalone **2026 Meta Global AI Developer Hackathon** submission. The older private note-capture extension and early planning are not included or required. The author confirms that all standalone website code was created on or after **October 26, 2026**. See [event provenance](PROVENANCE.md).
+This is the standalone **2026 Meta Global AI Developer Hackathon** submission. The submitted LessonTrace website was built during the hackathon, starting **October 26, 2026**. It runs independently from this public repository.
 
 ## Run it
 
@@ -84,7 +84,7 @@ npm install --prefix .local/frontend-check jsdom@26.1.0
 .\.venv\Scripts\python.exe -m pytest server/tests -q
 ```
 
-Tests use controlled model responses and **real bounded Python**. They do not consume Meta credits. See [the release checks and honest limits](VALIDATION.md), [historical evaluation](EVALUATION.md) and [a three-minute demo outline](DEMO.md). The bundled editor is reproducible with `npm ci --prefix editor` followed by `node editor/build.mjs`.
+Tests use controlled model responses and **real bounded Python**. They do not consume Meta credits. See [the release checks and honest limits](VALIDATION.md) and [historical evaluation](EVALUATION.md). The bundled editor is reproducible with `npm ci --prefix editor` followed by `node editor/build.mjs`.
 
 A separate [recorded original-sample run](evaluation/live-original-2026-11-03.json) contains an accepted **live Muse Spark tutor reply plus its independent review**, provider-returned response IDs, original input/question and real failing/corrected Python traces. It is recorded evidence, not a live replay or a substitute for showing fresh API calls in the demo video.
 
@@ -94,4 +94,4 @@ Our application code is **MIT licensed**. Third-party material retains its own t
 
 No tutorial footage, full caption downloads, book PDFs, private learner data, private Git history or credentials are distributed. The original demonstration can be recorded entirely from our own source and UI. No external video clips are needed. For importing other material, use content you have permission to process; do not redistribute source recordings simply because a URL is public.
 
-Hosting is optional for the submitted workflow. The author still needs to record and host the <=3-minute demo video and complete the hackathon submission form. This repository does not claim organizer endorsement or a ruling that it qualifies beyond the anti-project list.
+Hosting is optional for the submitted workflow. A demo video has been recorded locally; the submission still needs its hosted video link and completed hackathon form. This repository does not claim organizer endorsement or a ruling that it qualifies beyond the anti-project list.

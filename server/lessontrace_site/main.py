@@ -161,7 +161,7 @@ def create_app(data_dir=None, runner=None, provider=None, hub_loader=None,course
 
     @app.get("/plan/{name}")
     async def plan_file(name: str):
-        if name not in {'README.md','ARCHITECTURE.md','CONFIGURATION.md','PROVENANCE.md','DEMO.md','CLAIM_REVIEW.md','EVALUATION.md','VALIDATION.md','CONTENT_LICENSE.md','THIRD_PARTY_NOTICES.md'}:
+        if name not in {'README.md','ARCHITECTURE.md','CONFIGURATION.md','CLAIM_REVIEW.md','EVALUATION.md','VALIDATION.md','CONTENT_LICENSE.md','THIRD_PARTY_NOTICES.md'}:
             raise HTTPException(404)
         return FileResponse(ROOT / name)
 
