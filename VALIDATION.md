@@ -34,7 +34,7 @@ The completed English-narrated demo is **173.978 seconds** (under three minutes)
 
 Two accepted tutoring takes produced **four real Meta requests**, separate from the earlier test-client check. The final cut uses the closer second take. [Matching recorded evidence](evaluation/demo-video-2026-11-03.json) retains source code, model replies, all four request receipts, actual Python run reports, the video SHA-256 and editing disclosures. Video production made no additional Meta requests. API waiting is accelerated where labelled; result frames pause for explanation. The Hub segment shows its setup, not a new research run.
 
-The full movie decoded without errors. All **39 caption cues** are within the movie and do not overlap. Audio is present (mean −16.9 dB; peak −1.4 dB). The MP4 is a local artifact and has not been uploaded or submitted; a hosted video link and the completed submission form remain required. These checks establish media integrity and recorded behavior, not student learning gains or organizer approval.
+The full movie decoded without errors. All **39 caption cues** are within the movie and do not overlap. Audio is present (mean −16.9 dB; peak −1.4 dB). The final video was [uploaded to YouTube as unlisted](https://youtu.be/IScnLEqgUWI) on November 3, 2026. YouTube reported no copyright issues, and playback was observed while signed out (12 seconds into the 2:54 video). The hackathon submission form remains pending. These checks establish media integrity and recorded behavior, not student learning gains or organizer approval.
 
 ## Publication checks and limits
 

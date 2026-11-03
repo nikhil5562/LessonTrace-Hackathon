@@ -3918,6 +3918,16 @@
       "audio_mean_db": -16.9,
       "audio_peak_db": -1.4
     },
-    "publication_status": "Local video complete; hosting and submission pending."
+    "publication_status": "Uploaded to YouTube; hackathon submission form pending.",
+    "url": "https://youtu.be/IScnLEqgUWI",
+    "visibility": "unlisted",
+    "uploaded_date": "2026-11-03",
+    "anonymous_playback": {
+      "verified": true,
+      "method": "Observed YouTube watch-page playback in signed-out Edge, with Sign in link visible.",
+      "observed_position_seconds": 12,
+      "observed_duration": "2:54"
+    },
+    "youtube_checks": "No copyright issues found at upload time."
   }
 }

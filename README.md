@@ -4,6 +4,8 @@
 
 LessonTrace uses **bounded Meta teaching and research agents**, source-grounded retrieval (RAG), and real Python execution to help learners move from reading a lesson to attempting a program. The teaching agent chooses a useful next action from an allowed menu; the research agent reads approved sources and prepares focused follow-ups. Learners work through a source-linked course, topic quizzes, an editable Python workspace and step-by-step execution visualisation. **The agents propose. Backend rules decide. Python checks.** This prototype does not claim measured learning gains or certify mastery.
 
+**[Watch the 2:54 demo on YouTube](https://youtu.be/IScnLEqgUWI)** — unlisted, viewable without signing in, with English AI narration and actual Meta calls visible.
+
 ![Original prepared sample with an editable program, actual execution state and all three coding checks passed](docs/screenshots/original-sample.jpg)
 
 This is the standalone **2026 Meta Global AI Developer Hackathon** submission. The submitted LessonTrace website was built during the hackathon, starting **October 26, 2026**. It runs independently from this public repository.
@@ -106,4 +108,4 @@ Our application code is **MIT licensed**. Third-party material retains its own t
 
 No tutorial footage, full caption downloads, book PDFs, private learner data, private Git history or credentials are distributed. The original demonstration can be recorded entirely from our own source and UI. No external video clips are needed. For importing other material, use content you have permission to process; do not redistribute source recordings simply because a URL is public.
 
-Hosting is optional for the submitted workflow. A demo video has been recorded locally; the submission still needs its hosted video link and completed hackathon form. This repository does not claim organizer endorsement or a ruling that it qualifies beyond the anti-project list.
+Hosting the app is optional for the submitted workflow. The demo video is [available on YouTube](https://youtu.be/IScnLEqgUWI); the hackathon submission form still needs to be completed. This repository does not claim organizer endorsement or a ruling that it qualifies beyond the anti-project list.
