@@ -68,7 +68,7 @@ RESEARCH_INSTRUCTION='''You are LessonTrace's bounded Loops research agent. Choo
 
 AUTHOR_INSTRUCTION='''Prepare ONE focused Python Loops deep dive for the learner's stated goal from the supplied reviewed excerpts and actual tool observations. Confirmed learner_preferences guide presentation, not correctness, objectives or claims of learning. Return the HubComposition JSON. Write original readable Markdown notes of 250-350 words with source IDs, short headings and an Added practice example. Never reproduce a transcript or claim unseen visual/audio evidence. Include exactly one teaching unit: a 60-100-word explanation, an unanswered opening question, an optional quiz, a distinct output prediction and a function task. The path should have two to four short steps leading to practice, with cited evidence for each. Select a primary_source from readable catalog IDs and explain why this path is useful now. Coverage is limited to the reviewed passages: not_found means not found in these excerpts, never that a creator omitted a topic from an entire course. Mark genuine version/approach differences and unresolved questions without inventing conflict. Do not infer that range is a list in Python 3 from older range/xrange descriptions. Semantic claims must be supported by the supplied evidence; do not use program execution to prove unrelated claims. No quiz or model statement proves mastery. Actual execution observations are supplied only when the research agent used that tool.
 ''' + INSTRUCTION[INSTRUCTION.index('Each prediction must'):] + '''
-Every sources/evidence_ids entry must match an allowed_passage_ids value exactly, not a catalog ID. Use a readable catalog ID only for primary_source. State each function parameter's meaning, the iteration bounds, the returned result and input-mutation rule in ordinary learner language. Do not mention schema names such as preserve_input or reference_solution in learner-facing text. Keep new worked examples distinct from the unfinished exercise.'''
+Every sources/evidence_ids entry must match an allowed_passage_ids value exactly, not a catalog ID. Use a readable catalog ID only for primary_source. The exercise kind is function: set its parameters array to [], put its positional arguments in the def statement, and supply each case's values in arguments. The parameters field is reserved for program-style input injection and must stay empty for functions. State each function parameter's meaning, the iteration bounds, the returned result and input-mutation rule in ordinary learner language. Do not mention schema names such as preserve_input or reference_solution in learner-facing text. Keep new worked examples distinct from the unfinished exercise.'''
 
 
 def decision_schema(actions,remaining,first=False):
@@ -93,6 +93,10 @@ def validate_plan(result,readable,source_ids):
 def composition_schema(source_ids,readable):
     schema=source_schema(HubComposition,source_ids)
     schema['properties']['primary_source']['enum']=[s['id'] for s in readable]
+    # This Hub authors function tasks; program-input names have a different contract.
+    exercise=schema['$defs']['Exercise']['properties']
+    exercise['kind']['enum']=['function']
+    exercise['parameters']['maxItems']=0
     return schema
 
 
@@ -135,7 +139,7 @@ def install_hub_routes(app,owner,store,execution,meta,reserve_cloud,tasks,semaph
                 evidence={'goal':body.goal,'focus':body.focus,'target':'Python 3; bounded LessonTrace subset','current_lesson':base_context,
                     'catalog':catalog(),'reviewed_sources':readable,'tool_observations':observations,'remaining_source_ids':remaining,'turn':turn+1,'maximum_turns':2}
                 reserve_cloud(who,True,'Hub research decision')
-                answer=await meta.generate(RESEARCH_INSTRUCTION,evidence,[c['id'] for s in readable for c in s['chunks']] or list(CATALOG),schema=schema,max_completion_tokens=1800,call_context={'session_id':job['result_lesson_id']})
+                answer=await meta.generate(RESEARCH_INSTRUCTION,evidence,[c['id'] for s in readable for c in s['chunks']] or list(CATALOG),schema=schema,max_completion_tokens=3200,call_context={'session_id':job['result_lesson_id']})
                 decision={k:answer[k] for k in schema['properties']};validate_response(decision,schema)
                 action=decision['action'];ids=decision['source_ids']
                 if action=='read_sources':

@@ -1,0 +1,22 @@
+{
+  "video_url": "https://youtu.be/s4TGvUO8VEM",
+  "duration_seconds": 170.25,
+  "sha256": "f00f99391e3a233d4e95c1f92adc41925c5d093db26bbb4aa2d0d53bad513a3c",
+  "caption_cues": 38,
+  "decode_ok": true,
+  "audio_mean_db": -17.0,
+  "audio_peak_db": -1.5,
+  "title": "LessonTrace | Live Meta Learning Agents & Lesson Hub | Hackathon Demo",
+  "visibility": "unlisted",
+  "uploaded_on": "2026-11-03",
+  "youtube_checks": "No copyright issues found at upload; this is not a rights ruling.",
+  "public_playback": "Observed signed out in Edge: Sign in link present, Unlisted badge, playback advanced to 1:19 of 2:50.",
+  "original_tutor_evidence": "evaluation/demo-video-2026-11-03.json",
+  "hub_evidence": "evaluation/hub-live-2026-11-03.json",
+  "hub_live_calls": 4,
+  "hub_elapsed_seconds": 94.3,
+  "editing": "Core tutor/trace clips retained; Hub source choices, tool result, request receipts, notes and task shown as labelled condensed actual screens/pauses. No fabricated UI.",
+  "narration": "Natural Indian-English AI voice; English text, burnt-in timed English captions; labelled AI narration.",
+  "operator_solution": "Generated task checked by operator, not claimed as an independent learner result.",
+  "submission_video_updated": false
+}

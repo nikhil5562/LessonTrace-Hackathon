@@ -16,6 +16,17 @@ from lessontrace_site.main import create_app
 from lessontrace_site.runner import WasiRunner
 from lessontrace_site import video_lessons
 from lessontrace_site.hub_sources import CATALOG
+from lessontrace_site.hub import composition_schema
+from jsonschema import validate as validate_json,ValidationError as SchemaError
+
+
+def test_hub_schema_distinguishes_function_arguments_from_program_inputs():
+    schema=composition_schema(['hub-python-0001'],[{'id':'python-control-flow'}])
+    exercise=schema['$defs']['Exercise']|{'$defs':schema['$defs']}
+    sample=loop_lesson(['hub-python-0001'])['units'][0]['exercise']
+    validate_json(sample,exercise)
+    with pytest.raises(SchemaError):validate_json(sample|{'parameters':['rows','limit']},exercise)
+    with pytest.raises(SchemaError):validate_json(sample|{'kind':'program'},exercise)
 
 
 def loop_lesson(sources):

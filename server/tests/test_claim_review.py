@@ -21,6 +21,17 @@ def draft(text='A break exits the nearest loop, so the outer loop can continue.'
 def payload():return claim_review.prepare(draft(),{'caption_excerpts':SOURCES},['video-break'])
 
 
+def test_research_goal_reaches_reviewer_as_reported_context_not_execution():
+    evidence={'caption_excerpts':SOURCES,'goal':'I expect break to stop both loops.','focus':'nested-break',
+        'learner_preferences':{'explanation':'Use small named lists.'}}
+    value=claim_review.prepare(draft(),evidence,['video-break'])
+    assert value['learning_context']['goal']==evidence['goal']
+    assert 'not verified competence' in value['learning_context']['scope']
+    assert 'goal' not in value['trusted_execution_context']
+    changed=claim_review.prepare(draft(),evidence|{'goal':'Explain range bounds.'},['video-break'])
+    assert changed['request_hash']!=value['request_hash']
+
+
 def test_full_answer_is_reviewed_even_when_anchor_claim_is_innocuous():
     false=draft('Break stops every nested loop and always terminates the program.')
     assert grounding.verify(false,SOURCES)[0]['quote_verified']

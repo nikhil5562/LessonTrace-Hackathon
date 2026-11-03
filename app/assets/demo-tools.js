@@ -25,8 +25,14 @@
   const panel=el('details',undefined,'meta-activity');panel.id='meta-activity';
   panel.append(el('summary','Live Meta calls'));
   panel.append(el('p','This browser’s requests since this server started. A received response shows an API result, not that the teaching is correct. Prepared lessons and recorded examples are not live calls.','subtle'));
-  const rows=el('div'),notice=el('p','Open this panel before sending a Meta question.','subtle');notice.setAttribute('role','status');panel.append(notice,rows);
-  document.getElementById('vs-meta')?.append(panel);
+  const rows=el('div'),notice=el('p','Open this panel before sending a Meta question or starting research.','subtle');notice.setAttribute('role','status');panel.append(notice,rows);
+  function placePanel(){
+    const host=document.getElementById(location.hash==='#hub'?'hub-form':'vs-meta');
+    if(host&&panel.parentElement!==host)host.append(panel);
+  }
+  window.addEventListener('hashchange',placePanel);
+  window.addEventListener('lessontrace-hub-ready',placePanel);
+  placePanel();
   let timer=null,loading=false;
   async function refresh(){
     if(!panel.open||loading||document.hidden)return;loading=true;

@@ -167,7 +167,7 @@ def create_app(data_dir=None, runner=None, provider=None, hub_loader=None,course
 
     @app.get('/plan/evaluation/{name}')
     async def evaluation_file(name: str):
-        if name not in {'scenarios.json','results-2026-10-31.json','adversarial-v1.json','claim-review-results-2026-11-02.json','claim-review-followup-2026-11-02.json','rubric-oracles-2026-11-02.json','claim-review-full-2026-11-03.json','course-audit-summary-2026-11-03.json','live-original-2026-11-03.json'}:raise HTTPException(404)
+        if name not in {'scenarios.json','results-2026-10-31.json','adversarial-v1.json','claim-review-results-2026-11-02.json','claim-review-followup-2026-11-02.json','rubric-oracles-2026-11-02.json','claim-review-full-2026-11-03.json','course-audit-summary-2026-11-03.json','live-original-2026-11-03.json','demo-video-2026-11-03.json','hub-live-2026-11-03.json','demo-hub-video-2026-11-03.json'}:raise HTTPException(404)
         return FileResponse(ROOT/'evaluation'/name)
 
     @app.get("/api/session")

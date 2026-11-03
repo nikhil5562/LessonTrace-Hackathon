@@ -71,7 +71,10 @@ def prepare(draft,evidence,source_ids,execution_receipts=None):
     trusted={k:evidence[k] for k in ('current_code','checked','observed_checks','selected_step','selected_step_index','trace_summary','supplied_input_names','sample_supplied_inputs') if k in evidence}
     trusted['tool_observations']=[o['actual_execution'] for o in evidence.get('tool_observations',[]) if isinstance(o,dict) and 'actual_execution' in o]
     trusted['proposal_execution']=execution_receipts or []
-    learning={k:evidence[k] for k in ('learner_message','intent','concept','task','practice_format') if k in evidence}
+    # Research rationales refer to the learner's goal; keep it separate from facts.
+    learning={k:evidence[k] for k in ('learner_message','intent','concept','task','practice_format','goal','focus','learner_preferences') if k in evidence}
+    if any(k in learning for k in ('goal','learner_preferences')):
+        learning['scope']='Learner-reported goals and preferences, not verified competence or Python-language evidence.'
     rubric=None;criteria=[]
     if evidence.get('concept_id'):
         from .course_rubrics import rubric_for

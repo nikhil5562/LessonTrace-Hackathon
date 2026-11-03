@@ -4,7 +4,7 @@
 
 LessonTrace uses **bounded Meta teaching and research agents**, source-grounded retrieval (RAG), and real Python execution to help learners move from reading a lesson to attempting a program. The teaching agent chooses a useful next action from an allowed menu; the research agent reads approved sources and prepares focused follow-ups. Learners work through a source-linked course, topic quizzes, an editable Python workspace and step-by-step execution visualisation. **The agents propose. Backend rules decide. Python checks.** This prototype does not claim measured learning gains or certify mastery.
 
-**[Watch the 2:54 demo on YouTube](https://youtu.be/IScnLEqgUWI)** — unlisted, viewable without signing in, with English AI narration and actual Meta calls visible.
+**[Watch the 2:50 demo on YouTube](https://youtu.be/s4TGvUO8VEM)** — unlisted, with English AI narration, actual Meta calls and a completed live Hub research run.
 
 ![Original prepared sample with an editable program, actual execution state and all three coding checks passed](docs/screenshots/original-sample.jpg)
 
@@ -70,7 +70,7 @@ RAG supplies evidence for teaching. [`retrieval.py`](server/lessontrace_site/ret
 
 The **teaching agent** chooses one currently eligible action: ask what the learner expected, offer a hint, display a source passage or inspect an observed trace step. The backend performs the chosen action and rejects unavailable actions or invented trace indices. Other supported learning flows can allow a smaller or fresh Python-checked exercise. In the current lesson-first course, help stays on the existing task; optional Hub follow-ups become available after the required topic/debug questions and coding checks pass.
 
-The **Lesson Hub research agent** has a bounded read–observe–decide loop. It chooses sources from a curated catalog, reads selected passages, and can inspect a small example with the Python runner before preparing a focused follow-up. It does not search all YouTube or browse arbitrary websites. Course preparation uses a related bounded workflow to create reusable base lessons and separate concept follow-ups; saved lessons are not regenerated for every learner.
+The **Lesson Hub research agent** has a bounded read–observe–decide loop. It chooses sources from a curated catalog, reads selected passages, and can inspect a small example with the Python runner before preparing a focused follow-up. It does not search all YouTube or browse arbitrary websites. [A real recorded Hub run](evaluation/hub-live-2026-11-03.json) completed in 94.3 seconds: source selection, Python tool observation, generated notes/quiz/task and separate support review, with all four Meta request receipts and actual execution results. Course preparation uses a related bounded workflow to create reusable base lessons and separate concept follow-ups; saved lessons are not regenerated for every learner.
 
 Before anchored teaching is accepted, the backend checks source IDs and exact short quotes, executes applicable code examples/tasks, and requires a **separate Meta claim-support review**. That reviewer is an automated check, not another source of truth. Source matching cannot establish every claim, and passing finite Python tests cannot prove complete correctness or student mastery.
 
@@ -100,7 +100,9 @@ Tests use controlled model responses and **real bounded Python**. They do not co
 
 A separate [recorded original-sample run](evaluation/live-original-2026-11-03.json) contains an accepted **live Muse Spark tutor reply plus its independent review**, provider-returned response IDs, original input/question and real failing/corrected Python traces. It is recorded evidence, not a live replay or a substitute for showing fresh API calls in the demo video.
 
-The [demo-video evidence](evaluation/demo-video-2026-11-03.json) matches the **2:54 screen recording**: two accepted tutoring takes, four actual Meta request receipts, the observed failing/corrected Python runs, editing disclosures and the final video hash. The video shows live tutoring and review; its Hub segment shows setup rather than a new research run. The English AI narration identifies the teaching and research agents and the work built during the hackathon.
+The revised **2:50 video** adds a completed [live Hub research run](evaluation/hub-live-2026-11-03.json): Meta chooses two sources, reads selected passages, invokes Python, and prepares a new lesson, quiz and task. Four real request receipts, seven review judgements, source anchors and actual Python results are retained. The 94.3-second research is condensed into labelled actual screens and paused results. An operator test solution passes three generated practice cases; this is not presented as learner mastery. Earlier blocked takes and their fixes are disclosed in the evidence. The [revised video record](evaluation/demo-hub-video-2026-11-03.json) contains its hash, media checks and signed-out playback verification.
+
+The [original tutoring evidence](evaluation/demo-video-2026-11-03.json) retains the two accepted tutoring takes, four request receipts and failing/corrected runs used in both cuts. Its older video hash belongs to the earlier 2:54 export, which is preserved separately. Both cuts identify the Meta agents and October 26 event build date. No measured learning gains are claimed.
 
 ## Rights and scope
 
@@ -108,4 +110,4 @@ Our application code is **MIT licensed**. Third-party material retains its own t
 
 No tutorial footage, full caption downloads, book PDFs, private learner data, private Git history or credentials are distributed. The original demonstration can be recorded entirely from our own source and UI. No external video clips are needed. For importing other material, use content you have permission to process; do not redistribute source recordings simply because a URL is public.
 
-LessonTrace was submitted to the **Indie Developer Track**, under **Build for Your World**, on November 3, 2026. Hosting the app is optional for the submitted workflow; the demo video is [available on YouTube](https://youtu.be/IScnLEqgUWI). Submission does not establish organizer endorsement, a judging result or a ruling that the project qualifies beyond the anti-project list.
+LessonTrace was submitted to the **Indie Developer Track**, under **Build for Your World**, on November 3, 2026. Hosting the app is optional for the submitted workflow; the revised demo video is [available on YouTube](https://youtu.be/s4TGvUO8VEM). Submission does not establish organizer endorsement, a judging result or a ruling that the project qualifies beyond the anti-project list.
