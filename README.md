@@ -108,4 +108,4 @@ Our application code is **MIT licensed**. Third-party material retains its own t
 
 No tutorial footage, full caption downloads, book PDFs, private learner data, private Git history or credentials are distributed. The original demonstration can be recorded entirely from our own source and UI. No external video clips are needed. For importing other material, use content you have permission to process; do not redistribute source recordings simply because a URL is public.
 
-Hosting the app is optional for the submitted workflow. The demo video is [available on YouTube](https://youtu.be/IScnLEqgUWI); the hackathon submission form still needs to be completed. This repository does not claim organizer endorsement or a ruling that it qualifies beyond the anti-project list.
+LessonTrace was submitted to the **Indie Developer Track**, under **Build for Your World**, on November 3, 2026. Hosting the app is optional for the submitted workflow; the demo video is [available on YouTube](https://youtu.be/IScnLEqgUWI). Submission does not establish organizer endorsement, a judging result or a ruling that the project qualifies beyond the anti-project list.
