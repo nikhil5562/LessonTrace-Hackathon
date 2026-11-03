@@ -1,8 +1,8 @@
 # LessonTrace
 
-**Turn a Python lesson into something you can predict, debug and write yourself.**
+**Meta-powered teaching and research agents for learning Python through prediction, execution and debugging.**
 
-LessonTrace combines a source-linked course, optional topic quizzes, an editable Python workspace, step-by-step execution visualisation, and a bounded Meta tutor. It helps learners move from understanding an explanation to attempting a program. This prototype does not claim measured learning gains or certify mastery.
+LessonTrace uses **bounded Meta teaching and research agents**, source-grounded retrieval (RAG), and real Python execution to help learners move from reading a lesson to attempting a program. The teaching agent chooses a useful next action from an allowed menu; the research agent reads approved sources and prepares focused follow-ups. Learners work through a source-linked course, topic quizzes, an editable Python workspace and step-by-step execution visualisation. **The agents propose. Backend rules decide. Python checks.** This prototype does not claim measured learning gains or certify mastery.
 
 ![Original prepared sample with an editable program, actual execution state and all three coding checks passed](docs/screenshots/original-sample.jpg)
 
@@ -54,19 +54,29 @@ All runtime cloud inference in this submission uses **Meta models**. There is no
 
 | Feature | Real work performed | Implementation |
 |---|---|---|
-| Tutor | Chooses among backend-permitted teaching actions; explains the learner's question, source passages and selected actual execution state | [`video_learning.py`](server/lessontrace_site/video_learning.py), [`adaptive.py`](server/lessontrace_site/adaptive.py) |
+| Teaching agent | Chooses among backend-permitted teaching actions; explains the learner's question, source passages and selected actual execution state | [`video_learning.py`](server/lessontrace_site/video_learning.py), [`adaptive.py`](server/lessontrace_site/adaptive.py) |
 | Independent explanation review | A separate Muse Spark request judges source/claim support before anchored teaching is accepted | [`claim_review.py`](server/lessontrace_site/claim_review.py), [`provider_audit.py`](server/lessontrace_site/provider_audit.py) |
-| Lesson Hub | Reads bounded passages from a curated topic catalog, proposes a learning path and prepares additional original teaching | [`hub.py`](server/lessontrace_site/hub.py), [`hub_sources.py`](server/lessontrace_site/hub_sources.py) |
-| Course preparation | Reusable, versioned Meta-authored base lessons; opening a saved lesson replays it rather than regenerating it | [`course_service.py`](server/lessontrace_site/course_service.py), [`course_content/`](course_content/) |
+| Lesson Hub research agent | Chooses approved sources, reads bounded passages, can inspect a small Python example, and prepares a focused learning path | [`hub.py`](server/lessontrace_site/hub.py), [`hub_sources.py`](server/lessontrace_site/hub_sources.py) |
+| Course preparation workflow | Prepares reusable, versioned Meta-authored base lessons and checked concept follow-ups; opening a saved lesson replays it rather than regenerating it | [`course_agent.py`](server/lessontrace_site/course_agent.py), [`course_service.py`](server/lessontrace_site/course_service.py), [`course_content/`](course_content/) |
 | Video import | Creates original notes/practice from available captions for a learner-supplied YouTube URL | [`video_lessons.py`](server/lessontrace_site/video_lessons.py) |
 
 The teaching/review model is **`muse-spark-1.3`** through **`POST https://api.meta.ai/v1/chat/completions`**, implemented in [`meta.py`](server/lessontrace_site/meta.py). The source includes a legacy Meta speech adapter with a controlled wire test; the public sample contains no narration recording and speech is not part of the submitted demonstration. No Meta image-generation model is called. Execution diagrams are drawn from actual Python trace data.
+
+## How the agents use RAG and tools
+
+RAG supplies evidence for teaching. [`retrieval.py`](server/lessontrace_site/retrieval.py) ranks supplied/cached source passages with lexical matching and programming-related query expansion. The tutor receives selected passages together with the learner's question, current code, recent attempts and selected actual Python execution state.
+
+The **teaching agent** chooses one currently eligible action: ask what the learner expected, offer a hint, display a source passage or inspect an observed trace step. The backend performs the chosen action and rejects unavailable actions or invented trace indices. Other supported learning flows can allow a smaller or fresh Python-checked exercise. In the current lesson-first course, help stays on the existing task; optional Hub follow-ups become available after the required topic/debug questions and coding checks pass.
+
+The **Lesson Hub research agent** has a bounded read–observe–decide loop. It chooses sources from a curated catalog, reads selected passages, and can inspect a small example with the Python runner before preparing a focused follow-up. It does not search all YouTube or browse arbitrary websites. Course preparation uses a related bounded workflow to create reusable base lessons and separate concept follow-ups; saved lessons are not regenerated for every learner.
+
+Before anchored teaching is accepted, the backend checks source IDs and exact short quotes, executes applicable code examples/tasks, and requires a **separate Meta claim-support review**. That reviewer is an automated check, not another source of truth. Source matching cannot establish every claim, and passing finite Python tests cannot prove complete correctness or student mastery.
 
 ## More than a retrieval chatbot
 
 The learning loop is **read → predict → execute → inspect → debug → retry → unlock**. The backend tracks concept prerequisites and actual code checks. The model can suggest an allowed action; it cannot award a pass, invent a successful execution, remove prerequisites or silently change the original lesson. The Python runner checks the program.
 
-The agent is bounded and event-driven, not an unrestricted background assistant. It uses current lesson state, recorded attempts, preferences and permitted actions. Extra research requires consent, waits for the learner and has a nudge cap. The Hub supplements the course after difficulty; it does not replace the initial lesson with endless extra tasks.
+The agents are bounded and event-driven, not unrestricted background assistants. They use current lesson state, recorded attempts, preferences and permitted actions. Extra research requires consent, waits for the learner and has a nudge cap. The Hub supplements the course after difficulty; it does not replace the initial lesson with endless extra tasks.
 
 Retrieval is a **small, lexical, source-ID-based system** over supplied/cached passages. It is not an embedding database or a search of all YouTube. Exact quoted anchors, actual execution checks, separate semantic review and prerequisite rules reduce several failure modes; none eliminates hallucination. See [architecture](ARCHITECTURE.md) and [verification design](CLAIM_REVIEW.md).
 
