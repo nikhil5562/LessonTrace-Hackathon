@@ -18,5 +18,9 @@
   "editing": "Core tutor/trace clips retained; Hub source choices, tool result, request receipts, notes and task shown as labelled condensed actual screens/pauses. No fabricated UI.",
   "narration": "Natural Indian-English AI voice; English text, burnt-in timed English captions; labelled AI narration.",
   "operator_solution": "Generated task checked by operator, not claimed as an independent learner result.",
-  "submission_video_updated": false
+  "submission_video_updated": true,
+  "submission_verified_after_reload": true,
+  "submission_id": "a0496742-ef13-4a6f-ba8a-164bbf402e78",
+  "verified_at": "2026-11-03T18:02:39.664407+00:00",
+  "source_fix_commit": "2bb1c94df44a5fcf35cfe0732a06ceb56207ce36"
 }
