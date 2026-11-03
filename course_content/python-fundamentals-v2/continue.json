@@ -1,0 +1,529 @@
+{
+  "version": "python-fundamentals-v2",
+  "concept_id": "continue",
+  "title": "Skipping one iteration",
+  "curriculum": {
+    "title": "Skipping One Iteration with continue",
+    "answer": "## Skipping one iteration with `continue`\n\nA `for` loop visits each item in a list, one at a time. Sometimes you want to **ignore one visit** but keep going with the later items. That is what `continue` is for.\n\n### 1. `continue` skips to the next item\n\nWhen Python meets `continue`, it stops the current visit immediately and moves to the next item. It does **not** end the whole loop.\n\n```python\nnums = [1, 0, 2, 0, 3]\nkept = []\nfor n in nums:\n    if n == 0:\n        continue\n    kept.append(n)\nprint(kept)\n```\n\nWalk through it:\n\n- `n` is `1`: the check `n == 0` is false, so `kept.append(n)` runs.\n- `n` is `0`: the check is true, so `continue` runs. The `append` below it is skipped for this visit only.\n- `n` is `2`: normal visit, `2` is kept.\n- `n` is `0`: skipped again.\n- `n` is `3`: kept.\n\nIt prints:\n\n```text\n[1, 2, 3]\n```\n\n### 2. The normal pattern\n\nSkipping usually looks like this:\n\n```python\nvals = [4, -1, 5, 0, 6]\nclean = []\nfor v in vals:\n    if v < 0:\n        continue\n    clean.append(v)\nprint(clean)\n```\n\nHere every negative number starts a `continue`, so the `append` is reached only for `4`, `5`, `0`, and `6`. It prints `[4, 5, 0, 6]`.\n\nNotice:\n\n- `for v in vals:` chooses the loop variable.\n- `if v < 0:` decides which visits to skip.\n- In this conditional skipping pattern, `continue` is inside the `if`, which is inside the loop. A `continue` can also be unconditional; belonging to a loop is required, but belonging to an `if` is not.\n- Code after `continue` in the same visit does not run for skipped items.\n- Later items are still visited normally.\n\n### 3. Common mistakes\n\n- Changing the variable does not skip anything. `v = 0` only rebinds `v`; the loop still runs the lines below it.\n- Adding another `append` instead of `continue` keeps the unwanted item.\n- `continue` skips only the current visit. It does not delete items from the original list and does not jump back to the first item.\n",
+    "sources": [
+      "hub-python-control-flow-0001",
+      "hub-cs50-loops-0009"
+    ],
+    "units": [
+      {
+        "id": "continue-skip-one",
+        "title": "Skipping One Iteration",
+        "explanation": "A for loop can skip one visit with if plus continue while still visiting later items. Checked attempts are not proof of durable mastery.",
+        "opening_question": "If a loop should ignore one item but still check the items after it, how can it skip only that visit?",
+        "sources": [
+          "hub-python-control-flow-0001",
+          "hub-cs50-loops-0009"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What does continue do inside a for loop?",
+            "code": "",
+            "options": [
+              "It ends the whole loop at once.",
+              "It skips the rest of the current iteration and goes to the next item.",
+              "It restarts the loop from the first item.",
+              "It skips the next iteration and resumes after it."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "continue skips only the rest of the current visit and moves to the next item. Later items are still visited.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Meta-authored concept check; no executable context supplied"
+            },
+            "needs": [],
+            "targets": [
+              "continue"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the missing line so the unwanted value is skipped.",
+            "code": "nums = [1, 0, 2, 0, 3]\nresult = []\nfor n in nums:\n    if n == 0:\n        ___\n    result.append(n)\nprint(result)",
+            "options": [
+              "continue",
+              "result.append(n)",
+              "n = 0"
+            ],
+            "answer_index": 0,
+            "expected_output": "[1, 2, 3]",
+            "explanation": "continue skips the append for zeros, so only 1, 2 and 3 are kept.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "f4681fbe7daecc24ce0195db4dcb2d71f0d766270c341fd5f551e920c3bbec24"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "continue"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the missing line so negative visits are skipped.",
+            "code": "vals = [4, -1, 5]\nout = []\nfor v in vals:\n    if v < 0:\n        ___\n    out.append(v)\nprint(out)",
+            "options": [
+              "v = 0",
+              "out.append(v)",
+              "continue"
+            ],
+            "answer_index": 2,
+            "expected_output": "[4, 5]",
+            "explanation": "Rebinding the variable does not skip the append. Only continue skips the rest of that visit.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "935a3975363e8651b2bd1e945e9b6cccf74dd2a7326c1c8b43d24a06af04b34a"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "continue"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the missing line so only the unwanted visit is skipped.",
+            "code": "data = [3, 0, 4]\nkept = []\nfor d in data:\n    if d == 0:\n        ___\n    kept.append(d)\nprint(kept)",
+            "options": [
+              "d = 4",
+              "continue",
+              "kept.append(d)"
+            ],
+            "answer_index": 1,
+            "expected_output": "[3, 4]",
+            "explanation": "Assigning d = 4 does not skip the append, so that visit still appends. continue skips the append for 0.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "d54c7faf93ac69f740fb75e3a63cd2b759ef112513767bdabea7bc4201a0ef28"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "continue"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "[3, 4, 4]",
+            "bug_verification": {
+              "observed": "[3, 4, 4]",
+              "fixed_output": "[3, 4]",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the missing line so one middle value is skipped but later values are kept.",
+            "code": "items = [1, 2, 3, 4]\nseen = []\nfor x in items:\n    if x == 3:\n        ___\n    seen.append(x)\nprint(seen)",
+            "options": [
+              "x = 4",
+              "seen = []",
+              "continue"
+            ],
+            "answer_index": 2,
+            "expected_output": "[1, 2, 4]",
+            "explanation": "continue on that one visit skips only its append, so the later item is still visited and kept.",
+            "sources": [
+              "hub-python-control-flow-0001",
+              "hub-cs50-loops-0009"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "2ecd262a654ec74fc0cbabd86d1974536b8150f71013b79a4531f84012b1b232"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "continue"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "nums = [1, 0, 2, 0, 3]\nkept = []\nfor n in nums:\n    if n == 0:\n        continue\n    kept.append(n)\nprint(kept)",
+          "options": [
+            "[1, 2, 3]",
+            "[1, 0, 2, 0, 3]",
+            "[1, 0, 2, 3]"
+          ],
+          "expected_output": "[1, 2, 3]",
+          "explanation": "Each 0 triggers continue, so its append is skipped. The other visits append normally, leaving [1, 2, 3].",
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "f733f668e94cd8b6bcfab2bd74395d0391e9ef731f3c6480db35c04edcd823d9",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 19,
+            "output": "[1, 2, 3]"
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "continue"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "nums"
+          ],
+          "title": "Skip Zeros With Continue",
+          "instructions": "Build kept from nums. nums is a list of integers supplied by the checker. Create kept as a new list that contains every number from nums except 0. Scan nums with for, use if and continue to skip zeros. Example: if the checker supplies nums = [1, 0, 2], then kept should become [1, 2]. Do not change nums itself.",
+          "entry": "kept",
+          "starter": "kept = []\nfor n in nums:\n    kept.append(n)\nprint(kept)",
+          "reference_solution": "kept = []\nfor n in nums:\n    if n == 0:\n        continue\n    kept.append(n)\nprint(kept)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  1,
+                  0,
+                  2,
+                  0,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                [
+                  5,
+                  0
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001",
+            "hub-cs50-loops-0009"
+          ],
+          "verification": {
+            "source_hash": "619cc6e91b16c788e5f859b921160e96562d5afb728303cd9c28e22c332b3f91",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "continue"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "values"
+          ],
+          "title": "Keep Only Non-Negative Numbers",
+          "instructions": "Build clean from values. values is a list of integers supplied by the checker. Create clean as a new list that keeps every value from values except negative numbers. Zero and positive numbers stay. Example: if the checker supplies values = [2, -5, 0], then clean should become [2, 0]. Do not change values itself.",
+          "entry": "clean",
+          "starter": "clean = []\nfor v in values:\n    clean.append(v)\nprint(clean)",
+          "reference_solution": "clean = []\nfor v in values:\n    if v < 0:\n        continue\n    clean.append(v)\nprint(clean)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  4,
+                  5,
+                  6
+                ]
+              ],
+              "expected": [
+                4,
+                5,
+                6
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  4,
+                  -1,
+                  5,
+                  -2,
+                  6
+                ]
+              ],
+              "expected": [
+                4,
+                5,
+                6
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  -3,
+                  -1
+                ]
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                [
+                  0,
+                  -1,
+                  2
+                ]
+              ],
+              "expected": [
+                0,
+                2
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001",
+            "hub-cs50-loops-0009"
+          ],
+          "verification": {
+            "source_hash": "f737cf8b71e2f21bb5e5041f0b6ec6bdaa3904e54de24af0d278e98af7f8b2de",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "continue"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "continue moves to the next loop iteration",
+        "quote": "The continue statement continues with the next iteration of the loop:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0009",
+        "claim": "for loops iterate over a list of items",
+        "quote": "it allows you to iterate over a list of items.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "continue",
+      "worked_examples_run": 2,
+      "quiz_questions": 6,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 4,
+      "fresh_cases": 4,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0001",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements",
+      "start": null,
+      "end": null,
+      "heading": "4.4. break and continue Statements",
+      "text": "The continue statement continues with the next iteration of the loop:",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0009",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=960",
+      "start": 960.69,
+      "end": 1081.32,
+      "heading": "CS50 lecture excerpt",
+      "text": "it allows you to iterate over a list of items.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 22,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793513666.3823714,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Selecting official Python reference and creator video to read for shared base lesson on skipping one iteration.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "continue",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "review_corrections": [
+    {
+      "field": "notes",
+      "before": "`continue` must be inside the loop and inside the `if`.",
+      "after": "In this conditional skipping pattern, `continue` is inside the `if`, which is inside the loop. A `continue` can also be unconditional; belonging to a loop is required, but belonging to an `if` is not.",
+      "reason": "Corrected an overly broad claim about where continue is allowed."
+    }
+  ],
+  "operator_review": {
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA",
+    "human_teacher_review": false,
+    "notes_and_questions_inspected": true,
+    "checks_rerun_after_corrections": true
+  },
+  "flow": "lesson-first",
+  "reused_from": {
+    "version": "python-fundamentals-v1",
+    "sha256": "c4e9a1ef6a2e78ed0b5eb7dcf78c723b8561db20b10c674c555acf6dbd63cebb"
+  }
+}

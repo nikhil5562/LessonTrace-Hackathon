@@ -1,0 +1,59 @@
+{
+  "fixture_version": "semantic-adversarial-v1",
+  "fixture_sha256": "9cfa4f047d43fc18c152912d71c0fa4452db762ba6d36e622b65fdbc83d5247d",
+  "scope": "Development challenge set, not an independently held-out benchmark or student-learning study.",
+  "mode": "live independent reviewer",
+  "semantic_model_evaluated": true,
+  "api_calls": 2,
+  "cases": [
+    {
+      "id": "alias-correct",
+      "expected": "accept",
+      "observed": "accept",
+      "verdict": "supported",
+      "review_statuses": [
+        "supported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4873
+    },
+    {
+      "id": "print-return-confused",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "unsupported"
+      ],
+      "correct": true,
+      "latency_ms": 7123
+    }
+  ],
+  "human_teacher_approved": false,
+  "review_prompt_sha256": "88733bd94b4c4d7e372b00e98bad20edb3bca45e138eea6e681ab351b9fc6015",
+  "summary": {
+    "scenarios": 2,
+    "correct": 2,
+    "unsupported_rejected": 1,
+    "unsupported_total": 1,
+    "supported_accepted": 1,
+    "supported_total": 1,
+    "false_blocks": 0,
+    "unavailable": 0
+  },
+  "usage": {
+    "recorded_calls": 2,
+    "failed_calls": 0,
+    "reserved_cents": 20,
+    "reported_prompt_tokens": 1897,
+    "reported_completion_tokens": 2096,
+    "reported_total_tokens": 3993,
+    "calls_with_usage": 2,
+    "latency_ms": 11973,
+    "billed_cost_usd": null,
+    "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+  },
+  "publication_note": "Historical development evidence, not rerun during public packaging. Private allowance totals and QA identity removed; outcome data retained."
+}

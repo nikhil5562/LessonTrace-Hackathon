@@ -1,0 +1,397 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "comparisons",
+  "title": "Booleans and comparisons",
+  "curriculum": {
+    "title": "Booleans and Comparisons Without Branches",
+    "answer": "### Booleans from comparisons\nA comparison asks a question about two numbers and answers with a Boolean value: `True` or `False`. Python prints those two words with a capital first letter. No decision statement is needed to see them; `print` can show the answer directly.\n\nThe main symbols are less than, greater than, equality, and inequality:\n\n- `x < y` asks whether `x` is smaller.\n- `x > y` asks whether `x` is larger.\n- `x == y` asks whether the values are the same.\n- `x != y` asks whether the values are different.\n- `x <= y` and `x >= y` include the equal case.\n\nEvery variable below is assigned before it is used, so each example can run on its own.\n\n```python\nx = 3\ny = 5\nprint(x < y)\nprint(x == y)\n```\n```text\nTrue\nFalse\n```\n\nThe first print statement displays `True` because 3 is smaller than 5. The second print statement displays `False` because 3 and 5 are not the same value. Each comparison produces one Boolean, and `print` displays it.\n\nComparisons can also be stored in a named result for later use:\n\n```python\na = 10\nb = 6\nis_greater = a > b\nis_equal = a == b\nprint(is_greater)\nprint(is_equal)\n```\n```text\nTrue\nFalse\n```\n\nHere `is_greater` becomes `True` because 10 is larger than 6, while `is_equal` becomes `False`. The variable keeps the Boolean answer.\n\nTwo common mistakes are reversing order and mixing up assignment with comparison. `m > n` and `m < n` ask opposite questions, so only one can be `True` when the numbers differ. A single `=` binds a name to a value, while a double `==` compares left and right and returns `True` or `False`. Check the direction of `<` and `>` and count the equal signs carefully.",
+    "sources": [
+      "hub-cs50-conditionals-0001",
+      "hub-cs50-conditionals-0002"
+    ],
+    "units": [
+      {
+        "id": "comparisons-booleans",
+        "title": "Booleans from Comparisons",
+        "explanation": "A numeric comparison directly produces True or False. This lesson stores <, >, <=, >=, ==, and != results in variables without using any branch.",
+        "opening_question": "Can a line like x < y be useful on its own, before learning branches?",
+        "sources": [
+          "hub-cs50-conditionals-0001",
+          "hub-cs50-conditionals-0002"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What do the two printed values mean?",
+            "code": "x = 3\ny = 5\nprint(x < y)\nprint(x == y)",
+            "options": [
+              "First True, then False",
+              "First False, then True",
+              "Both True"
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "3 < 5 is True and 3 == 5 is False because equality needs the same value on both sides.",
+            "sources": [
+              "hub-cs50-conditionals-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "0a13ba941190c9fc9eb3c9bda184132b0395babee1f9e3dbcf3e1668ad2e0f5f",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "comparisons"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the line that makes result True.",
+            "code": "a = 4\nb = 4\nresult = ___\nprint(result)",
+            "options": [
+              "a == b",
+              "a > b",
+              "a < b"
+            ],
+            "answer_index": 0,
+            "expected_output": "True",
+            "explanation": "Equal numbers make == True, while > and < need one side to be strictly larger or smaller.",
+            "sources": [
+              "hub-cs50-conditionals-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "5d1bdeddf7f2635a1adccb86f3df371acc74c67dc8c43d164678444afcd9ac81"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "comparisons"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Why is double == used here?",
+            "code": "x = 7\ny = 7\nprint(x == y)",
+            "options": [
+              "Single = and double == do the same test",
+              "Double == compares, single = assigns",
+              "Double == assigns, single = compares"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "Double equals compares left and right; single equals would assign instead of producing True or False.",
+            "sources": [
+              "hub-cs50-conditionals-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "e152ca5bc9cb246f74cd95a0ab1636629b8a9798d5c882d299527cf7db317ee2",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "comparisons"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the blank so the program prints True.",
+            "code": "m = 10\nn = 6\nresult = ___\nprint(result)",
+            "options": [
+              "m > n",
+              "m < n",
+              "m == n"
+            ],
+            "answer_index": 0,
+            "expected_output": "True",
+            "explanation": "10 > 6 is True. The reversed order 10 < 6 is False, so it gives the wrong Boolean.",
+            "sources": [
+              "hub-cs50-conditionals-0001",
+              "hub-cs50-conditionals-0002"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "a6b40102be1659cf7d2bbe9bcab859df6f08b5691a38511be616fae272d00281"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "comparisons"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "False",
+            "bug_verification": {
+              "observed": "False",
+              "fixed_output": "True",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "Predict the three printed lines.",
+          "code": "p = 5\nq = 5\nprint(p <= q)\nprint(p >= q)\nprint(p != q)",
+          "options": [
+            "True\nTrue\nFalse",
+            "True\nFalse\nTrue",
+            "False\nFalse\nTrue"
+          ],
+          "expected_output": "True\nTrue\nFalse",
+          "explanation": "5 <= 5 is True, 5 >= 5 is True, and 5 != 5 is False because the values are equal.",
+          "sources": [
+            "hub-cs50-conditionals-0001",
+            "hub-cs50-conditionals-0002"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "6a78b9ed9f90bdcb97ad09e9be7b16a69e060c57e17107e8575f52e57b662b02",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 5,
+            "output": "True\nTrue\nFalse"
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "comparisons"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "x",
+            "y"
+          ],
+          "title": "Less-than check",
+          "instructions": "You are given two numbers x and y. Assign to is_less whether x is less than y. For example, if x is 2 and y is 7, is_less should become True. Do not assign new values to x or y; only assign the comparison result to is_less.",
+          "entry": "is_less",
+          "starter": "is_less = False",
+          "reference_solution": "is_less = x < y",
+          "preserve_input": false,
+          "cases": [
+            {
+              "arguments": [
+                2,
+                7
+              ],
+              "expected": true
+            },
+            {
+              "arguments": [
+                9,
+                4
+              ],
+              "expected": false
+            },
+            {
+              "arguments": [
+                5,
+                5
+              ],
+              "expected": false
+            }
+          ],
+          "sources": [
+            "hub-cs50-conditionals-0001"
+          ],
+          "verification": {
+            "source_hash": "c51eb0997862954fdd6b6f2131dbf5cccb50be876c8d7e62caa69697b265d50d",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "comparisons"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "m",
+            "n"
+          ],
+          "title": "Equality check",
+          "instructions": "You are given two numbers m and n. Assign to is_equal whether m and n hold the same numeric value. For example, if m is 4 and n is 4, is_equal should become True, and if they differ it should become False. Do not assign new values to m or n.",
+          "entry": "is_equal",
+          "starter": "is_equal = False",
+          "reference_solution": "is_equal = m == n",
+          "preserve_input": false,
+          "cases": [
+            {
+              "arguments": [
+                4,
+                4
+              ],
+              "expected": true
+            },
+            {
+              "arguments": [
+                4,
+                9
+              ],
+              "expected": false
+            },
+            {
+              "arguments": [
+                8,
+                3
+              ],
+              "expected": false
+            }
+          ],
+          "sources": [
+            "hub-cs50-conditionals-0001"
+          ],
+          "verification": {
+            "source_hash": "9017092fe0a7085f1790cad0499b9d4a7cb7c4326c0e1010aeafe4c7290dbed9",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "comparisons"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-cs50-conditionals-0001",
+        "claim": "Double == compares equality while single = assigns",
+        "quote": "you actually use two equal sides.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-conditionals-0002",
+        "claim": "!= means not equal to",
+        "quote": "Lastly, this last symbol represents not equal to.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "comparisons",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-cs50-conditionals-0001",
+      "source_id": "cs50-conditionals",
+      "source_title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw&t=0",
+      "start": 0.0,
+      "end": 121.65,
+      "heading": "CS50 lecture excerpt",
+      "text": "you actually use two equal sides.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-conditionals-0002",
+      "source_id": "cs50-conditionals",
+      "source_title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw&t=121",
+      "start": 121.65,
+      "end": 242.25,
+      "heading": "CS50 lecture excerpt",
+      "text": "Lastly, this last symbol represents not equal to.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-conditionals",
+      "title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw",
+      "fetched_at": 1793519944.8982923,
+      "content_hash": "44757b570d1ebe57fb28fddb827633203b4eba1be21c59f8908d19c5e6107fe5",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793520091.2375517,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "The approved topic catalog has one reference/video pair; use it without a paid selection request.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-conditionals"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "comparisons",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "The first line prints `True` -> clarified",
+    "The second line prints `False` -> clarified",
+    "A single `=` copies a value into a variable -> clarified"
+  ]
+}

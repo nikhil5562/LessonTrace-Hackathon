@@ -1,0 +1,239 @@
+{
+  "version": "python-reference-rubrics-v1",
+  "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+  "authorship": {
+    "author": "Codex operator, AI-assisted; separate from Meta lesson generation",
+    "human_teacher_approved": false,
+    "status": "Reference criteria prepared; independent Python teacher review pending",
+    "sources": [
+      "https://docs.python.org/3/tutorial/introduction.html",
+      "https://docs.python.org/3/tutorial/datastructures.html",
+      "https://docs.python.org/3/tutorial/controlflow.html",
+      "https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces"
+    ]
+  },
+  "concepts": 24,
+  "reference_programs": 24,
+  "common_error_mutants": 24,
+  "api_calls": 0,
+  "scope": "Fixed independently specified reference behavior, not generated-exercise completeness, human teacher approval or student learning evidence.",
+  "results": [
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "variables",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "arithmetic",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "strings",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "comparisons",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "lists",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "indexing",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "list_mutation",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "dictionaries",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "nested_data",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "if_else",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "boolean_logic",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "for_loop",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "range",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "while_loop",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "loop_lists",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "loop_if_else",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "break",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "continue",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "nested_loops",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "inner_break",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "functions",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "parameters",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "scope",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    },
+    {
+      "rubric_version": "python-reference-rubrics-v1",
+      "rubric_hash": "02977e7be1d32d4b29c24e766ac0ed2010ac42193668dedc5be03e32c1f2f2ee",
+      "concept": "functions_data",
+      "oracle_passed": true,
+      "mutant_rejected": true,
+      "human_teacher_approved": false,
+      "runtime": "CPython 3.15.0 / WASI"
+    }
+  ],
+  "publication_note": "Historical development evidence, not rerun during public packaging. Private allowance totals and QA identity removed; outcome data retained."
+}

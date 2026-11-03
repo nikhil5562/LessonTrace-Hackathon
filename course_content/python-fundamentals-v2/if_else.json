@@ -1,0 +1,416 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "if_else",
+  "title": "Choosing with if and else",
+  "curriculum": {
+    "title": "Choosing with if and else",
+    "answer": "Choosing with `if` and `else` lets a program take one of two paths. A comparison is tested once. When the test is true, the `if` branch runs. When the test is false, the `else` branch runs instead. Only one branch runs for this decision. In these examples, both branches assign the result variable, so it receives one of two planned values.\n\nStart every example by giving each variable a value. Then write the test, then set the result inside each branch:\n\n```python\nscore = 40\nresult = \"unknown\"\nif score > 50:\n    result = \"pass\"\nelse:\n    result = \"fail\"\nprint(result)\n```\n\n```text\nfail\n```\n\nHere `score > 50` is false, so Python skips the `if` branch and runs the `else` branch. The printed value is `fail`. Change the first line to `score = 80` and the same test becomes true, so the `if` branch runs and the program prints `pass`.\n\nA second pattern is exactly the same, only with different names and cutoff:\n\n```python\nheight = 120\ntag = \"unknown\"\nif height > 100:\n    tag = \"tall\"\nelse:\n    tag = \"short\"\nprint(tag)\n```\n\n```text\ntall\n```\n\nThe test `height > 100` is true, so `tag` becomes `\"tall\"`. Each branch assigns the same result variable, and the names tested and assigned are already defined above.\n\nA common mistake is writing `=` in the test. One equals sign stores a value, while two equals signs compare values. A test needs comparison, for example `if x == y:`. Another mistake is leaving one branch without an assignment, which can leave the old starting value such as `\"unknown\"` in place. Check both paths: one input below the cutoff and one input above it, plus the boundary value itself.",
+    "sources": [
+      "hub-python-control-flow-0001",
+      "hub-cs50-conditionals-0004",
+      "hub-cs50-conditionals-0005"
+    ],
+    "units": [
+      {
+        "id": "if-else-choice",
+        "title": "Choosing with if and else",
+        "explanation": "A comparison plus if and else selects one literal result. Both exercises test the true path, false path, and boundary without arithmetic or extra branches.",
+        "opening_question": "How can a program pick one of two messages from one number?",
+        "sources": [
+          "hub-python-control-flow-0001",
+          "hub-cs50-conditionals-0004",
+          "hub-cs50-conditionals-0005"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "Which value ends up in result?",
+            "code": "score = 40\nresult = \"unknown\"\nif score > 50:\n    result = \"pass\"\nelse:\n    result = \"fail\"\nprint(result)",
+            "options": [
+              "pass",
+              "fail",
+              "unknown"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "The test is false, so only the else branch runs and result becomes fail.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "54115f2168872ab0f64da075253632e6e5c2a8551651b819a62ef3fa172c6701",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "if_else"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the missing line.",
+            "code": "height = 120\ntag = \"unknown\"\nif height > 100:\n    ___\nelse:\n    tag = \"short\"\nprint(tag)",
+            "options": [
+              "tag = \"tall\"",
+              "tag = \"short\"",
+              "tag = \"unknown\""
+            ],
+            "answer_index": 0,
+            "expected_output": "tall",
+            "explanation": "The test is true, so the if branch must assign tall to tag.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "297301eaf9155b1728573a3382458d49acb0ee969e2e9777536109ad2e7cfe11"
+            },
+            "needs": [
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "if_else"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Why does this condition need the equality operator rather than the assignment operator?",
+            "code": "x = 5\ny = 5\nanswer = \"unknown\"\nif x == y:\n    answer = \"same\"\nelse:\n    answer = \"different\"\nprint(answer)",
+            "options": [
+              "Use = because it compares numbers.",
+              "Use = because else needs assignment.",
+              "Use == because the test needs comparison."
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "Single = stores a value and is invalid in a test; double == compares x and y.",
+            "sources": [
+              "hub-cs50-conditionals-0004"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "9b55b2bf317beb36fdbe669c936bb9d3def4894d9a823d5b9faca228be536fe9",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "if_else"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fill ___ so the program prints cold.",
+            "code": "temp = -3\nlabel = \"unknown\"\nif temp < 0:\n    ___\nelse:\n    label = \"safe\"\nprint(label)",
+            "options": [
+              "label == \"cold\"",
+              "label = \"cold\"",
+              "label = \"safe\""
+            ],
+            "answer_index": 1,
+            "expected_output": "cold",
+            "explanation": "The test is true so the if branch runs. Assignment stores cold, while == only compares and leaves unknown.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "10ae5e3386ae119240aebfb895d3616ea5014cfe11b3efbb0aece8a5a5a33ef4"
+            },
+            "needs": [
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "if_else"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "unknown",
+            "bug_verification": {
+              "observed": "unknown",
+              "fixed_output": "cold",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "age = 20\nstage = \"unknown\"\nif age > 12:\n    stage = \"teen or older\"\nelse:\n    stage = \"child\"\nprint(stage)",
+          "options": [
+            "teen or older",
+            "child",
+            "unknown"
+          ],
+          "expected_output": "teen or older",
+          "explanation": "age > 12 is true, so the if branch runs and stage becomes teen or older.",
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "a1b4483fca8b8a08c7bb7bd0072bf1aaadc53a3b838a5d02c9b4413ae36e8958",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 5,
+            "output": "teen or older"
+          },
+          "needs": [
+            "comparisons",
+            "variables"
+          ],
+          "targets": [
+            "if_else"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "temp"
+          ],
+          "title": "Cold or safe check",
+          "instructions": "The checker supplies a number temp. Set label to the string cold when temp is strictly below zero, and to safe for zero or above. For example, -2 gives cold, 5 gives safe, and 0 gives safe. Use if and else with a comparison.",
+          "entry": "label",
+          "starter": "label = \"safe\"",
+          "reference_solution": "if temp < 0:\n    label = \"cold\"\nelse:\n    label = \"safe\"",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                -2
+              ],
+              "expected": "cold"
+            },
+            {
+              "arguments": [
+                5
+              ],
+              "expected": "safe"
+            },
+            {
+              "arguments": [
+                0
+              ],
+              "expected": "safe"
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "8b7cf466b613d555650fce9953fe8f3d86ae0245779f842b4d57bdab4277350c",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "comparisons",
+            "variables"
+          ],
+          "targets": [
+            "if_else"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "score"
+          ],
+          "title": "Pass or fail check",
+          "instructions": "Decide result from score. score is a number of points earned. Set result to pass for high scores and to fail otherwise. For example, if score is 80 then result should be pass, and if score is 40 then result should be fail. Use if and else with a comparison.",
+          "entry": "result",
+          "starter": "result = \"fail\"",
+          "reference_solution": "if score > 50:\n    result = \"pass\"\nelse:\n    result = \"fail\"",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                80
+              ],
+              "expected": "pass"
+            },
+            {
+              "arguments": [
+                40
+              ],
+              "expected": "fail"
+            },
+            {
+              "arguments": [
+                50
+              ],
+              "expected": "fail"
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "1d149c0a5ca9acd56b75327f6fdaee99698f9d5554e759e729771b91128b8f01",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "comparisons",
+            "variables"
+          ],
+          "targets": [
+            "if_else"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "if is a well-known statement type for branching",
+        "quote": "Perhaps the most well-known statement type is the if statement.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-conditionals-0004",
+        "claim": "a comparison test can have a false answer and follow that branch",
+        "quote": "then no, the answer is false.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-conditionals-0005",
+        "claim": "exclusive branches stop asking once one answer is true",
+        "quote": "don't keep answering questions once we get back a true answer.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "if_else",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0001",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#if-statements",
+      "start": null,
+      "end": null,
+      "heading": "4.1. if Statements",
+      "text": "Perhaps the most well-known statement type is the if statement.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-conditionals-0004",
+      "source_id": "cs50-conditionals",
+      "source_title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw&t=480",
+      "start": 480.56,
+      "end": 602.77,
+      "heading": "CS50 lecture excerpt",
+      "text": "then no, the answer is false.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-conditionals-0005",
+      "source_id": "cs50-conditionals",
+      "source_title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw&t=602",
+      "start": 602.77,
+      "end": 722.74,
+      "heading": "CS50 lecture excerpt",
+      "text": "don't keep answering questions once we get back a true answer.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-conditionals",
+      "title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw",
+      "fetched_at": 1793519944.8982923,
+      "content_hash": "44757b570d1ebe57fb28fddb827633203b4eba1be21c59f8908d19c5e6107fe5",
+      "reviewed_sections": 2,
+      "available_sections": 7,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558237.4003022,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Fixed approved reference/video pair; rejected Meta draft corrected and rechecked.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-conditionals"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "if_else",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Reworded the operator question without resembling a hidden assignment.",
+    "Only one branch ever runs, so the result variable always ends up with exactly one of two p -> clarified",
+    "Made the zero boundary explicit in the coding contract."
+  ]
+}

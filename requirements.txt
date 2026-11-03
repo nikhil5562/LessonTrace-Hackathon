@@ -1,0 +1,6 @@
+-c constraints.txt
+-r server/requirements.txt
+-r server/requirements-wasi.txt
+-r server/requirements-exports.txt
+-r server/requirements-captions.txt
+python-dotenv==1.2.1

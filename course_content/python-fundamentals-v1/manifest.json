@@ -1,0 +1,173 @@
+{
+  "version": "python-fundamentals-v1",
+  "course": "Python Fundamentals",
+  "unit": "loops",
+  "status": "reviewed-pilot",
+  "review": {
+    "version": "python-fundamentals-v1",
+    "unit": "loops",
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA; not an independent human teacher",
+    "human_teacher_review": false,
+    "notes_reviewed": true,
+    "questions_reviewed": true,
+    "lesson_hashes": {
+      "for_loop": "9a4208f0d60ad8f3ff7a46156a512c7090d8bde04c9260d6144f576fb210960a",
+      "range": "022931e10860f6426b909b6ba48e5ed68c509a861fa0d2e1e8de8fcf39b62d73",
+      "while_loop": "c1ab4a9281a97b80de813f67ddeafc976858d215714f36b668c661b9ff178ee0",
+      "loop_lists": "552dca209de9ca1ddfb19ee43f3174288b2107aa96ea15d6029f4340c47df451",
+      "loop_if_else": "60f92fd0d304fc20c5f76fcc866086f7f91dc33c56adb7a14f045d9704b68d1e",
+      "break": "6c19bc1af1030bf63d9fcaf113b9f83fff6fe2429de6e43a229df5ccd0b19b89",
+      "continue": "c4e9a1ef6a2e78ed0b5eb7dcf78c723b8561db20b10c674c555acf6dbd63cebb",
+      "nested_loops": "c32d04f4c7aef81a46753f52336fd06b2d6e460fd967aaa86e8db407b6ba6cef",
+      "inner_break": "7d04484437509f060026f98ee6906907f6c52d97d7978636a33d99e3217e3dc1"
+    },
+    "validation": [
+      {
+        "concept": "for_loop",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      },
+      {
+        "concept": "range",
+        "worked_examples_run": 4,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "while_loop",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      },
+      {
+        "concept": "loop_lists",
+        "worked_examples_run": 3,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      },
+      {
+        "concept": "loop_if_else",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "break",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 2
+      },
+      {
+        "concept": "continue",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      },
+      {
+        "concept": "nested_loops",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 3
+      },
+      {
+        "concept": "inner_break",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 3
+      }
+    ],
+    "limitations": [
+      "Only Loops is complete. Other units are outlines plus selected prerequisite placement checks.",
+      "Conceptual answers received AI-assisted operator review, not an independent human teacher audit.",
+      "Fresh tasks have different contracts and inputs but are not proctored unseen exams; notes remain accessible.",
+      "Exact quotations prove source wording, not full claim entailment.",
+      "Test success and demonstrated prerequisite checks do not establish real-student learning gains."
+    ],
+    "summary": {
+      "lessons": 9,
+      "topic_questions": 51,
+      "worked_examples_run": 21,
+      "debug_bugs_reproduced": 9,
+      "main_and_fresh_cases": 66,
+      "operator_corrections": 12
+    }
+  },
+  "graph_hash": "4f114e3e28c64865b0d693c9b84d59496f078427062c64733e778bd76581fc58",
+  "lessons": {
+    "for_loop": {
+      "file": "for_loop.json",
+      "sha256": "9a4208f0d60ad8f3ff7a46156a512c7090d8bde04c9260d6144f576fb210960a"
+    },
+    "range": {
+      "file": "range.json",
+      "sha256": "022931e10860f6426b909b6ba48e5ed68c509a861fa0d2e1e8de8fcf39b62d73"
+    },
+    "while_loop": {
+      "file": "while_loop.json",
+      "sha256": "c1ab4a9281a97b80de813f67ddeafc976858d215714f36b668c661b9ff178ee0"
+    },
+    "loop_lists": {
+      "file": "loop_lists.json",
+      "sha256": "552dca209de9ca1ddfb19ee43f3174288b2107aa96ea15d6029f4340c47df451"
+    },
+    "loop_if_else": {
+      "file": "loop_if_else.json",
+      "sha256": "60f92fd0d304fc20c5f76fcc866086f7f91dc33c56adb7a14f045d9704b68d1e"
+    },
+    "break": {
+      "file": "break.json",
+      "sha256": "6c19bc1af1030bf63d9fcaf113b9f83fff6fe2429de6e43a229df5ccd0b19b89"
+    },
+    "continue": {
+      "file": "continue.json",
+      "sha256": "c4e9a1ef6a2e78ed0b5eb7dcf78c723b8561db20b10c674c555acf6dbd63cebb"
+    },
+    "nested_loops": {
+      "file": "nested_loops.json",
+      "sha256": "c32d04f4c7aef81a46753f52336fd06b2d6e460fd967aaa86e8db407b6ba6cef"
+    },
+    "inner_break": {
+      "file": "inner_break.json",
+      "sha256": "7d04484437509f060026f98ee6906907f6c52d97d7978636a33d99e3217e3dc1"
+    }
+  },
+  "scope": "One complete Loops pilot unit. Other units are outlines and selected prerequisite checks, not complete courses."
+}

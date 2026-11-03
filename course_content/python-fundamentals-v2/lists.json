@@ -1,0 +1,442 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "lists",
+  "title": "Lists and their values",
+  "curriculum": {
+    "title": "Lists and Their Values",
+    "answer": "## Lists group values together\n\nA list keeps several values together as one ordered value. You write comma-separated items between square brackets, so a single variable can hold a whole collection in the order you wrote it. Items often share the same type, such as numbers or strings, but the key idea is grouping. This makes it easy to pass around and print related data together.\n\n```python\nsquares = [1, 4, 9, 16, 25]\nprint(squares)\n```\n```text\n[1, 4, 9, 16, 25]\n```\n\nThe variable `squares` holds one list value. Inside the brackets, each item keeps its position: `1` first, then `4`, and so on. Printing the variable shows the whole group with brackets and commas.\n\nYou can also build a list from variables you already have. The list stores the values those variables hold at that moment, in the order you list them.\n\n```python\na = \"Red\"\nb = \"Green\"\nc = \"Blue\"\nteam = [a, b, c]\nprint(team)\n```\n```text\n['Red', 'Green', 'Blue']\n```\n\nHere `a`, `b`, and `c` are defined first, so every name is known. Then `[a, b, c]` looks up each one and groups the three strings into `team`. Order matters: `[c, b, a]` would be a different list.\n\nCommon mistakes are leaving out commas, leaving out brackets, or putting quotes around a variable name. `[a b c]` is a syntax error because Python needs commas. `[\"a\", \"b\", \"c\"]` runs, but it makes a list of the short text labels, not the values in `a`, `b`, and `c`. Forgetting an item, such as `[a, b]`, runs but gives a shorter list.",
+    "sources": [
+      "hub-python-introduction-0001",
+      "hub-cs50-loops-0001",
+      "hub-cs50-loops-0002"
+    ],
+    "units": [
+      {
+        "id": "lists-values-unit",
+        "title": "Grouping Values into Lists",
+        "explanation": "Grouping related values in one ordered list makes them easier to store and print together.",
+        "opening_question": "How can one variable hold several related values in order?",
+        "sources": [
+          "hub-python-introduction-0001",
+          "hub-cs50-loops-0001",
+          "hub-cs50-loops-0002"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What kind of value is stored here?",
+            "code": "squares = [1, 4, 9, 16, 25]\nprint(squares)",
+            "options": [
+              "A list of five numbers in the written order",
+              "Five separate variables with no grouping",
+              "A single number 25"
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "The brackets with commas group the five numbers into one ordered list value.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "5395196ecb58dad243cb4dd20258eecc5ac4e277fedc7daa970482410b82db81",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "lists"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the replacement that groups the values in order.",
+            "code": "a = \"Red\"\nb = \"Green\"\nc = \"Blue\"\nteam = ___\nprint(team)",
+            "options": [
+              "[a, b, c]",
+              "[a, b]",
+              "[c, b, a]"
+            ],
+            "answer_index": 0,
+            "expected_output": "['Red', 'Green', 'Blue']",
+            "explanation": "The list literal with the three variables in order groups their values.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "d3b53fc6bc839440ee2041f4382f6ac6365e77c001370a34bdee53bd913aa19f"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "lists"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Which assignment stores the names as text rather than their current numeric values?",
+            "code": "x = 2\ny = 4\nz = 6\nnums = [x, y, z]\nprint(nums)",
+            "options": [
+              "nums = [x y z]",
+              "nums = [x, y]",
+              "nums = [\"x\", \"y\", \"z\"]"
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "Brackets group values; quotes would create different string values instead of using the variables.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "5c2a05c78b3598ed153c5644085e33416dd631405b6854c8595b05ca17559abc",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "lists"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the grouping so all values print in order.",
+            "code": "p = \"cat\"\nq = \"dog\"\nr = \"fish\"\npets = ___\nprint(pets)",
+            "options": [
+              "[p, q, r]",
+              "[p, q]",
+              "[r, q, p]"
+            ],
+            "answer_index": 0,
+            "expected_output": "['cat', 'dog', 'fish']",
+            "explanation": "The correct list includes all three variables; the buggy choice leaves out r.",
+            "sources": [
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "d56a5b9161f15a4e68f9ce7573186f217b02face0699e30fc5e6ac05acdc193f"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "lists"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "['cat', 'dog']",
+            "bug_verification": {
+              "observed": "['cat', 'dog']",
+              "fixed_output": "['cat', 'dog', 'fish']",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What will this program print?",
+          "code": "m = \"red\"\nn = \"yellow\"\nbox = [m, n]\nprint(box)",
+          "options": [
+            "['red', 'yellow']",
+            "['yellow', 'red']",
+            "[red, yellow]"
+          ],
+          "expected_output": "['red', 'yellow']",
+          "explanation": "box groups the values of m then n, so printing shows both strings in order inside brackets.",
+          "sources": [
+            "hub-python-introduction-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "fe817372dab8745c53289e21760733d41b120e96fbbff32980e2334d4cfcadb3",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 4,
+            "output": "['red', 'yellow']"
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "lists"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "a",
+            "b",
+            "c"
+          ],
+          "title": "Build a Three-Item Team List",
+          "instructions": "Three input variables a, b, and c are already supplied. Example: if a is \"Red\", b is \"Green\", and c is \"Blue\", then team should become ['Red', 'Green', 'Blue']. Assign to team a list containing the values of a, b, and c in that order.",
+          "entry": "team",
+          "starter": "team = [a, b]",
+          "reference_solution": "team = [a, b, c]",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                "Red",
+                "Green",
+                "Blue"
+              ],
+              "expected": [
+                "Red",
+                "Green",
+                "Blue"
+              ]
+            },
+            {
+              "arguments": [
+                "Hermione",
+                "Harry",
+                "Ron"
+              ],
+              "expected": [
+                "Hermione",
+                "Harry",
+                "Ron"
+              ]
+            },
+            {
+              "arguments": [
+                "5",
+                "7",
+                "9"
+              ],
+              "expected": [
+                "5",
+                "7",
+                "9"
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-cs50-loops-0001"
+          ],
+          "verification": {
+            "source_hash": "6246d8dbff7a04cd9dae515d11f65fabfa85a2284ccee4dca91459a560007936",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "lists"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "day1",
+            "day2"
+          ],
+          "title": "Build a Two-Item Pair List",
+          "instructions": "Two input variables day1 and day2 are already supplied. Example: if day1 is 12 and day2 is 18, then pair should become [12, 18]. Assign to pair a list containing the values of day1 and day2 in that order.",
+          "entry": "pair",
+          "starter": "pair = [day1]",
+          "reference_solution": "pair = [day1, day2]",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                12,
+                18
+              ],
+              "expected": [
+                12,
+                18
+              ]
+            },
+            {
+              "arguments": [
+                "soup",
+                "salad"
+              ],
+              "expected": [
+                "soup",
+                "salad"
+              ]
+            },
+            {
+              "arguments": [
+                0,
+                100
+              ],
+              "expected": [
+                0,
+                100
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-cs50-loops-0002"
+          ],
+          "verification": {
+            "source_hash": "499b65ebeb6ad17a6a783ab53b157ba324129fe70e3a2527187ca44902c9def5",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "lists"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "Lists group comma-separated items between square brackets",
+        "quote": "which can be written as a list of comma-separated values (items) between square brackets.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0001",
+        "claim": "A square bracket signals that a list is starting",
+        "quote": "a square bracket, which means, hey, here comes a list.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0002",
+        "claim": "A list can hold several strings together",
+        "quote": "Now I have a list of three strings instead.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "lists",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-introduction-0001",
+      "source_id": "python-introduction",
+      "source_title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html#lists",
+      "start": null,
+      "end": null,
+      "heading": "3.1.3. Lists",
+      "text": "which can be written as a list of comma-separated values (items) between square brackets.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0001",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=2042",
+      "start": 2042.33,
+      "end": 2160.5,
+      "heading": "CS50 lecture excerpt",
+      "text": "a square bracket, which means, hey, here comes a list.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0002",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=2160",
+      "start": 2160.5,
+      "end": 2281.31,
+      "heading": "CS50 lecture excerpt",
+      "text": "Now I have a list of three strings instead.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-introduction",
+      "title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html",
+      "fetched_at": 1793513454.0496233,
+      "content_hash": "a5738564ca0e8ca88fa217a8fc3653a6c6e46b23c093e019b1104b959d7f6c7a",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793520126.3579938,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "The approved topic catalog has one reference/video pair; use it without a paid selection request.",
+      "source_ids": [
+        "python-introduction",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "lists",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Removed the untaught tuple distractor and clarified the quoted-name misconception."
+  ]
+}

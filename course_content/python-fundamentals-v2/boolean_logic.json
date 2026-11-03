@@ -1,0 +1,447 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "boolean_logic",
+  "title": "Combining conditions",
+  "curriculum": {
+    "title": "Combining Comparisons with and, or, not",
+    "answer": "Sometimes one comparison is not enough. Combining conditions lets a program ask two questions in one test, so an if can check that a value lies between two limits or that two values differ. You join comparisons with and and or, and you flip a result with not.\n\nUse `and` when every part must be true. Use `or` when at least one part must be true. Use `not` to reverse True and False. Comparisons are checked first, then `not`, then `and`, then `or`, so parentheses help make the order clear.\n\n```python\nx = 4\nlow = 3\nhigh = 10\ninside = x > low and x < high\nprint(inside)\n```\n```text\nTrue\n```\nHere `x`, `low`, and `high` are all shown first. Then `x > low` is True and `x < high` is True, so `True and True` gives True. The program stores that result in `inside`.\n\n```python\nx = 2\ny = 2\ndifferent = x < y or x > y\nprint(different)\nif different:\n    print(\"not equal\")\nelse:\n    print(\"equal\")\n```\n```text\nFalse\n```\n```text\nequal\n```\nBoth comparisons are False because 2 is neither less than nor greater than 2. `False or False` is False, so the `else` path runs and prints equal.\n\nA common mistake is swapping them. A number cannot be both less than and greater than another number, so `x < y and x > y` is always False for not-equal. Another mistake is using `and` for an outside check: `x < low and x > high` cannot be True when low is at most high: one value cannot be below the lower limit and above the upper limit at once. Outside needs `or`, inside needs `and`.",
+    "sources": [
+      "hub-cs50-conditionals-0001",
+      "hub-cs50-conditionals-0002",
+      "hub-python-data-structures-0001"
+    ],
+    "units": [
+      {
+        "id": "combining-conditions-basics",
+        "title": "Combining Comparisons with and or not",
+        "explanation": "Two boundary comparisons can be joined with and to express strictly between. Use or for either outside boundary, and not to reverse a Boolean result. The examples compare numbers, so each comparison gives True or False.",
+        "opening_question": "When should one if test check two comparisons at once?",
+        "sources": [
+          "hub-cs50-conditionals-0001",
+          "hub-cs50-conditionals-0002",
+          "hub-python-data-structures-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What is the value of result?",
+            "code": "x = 1\ny = 2\nresult = x < y or x > y\nprint(result)",
+            "options": [
+              "False because both sides must be True",
+              "True because one side is True",
+              "False because and and or act the same"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "One side is True, so or gives True. The value needs only one True side.",
+            "sources": [
+              "hub-cs50-conditionals-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "fe2cd261d3c7b0ff31856c14c45f62f1f0b59c50ce53185a17394b60144af00d",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "boolean_logic"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the test that prints inside only for a strictly interior value.",
+            "code": "x = 2\nlow = 3\nhigh = 10\nif ___:\n    print(\"inside\")\nelse:\n    print(\"outside\")",
+            "options": [
+              "x > low and x < high",
+              "x > low or x < high",
+              "not x > low and x < high"
+            ],
+            "answer_index": 0,
+            "expected_output": "outside",
+            "explanation": "Inside needs both bounds True together, so and joins them.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "bebe3ffc41ee77e8fc61e5751a10e1b0b10babc84d2787fe2acc2b4d84b3583e"
+            },
+            "needs": [
+              "comparisons",
+              "if_else",
+              "variables"
+            ],
+            "targets": [
+              "boolean_logic"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Why is this not-equal test wrong?",
+            "code": "x = 2\ny = 5\nif x < y and x > y:\n    print(\"not equal\")\nelse:\n    print(\"equal\")",
+            "options": [
+              "It correctly finds not equal",
+              "It means the same as or",
+              "It is always False because both sides cannot be True together"
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "One pair of numbers cannot satisfy both directions, so and is never True here.",
+            "sources": [
+              "hub-cs50-conditionals-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "1f55641469b228e788f62b5a818932faf162b3aeafd22c080e09c951b4076b1e",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "comparisons",
+              "if_else",
+              "variables"
+            ],
+            "targets": [
+              "boolean_logic"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the test that prints alarm only when x is outside the limits.",
+            "code": "x = 12\nlow = 3\nhigh = 10\nif ___:\n    print(\"alarm\")\nelse:\n    print(\"ok\")",
+            "options": [
+              "x < low and x > high",
+              "x < low or x > high",
+              "x < low"
+            ],
+            "answer_index": 1,
+            "expected_output": "alarm",
+            "explanation": "7 is between the limits, so the outside test is False. The bug joins outside tests with and, which cannot catch low-side values.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "3a34b18d610bc73bd89a3cffaf2e403173dc0e2ed4ab85e56bfbe695518d8a3e"
+            },
+            "needs": [
+              "comparisons",
+              "if_else",
+              "variables"
+            ],
+            "targets": [
+              "boolean_logic"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "ok",
+            "bug_verification": {
+              "observed": "ok",
+              "fixed_output": "alarm",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "Predict what this program prints.",
+          "code": "x = 1\ny = 2\nok = x < y or x > y\nprint(ok)\nready = x > 0 and y > 5\nprint(ready)\nprint(not ready)",
+          "options": [
+            "True\nFalse\nTrue",
+            "True\nTrue\nFalse",
+            "False\nFalse\nTrue"
+          ],
+          "expected_output": "True\nFalse\nTrue",
+          "explanation": "First or has one True side, so True. Second and has one False side, so False. not False is True.",
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "ca879f90fadf7eb76a9acde1c5eabd98fdeffe09cdd88af6e997d6161390262f",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 7,
+            "output": "True\nFalse\nTrue"
+          },
+          "needs": [
+            "comparisons",
+            "variables"
+          ],
+          "targets": [
+            "boolean_logic"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "x",
+            "low",
+            "high"
+          ],
+          "title": "Strictly Between Limits",
+          "instructions": "Decide whether a reading is strictly between two limits. Inputs: x is the reading, low is the lower limit, high is the upper limit. Example: x=5, low=3, high=10 gives inside=True. Assign True or False to inside. Assume low is at most high.",
+          "entry": "inside",
+          "starter": "inside = False\nif x > low:\n    inside = True",
+          "reference_solution": "if x > low and x < high:\n    inside = True\nelse:\n    inside = False",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                5,
+                3,
+                10
+              ],
+              "expected": true
+            },
+            {
+              "arguments": [
+                3,
+                3,
+                10
+              ],
+              "expected": false
+            },
+            {
+              "arguments": [
+                12,
+                3,
+                10
+              ],
+              "expected": false
+            }
+          ],
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "verification": {
+            "source_hash": "07041c802fedc0c93b33ac63752ad8f80c00b75256e7eb7e9c2828bc5979f312",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "comparisons",
+            "if_else",
+            "variables"
+          ],
+          "targets": [
+            "boolean_logic"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "x",
+            "low",
+            "high"
+          ],
+          "title": "Outside Limits Alarm",
+          "instructions": "Decide whether a reading needs attention. Inputs: x is the reading, low is the lower limit, high is the upper limit. Alarm means the reading is outside the limits. Example: x=1, low=3, high=10 gives alarm=True. Assign True or False to alarm. Assume low is at most high.",
+          "entry": "alarm",
+          "starter": "alarm = False\nif x < low:\n    alarm = True",
+          "reference_solution": "if x < low or x > high:\n    alarm = True\nelse:\n    alarm = False",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                1,
+                3,
+                10
+              ],
+              "expected": true
+            },
+            {
+              "arguments": [
+                5,
+                3,
+                10
+              ],
+              "expected": false
+            },
+            {
+              "arguments": [
+                10,
+                3,
+                10
+              ],
+              "expected": false
+            },
+            {
+              "arguments": [
+                12,
+                3,
+                10
+              ],
+              "expected": true
+            }
+          ],
+          "sources": [
+            "hub-cs50-conditionals-0001"
+          ],
+          "verification": {
+            "source_hash": "ec2ed96de874fb4f8f2053f4303c9b5faa39ed9f9abee186795b1a6ad5810e37",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "comparisons",
+            "if_else",
+            "variables"
+          ],
+          "targets": [
+            "boolean_logic"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-data-structures-0001",
+        "claim": "comparisons can be combined with and, or, and not",
+        "quote": "Comparisons may be combined using the Boolean operators and and or",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-conditionals-0001",
+        "claim": "Python uses the word or to ask either question",
+        "quote": "you can say the same thing in Python using literally this word or.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-conditionals-0002",
+        "claim": "equal case needs no third question after two or-linked tests",
+        "quote": "We don't need to ask a third question, another diamond.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "boolean_logic",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 4,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-data-structures-0001",
+      "source_id": "python-data-structures",
+      "source_title": "Python · Data structures",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#more-on-conditions",
+      "start": null,
+      "end": null,
+      "heading": "5.7. More on Conditions",
+      "text": "Comparisons may be combined using the Boolean operators and and or",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-conditionals-0001",
+      "source_id": "cs50-conditionals",
+      "source_title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw&t=1080",
+      "start": 1080.74,
+      "end": 1200.24,
+      "heading": "CS50 lecture excerpt",
+      "text": "you can say the same thing in Python using literally this word or.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-conditionals-0002",
+      "source_id": "cs50-conditionals",
+      "source_title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw&t=1200",
+      "start": 1200.24,
+      "end": 1323.625,
+      "heading": "CS50 lecture excerpt",
+      "text": "We don't need to ask a third question, another diamond.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-data-structures",
+      "title": "Python · Data structures",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html",
+      "fetched_at": 1793519945.7708907,
+      "content_hash": "017c8239f7d174e0df5b90dbc1c7802a82aa2b5f2b5f8b07bb843c687080a948",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-conditionals",
+      "title": "CS50P · Conditionals",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=_b6NgY_pMdw",
+      "fetched_at": 1793519944.8982923,
+      "content_hash": "44757b570d1ebe57fb28fddb827633203b4eba1be21c59f8908d19c5e6107fe5",
+      "reviewed_sections": 2,
+      "available_sections": 7,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558564.1517143,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Fixed approved reference/video pair; rejected Meta draft corrected and rechecked.",
+      "source_ids": [
+        "python-data-structures",
+        "cs50-conditionals"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "boolean_logic",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Used a below-boundary input to distinguish and from or.",
+    "Made the faulty outside-limits condition reproduce and removed a second correct distractor.",
+    "Added the missing above-upper-limit case so the incomplete starter cannot pass.",
+    "can never be True because one value cannot be below the low limit and above the high limit -> clarified",
+    "Stated the ordering assumed by the two boundary inputs."
+  ]
+}

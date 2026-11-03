@@ -1,0 +1,898 @@
+{
+  "version": "learner-scenarios-v1",
+  "fixture_sha256": "4a6cf9f6e2e7c4d7b962e10016d5a5bfa65268403ab14f29191345a016e8c71f",
+  "run_at_utc": "2026-10-31T15:49:38Z",
+  "mode": "live Meta",
+  "scope": "Operator-authored controlled Python reference passages and scripted learner states. These are not fetched transcripts, real students, or independent learning-outcome evidence. Expected action sets were frozen before the live run.",
+  "retrieval_version": "programming-lexical-v1",
+  "retrieval": [
+    {
+      "id": "unclear-expectation",
+      "old_top3": [
+        "video-eval-get",
+        "video-eval-break",
+        "video-eval-range"
+      ],
+      "current_top3": [
+        "video-eval-get",
+        "video-eval-break",
+        "video-eval-range"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "break-both-loops",
+      "old_top3": [
+        "video-eval-break",
+        "video-eval-case",
+        "video-eval-continue"
+      ],
+      "current_top3": [
+        "video-eval-break",
+        "video-eval-continue",
+        "video-eval-case"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "selected-real-trace",
+      "old_top3": [
+        "video-eval-break",
+        "video-eval-continue",
+        "video-eval-case"
+      ],
+      "current_top3": [
+        "video-eval-break",
+        "video-eval-continue",
+        "video-eval-output"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "original-source-rule",
+      "old_top3": [
+        "video-eval-range",
+        "video-eval-get",
+        "video-eval-return"
+      ],
+      "current_top3": [
+        "video-eval-range",
+        "video-eval-parameters",
+        "video-eval-return"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "off-by-one",
+      "old_top3": [
+        "video-eval-range",
+        "video-eval-index",
+        "video-eval-return"
+      ],
+      "current_top3": [
+        "video-eval-range",
+        "video-eval-index",
+        "video-eval-bool"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "capitalized-nested-key",
+      "old_top3": [
+        "video-eval-case",
+        "video-eval-get",
+        "video-eval-items"
+      ],
+      "current_top3": [
+        "video-eval-case",
+        "video-eval-get",
+        "video-eval-items"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "absent-key-default",
+      "old_top3": [
+        "video-eval-get",
+        "video-eval-break",
+        "video-eval-alias"
+      ],
+      "current_top3": [
+        "video-eval-get",
+        "video-eval-case",
+        "video-eval-items"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "shared-list-mutation",
+      "old_top3": [
+        "video-eval-alias",
+        "video-eval-return",
+        "video-eval-break"
+      ],
+      "current_top3": [
+        "video-eval-alias",
+        "video-eval-parameters",
+        "video-eval-return"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "printed-not-returned",
+      "old_top3": [
+        "video-eval-return",
+        "video-eval-get",
+        "video-eval-while"
+      ],
+      "current_top3": [
+        "video-eval-return",
+        "video-eval-get",
+        "video-eval-output"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "zero-based-third-item",
+      "old_top3": [
+        "video-eval-index",
+        "video-eval-for",
+        "video-eval-len"
+      ],
+      "current_top3": [
+        "video-eval-index",
+        "video-eval-len",
+        "video-eval-strings"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "while-boundary",
+      "old_top3": [
+        "video-eval-while",
+        "video-eval-break",
+        "video-eval-range"
+      ],
+      "current_top3": [
+        "video-eval-range",
+        "video-eval-while",
+        "video-eval-continue"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "continue-versus-stop",
+      "old_top3": [
+        "video-eval-continue",
+        "video-eval-break",
+        "video-eval-range"
+      ],
+      "current_top3": [
+        "video-eval-continue",
+        "video-eval-range",
+        "video-eval-for"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "escalate-after-help",
+      "old_top3": [
+        "video-eval-break",
+        "video-eval-continue",
+        "video-eval-alias"
+      ],
+      "current_top3": [
+        "video-eval-continue",
+        "video-eval-break",
+        "video-eval-alias"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "smaller-after-two-failures",
+      "old_top3": [
+        "video-eval-get",
+        "video-eval-alias",
+        "video-eval-break"
+      ],
+      "current_top3": [
+        "video-eval-alias",
+        "video-eval-get",
+        "video-eval-strings"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    },
+    {
+      "id": "fresh-after-main-pass",
+      "old_top3": [
+        "video-eval-range",
+        "video-eval-case",
+        "video-eval-while"
+      ],
+      "current_top3": [
+        "video-eval-range",
+        "video-eval-alias",
+        "video-eval-bool"
+      ],
+      "old_hit": true,
+      "current_hit": true
+    }
+  ],
+  "retrieval_summary": {
+    "scenarios": 15,
+    "old_hit_at_3": 15,
+    "current_hit_at_3": 15
+  },
+  "checked_fixture_topics": 9,
+  "cases": [
+    {
+      "id": "unclear-expectation",
+      "topic": "get",
+      "expected_actions": [
+        "ask_expectation",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 6669,
+      "http_status": 200,
+      "action": "ask_expectation",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "Your function currently only has `pass`, so it returns **None**. The checks show **None** instead of `95` for a present name and instead of `0` for a missing name.",
+      "follow_up": "When the name is absent, what result do you expect and why?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-get",
+          "claim": "get returns the value if present and the default otherwise",
+          "quote": "record.get(key, default) returns the associated value if present and the supplied default otherwise.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 1951,
+        "reported_completion_tokens": 1309,
+        "reported_total_tokens": 3260,
+        "calls_with_usage": 1,
+        "latency_ms": 6611,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "break-both-loops",
+      "topic": "break",
+      "expected_actions": [
+        "hint"
+      ],
+      "status": "accepted",
+      "wall_ms": 5558,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "Good question \u2014 think of `break` as exiting **only one level**.\n\nWhen the inner `for value in row:` hits `break`, that inner scan stops, but control returns to the outer `for row in rows:` body. The outer loop is still active and will move on to its next row.",
+      "follow_up": "What still runs for the current row after that inner search stops?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-break",
+          "claim": "break exits only the nearest enclosing loop",
+          "quote": "A break exits the nearest enclosing loop.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": true,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 2365,
+        "reported_completion_tokens": 937,
+        "reported_total_tokens": 3302,
+        "calls_with_usage": 1,
+        "latency_ms": 5509,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "selected-real-trace",
+      "topic": "break",
+      "expected_actions": [
+        "inspect_trace"
+      ],
+      "status": "accepted",
+      "wall_ms": 5230,
+      "http_status": 200,
+      "action": "inspect_trace",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "Look at **step 5, line 7** `sizes.append(len(row))`:\n\n- Step 4 ran the inner `break`\n- Step 5 does **not** leave `row_sizes`. It runs the statement after the inner loop.\n- Then step 6 returns to the outer `for row in rows:` for the next row.\n\nSo the inner scan stopped, but the outer scan continued.",
+      "follow_up": "Why does step 6 go back to the outer loop instead of returning?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-break",
+          "claim": "Inner break does not cancel the outer loop",
+          "quote": "breaking the inner loop does not cancel the outer loop.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "video-eval-break",
+          "claim": "Statements after inner loop still run after break",
+          "quote": "Statements after the inner loop still run.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": true,
+      "trace_selection_valid": true,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 2367,
+        "reported_completion_tokens": 863,
+        "reported_total_tokens": 3230,
+        "calls_with_usage": 1,
+        "latency_ms": 5181,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "original-source-rule",
+      "topic": "range",
+      "expected_actions": [
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 6972,
+      "http_status": 200,
+      "action": "review_source",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "Here is the requested passage. Your check with input `3` returned an extra item compared to expected, which relates to the boundary rule below.",
+      "follow_up": "For stop of 3, which values count as smaller than the boundary?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-range",
+          "claim": "range stop endpoint is excluded",
+          "quote": "The stop endpoint of range is excluded.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 2154,
+        "reported_completion_tokens": 1234,
+        "reported_total_tokens": 3388,
+        "calls_with_usage": 1,
+        "latency_ms": 6922,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "off-by-one",
+      "topic": "range",
+      "expected_actions": [
+        "hint",
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 7504,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "You spotted the pattern exactly \u2014 every result has **one extra item** at the end.\n\nThat happens because the stop boundary is already *excluded*. Moving the boundary outward by one brings back the very value you wanted to leave out.\n\nThink about keeping the boundary where it already excludes `stop`, without shifting it.",
+      "follow_up": "What made you add one to the boundary originally?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-range",
+          "claim": "Range excludes its stop endpoint",
+          "quote": "The stop endpoint of range is excluded.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 2159,
+        "reported_completion_tokens": 1311,
+        "reported_total_tokens": 3470,
+        "calls_with_usage": 1,
+        "latency_ms": 7452,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "capitalized-nested-key",
+      "topic": "case",
+      "expected_actions": [
+        "hint",
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 5432,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "No \u2014 in this nested lookup they are **different** keys.\n\nYour outer lookup with the `code` worked, then the inner lookup failed with `KeyError: 'City'`. The trace shows the stored inner key uses a lowercase spelling.\n\nThink of it as two steps: find the airport by exact code, then find the city by exact inner-key spelling.",
+      "follow_up": "Looking at the trace, what exact spelling is stored for the inner key?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-case",
+          "claim": "String dictionary keys are case sensitive",
+          "quote": "String dictionary keys are case sensitive.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "video-eval-case",
+          "claim": "city and City are different dictionary keys",
+          "quote": "The keys city and City are different strings.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 2076,
+        "reported_completion_tokens": 910,
+        "reported_total_tokens": 2986,
+        "calls_with_usage": 1,
+        "latency_ms": 5381,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "absent-key-default",
+      "topic": "get",
+      "expected_actions": [
+        "hint",
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 5012,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "You spotted the pattern correctly:\n\n* present keys like `Mia` return the stored score\n* an absent key like `Ava` raises `KeyError` instead of returning `0`\n\nDirect bracket lookup *requires* the key to exist. Think of the **conceptual alternative**: a dictionary lookup that takes a fallback value to return *only when the key is absent*, leaving the dictionary unchanged.",
+      "follow_up": "When the name is absent, what fallback value does this task want you to supply?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-get",
+          "claim": "Direct bracket lookup raises KeyError for absent keys",
+          "quote": "record[key] raises KeyError when the key is absent.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 1965,
+        "reported_completion_tokens": 908,
+        "reported_total_tokens": 2873,
+        "calls_with_usage": 1,
+        "latency_ms": 4963,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "shared-list-mutation",
+      "topic": "alias",
+      "expected_actions": [
+        "hint",
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 4461,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "Your expectation is right for the task: `values` should stay unchanged.\n\nThe trace shows why it doesn't: after `result = values`, both names point to the same list object. So `append` mutates that shared list, which you see through both names.\n\nThink about starting from a **separate outer copy** first, then adding `item` to the copy.",
+      "follow_up": "If both names share one list, what would you need to make before appending?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-alias",
+          "claim": "Assignment creates an alias, not a copy",
+          "quote": "Assignment binds a name to an object; it does not copy a list.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "video-eval-alias",
+          "claim": "Aliased names share list mutations",
+          "quote": "Two names for the same list share mutations.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 1996,
+        "reported_completion_tokens": 859,
+        "reported_total_tokens": 2855,
+        "calls_with_usage": 1,
+        "latency_ms": 4412,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "printed-not-returned",
+      "topic": "return",
+      "expected_actions": [
+        "hint",
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 6968,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "You noticed exactly the right split: **6** appears as displayed text, but the caller receives **None**.\n\nDisplaying text and handing a value back are different jobs. Your function shows the doubled number, but it never hands that number to the caller, so it reaches the end with nothing to send back.",
+      "follow_up": "What would you expect `twice(3) + 1` to do if `twice` only displays text?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-return",
+          "claim": "return sends a value to the caller, separate from display",
+          "quote": "return sends a value to the function caller.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 1846,
+        "reported_completion_tokens": 1509,
+        "reported_total_tokens": 3355,
+        "calls_with_usage": 1,
+        "latency_ms": 6888,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "zero-based-third-item",
+      "topic": "index",
+      "expected_actions": [
+        "hint",
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 7785,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "Good question \u2014 they start from **zero**, not one.\n\nYour run returned `D` instead of `C`, and raised `IndexError` on the 3-item list. That pattern fits counting from zero: the first position is zero, so the third item is one position earlier than you used.",
+      "follow_up": "What change would move your current selection one position earlier?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-index",
+          "claim": "List positions start at zero",
+          "quote": "List indexing starts at zero.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "video-eval-index",
+          "claim": "Zero, one, two select first, second, third",
+          "quote": "Index zero selects the first item, index one the second, and index two the third.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 1941,
+        "reported_completion_tokens": 1698,
+        "reported_total_tokens": 3639,
+        "calls_with_usage": 1,
+        "latency_ms": 7733,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "while-boundary",
+      "topic": "while",
+      "expected_actions": [
+        "hint",
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 5361,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "You spotted the boundary correctly. Your test with `start=3` returns `[3, 2]` instead of `[3, 2, 1]`.\n\nA `while` loop checks its test **before** each run. When `n` becomes `1`, your test `n > 1` is `False`, so the loop ends without appending that last value.\n\nThink about what idea would keep the test `True` through the `1` case, but still `False` for `0`.",
+      "follow_up": "When n equals 1, what do you want your condition to evaluate to, True or False?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-while",
+          "claim": "while loop tests condition before each iteration",
+          "quote": "A while loop tests its condition before each iteration.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "video-eval-while",
+          "claim": "false condition ends the loop",
+          "quote": "A false condition ends the loop.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 2136,
+        "reported_completion_tokens": 1064,
+        "reported_total_tokens": 3200,
+        "calls_with_usage": 1,
+        "latency_ms": 5312,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "continue-versus-stop",
+      "topic": "continue",
+      "expected_actions": [
+        "hint",
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 5782,
+      "http_status": 200,
+      "action": "hint",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "Your check shows the issue: `[2, -1, 3]` returned `[2]` instead of `[2, 3]`, so `3` was never examined.\n\nThat happens because one control action **exits the loop altogether**, while the other **skips the remaining statements in the current iteration and goes to the next iteration**.\n\nThink about which action matches your goal: skip this one item but keep scanning later items.",
+      "follow_up": "When `value` is -1, what do you want to happen to the rest of that iteration?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-continue",
+          "claim": "continue moves to the next iteration",
+          "quote": "continue skips the remaining statements in the current iteration and goes to the next iteration.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "video-eval-continue",
+          "claim": "break exits the whole loop",
+          "quote": "break exits the loop altogether.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 2140,
+        "reported_completion_tokens": 1264,
+        "reported_total_tokens": 3404,
+        "calls_with_usage": 1,
+        "latency_ms": 5728,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "escalate-after-help",
+      "topic": "break",
+      "expected_actions": [
+        "inspect_trace",
+        "review_source"
+      ],
+      "status": "accepted",
+      "wall_ms": 6144,
+      "http_status": 200,
+      "action": "inspect_trace",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "You are right \u2014 the outer loop **does continue** here, and the checks pass.\n\nInspecting the trace:\n- Inner `break` ends only the `for value in row:` scan\n- `sizes.append(...)` after the inner loop still runs\n- The outer `for row in rows:` then takes its next value\n\nThat matches the expected `[2, 1]` result.",
+      "follow_up": "Looking at the step where the second row starts, what value is already in sizes?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-break",
+          "claim": "Inner break leaves outer loop running",
+          "quote": "breaking the inner loop does not cancel the outer loop",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": true,
+      "trace_selection_valid": true,
+      "usage": {
+        "recorded_calls": 1,
+        "failed_calls": 0,
+        "reserved_cents": 10,
+        "reported_prompt_tokens": 2410,
+        "reported_completion_tokens": 1027,
+        "reported_total_tokens": 3437,
+        "calls_with_usage": 1,
+        "latency_ms": 6091,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "smaller-after-two-failures",
+      "topic": "get",
+      "expected_actions": [
+        "simpler_practice"
+      ],
+      "status": "accepted",
+      "wall_ms": 14142,
+      "http_status": 200,
+      "action": "simpler_practice",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "### Sam's Safe Score Lookup\n\nWrite a function that looks up one fixed name in a score table. The scores parameter is a dictionary that maps student name text to number scores. Return the number stored for Sam, or return zero when Sam is not in the dictionary. A missing Sam and a Sam with stored zero both give zero but are different ideas. Do not add, remove, or change anything in scores. You do not need to repeat over anything; just do one direct lookup.",
+      "follow_up": "How would you safely look up Sam without causing an error when Sam is missing?",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-get",
+          "claim": "Using get with a default safely handles an absent dictionary key",
+          "quote": "record.get(key, default) returns the associated value if present and the supplied default otherwise.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": false,
+      "practice_valid": true,
+      "practice_basis": "Reference and unfinished starter checked with actual CPython; does not prove contract completeness.",
+      "usage": {
+        "recorded_calls": 2,
+        "failed_calls": 0,
+        "reserved_cents": 20,
+        "reported_prompt_tokens": 3599,
+        "reported_completion_tokens": 2951,
+        "reported_total_tokens": 6550,
+        "calls_with_usage": 2,
+        "latency_ms": 13874,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    },
+    {
+      "id": "fresh-after-main-pass",
+      "topic": "range",
+      "expected_actions": [
+        "fresh_check"
+      ],
+      "status": "accepted",
+      "wall_ms": 14132,
+      "http_status": 200,
+      "action": "fresh_check",
+      "action_correct": true,
+      "quotes_valid": true,
+      "cited_gold_source": true,
+      "answer": "### Include the Last Number\n\nWrite a function upto_including that takes one nonnegative integer called limit, meaning the last number that must appear in the answer. Build and return a new list holding every integer from zero up to and including limit. That means for limit 4 the list holds 0, 1, 2, 3, 4, and for limit 0 the list holds only 0. You will need to loop over numbers starting at zero and stop past limit so the final value is kept. Do not change the input value; only build and return a new list.",
+      "follow_up": "",
+      "evidence_quotes": [
+        {
+          "source_id": "video-eval-range",
+          "claim": "The stop value in range is excluded from the supplied numbers.",
+          "quote": "The stop endpoint of range is excluded.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "video-eval-range",
+          "claim": "range with one input starts at zero with values smaller than stop.",
+          "quote": "range(stop) starts at zero and supplies integers smaller than stop.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "video-eval-range",
+          "claim": "Adding one to stop brings back a previously left-out number.",
+          "quote": "Adding one to the stop value includes a previously excluded number.",
+          "quote_verified": true
+        }
+      ],
+      "python_pass_before_help": true,
+      "practice_valid": true,
+      "practice_basis": "Reference and unfinished starter checked with actual CPython; does not prove contract completeness.",
+      "usage": {
+        "recorded_calls": 2,
+        "failed_calls": 0,
+        "reserved_cents": 20,
+        "reported_prompt_tokens": 3575,
+        "reported_completion_tokens": 2587,
+        "reported_total_tokens": 6162,
+        "calls_with_usage": 2,
+        "latency_ms": 13846,
+        "billed_cost_usd": null,
+        "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+      }
+    }
+  ],
+  "limits": [
+    "One run of 15 authored scenarios, no real-student learning study.",
+    "Expected-action sets are operator judgements, not an independent grader.",
+    "Exact quotes prove wording provenance, not claim entailment.",
+    "Sources are authored controlled fixtures; no live YouTube extraction or Hub crawling was tested.",
+    "Retrieval uses the concept title and a source prior; this small benchmark is not held out.",
+    "Reservations are conservative budget records, not billed USD; no automatic provider retries."
+  ],
+  "summary": {
+    "scenarios": 15,
+    "accepted": 15,
+    "action_correct": 15,
+    "quote_checked_responses": 15,
+    "quote_anchors": 23,
+    "gold_source_cited": 15,
+    "generated_practice_valid": 2,
+    "generated_practice_expected": 2,
+    "provider_calls": 17,
+    "reported_tokens": 55111,
+    "reservation_delta_cents": 170,
+    "median_wall_ms": 6144,
+    "billed_cost_usd": null
+  },
+  "qualitative_review": {
+    "fresh_task": "The instructions give a fairly direct clue about the changed range boundary. Correct reference execution does not establish suitable difficulty or unaided reasoning.",
+    "baseline_limits": "Several cases explicitly request a tool; expected sets are operator judgements. This is a non-held-out single-run baseline."
+  },
+  "publication_note": "Historical development evidence, not rerun during public packaging. Private allowance totals and QA identity removed; outcome data retained."
+}

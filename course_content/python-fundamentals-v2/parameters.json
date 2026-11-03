@@ -1,0 +1,415 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "parameters",
+  "title": "Multiple and default arguments",
+  "curriculum": {
+    "title": "Multiple and Default Arguments in Python",
+    "answer": "## Multiple and default arguments\n\nA function can take several inputs in a fixed order. Each parameter name receives one argument value when the function is called. A parameter can also name a default value with `=`, so a caller may leave that argument out. This setup makes short calls possible while longer calls still control every detail.\n\n```python\ndef total(price, qty=3, fee=2):\n    return price * qty + fee\n\nprint(total(5))\nprint(total(5, 2))\nprint(total(5, 2, 10))\n```\n```text\n17\n12\n20\n```\n\nThe first call uses both defaults: `5 * 3 + 2`. The second call supplies `qty`, so only `fee` uses its default. The third call replaces both defaults in order. Python fills arguments from left to right, so you cannot skip `qty` and supply only `fee` by position.\n\n```python\ndef total(cost, qty=2, fee=1):\n    return cost * qty + fee\n\nprint(total(4))\nprint(total(4, 3))\n```\n```text\n9\n13\n```\n\nHere `cost` is required because it has no default. Every call must supply it. `qty` and `fee` are optional because they have defaults. A common mistake is thinking `total(5, 0)` sets `fee` to `0`; it sets `qty` to `0` and keeps `fee` at `2`, giving `2`. Another mistake is calling with no value for a required parameter, which stops with a missing-argument error.",
+    "sources": [
+      "hub-python-control-flow-0001",
+      "hub-cs50-basics-0002"
+    ],
+    "units": [
+      {
+        "id": "parameters-multi-default",
+        "title": "Multiple and Default Arguments",
+        "explanation": "This unit connects required parameters, multiple parameters, and default values. Order controls which default each argument replaces, and omitted trailing arguments use their defaults.",
+        "opening_question": "What happens when a function defines three parameters but a call supplies only one argument?",
+        "sources": [
+          "hub-python-control-flow-0001",
+          "hub-cs50-basics-0002"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What do these calls show about defaults?",
+            "code": "def total(price, qty=3, fee=2):\n    return price * qty + fee\nprint(total(5))\nprint(total(5, 2))",
+            "options": [
+              "Every parameter must always be supplied.",
+              "Missing arguments use defaults, and arguments fill parameters in order.",
+              "Defaults change the order of parameters.",
+              "A default makes the first parameter optional only."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "Defaults allow fewer arguments; missing qty and fee use 3 and 2, so order determines which value each argument replaces.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "bd803925c425fba82393e1b3acaea3cff4c647d3eaf20304760a656f221739e9",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "functions",
+              "variables"
+            ],
+            "targets": [
+              "parameters"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Which line prints 9?",
+            "code": "def total(cost, qty=2, fee=1):\n    return cost * qty + fee\n___",
+            "options": [
+              "print(total(4))",
+              "print(total(4, 3))",
+              "print(total(4, 3, 2))",
+              "print(total())"
+            ],
+            "answer_index": 0,
+            "expected_output": "9",
+            "explanation": "total(4) uses qty=2 and fee=1, giving 4*2+1=9.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "50ab5cb6adb4e2182885d91ed1f3cee91915c10842931a7e31346c825b03b214"
+            },
+            "needs": [
+              "arithmetic",
+              "functions",
+              "variables"
+            ],
+            "targets": [
+              "parameters"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "What does the call with 5 and 0 do?",
+            "code": "def total(price, qty=3, fee=2):\n    return price * qty + fee\nprint(total(5, 0))",
+            "options": [
+              "It sets fee to 0.",
+              "It keeps both defaults.",
+              "It sets qty to 0 and keeps fee at 2.",
+              "It causes a call error."
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "Arguments fill in order, so 0 replaces qty, not fee; the result is 5*0+2=2.",
+            "sources": [
+              "hub-cs50-basics-0002"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "d8b80f86fe5723f5df3147e191e953ece3c37e5369d807da96fe567f82370f08",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "functions",
+              "variables"
+            ],
+            "targets": [
+              "parameters"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Which line uses both defaults and prints the target value?",
+            "code": "def add(a, b=5, c=1):\n    return a + b + c\n___",
+            "options": [
+              "print(add(2))",
+              "print(add(2, 3))",
+              "print(add(2, 3, 4))",
+              "print(add())"
+            ],
+            "answer_index": 0,
+            "expected_output": "8",
+            "explanation": "add(2) uses defaults for b and c to give 8. Calling with no arguments fails because a has no default.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "9297e4b4a768a4024a25ab581d5d5a71e96ebb02581c38e7fc2e534d8d6096df"
+            },
+            "needs": [
+              "arithmetic",
+              "functions",
+              "variables"
+            ],
+            "targets": [
+              "parameters"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 3,
+            "expected_bug_output": "TypeError",
+            "bug_verification": {
+              "observed": "TypeError",
+              "fixed_output": "8",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "def total(price, qty=3, fee=2):\n    return price * qty + fee\nprint(total(5))\nprint(total(5, 2))",
+          "options": [
+            "17\n12",
+            "12\n17",
+            "7\n12"
+          ],
+          "expected_output": "17\n12",
+          "explanation": "First call uses qty=3 and fee=2 for 17. Second call replaces qty with 2 and keeps fee=2 for 12.",
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "bd803925c425fba82393e1b3acaea3cff4c647d3eaf20304760a656f221739e9",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 5,
+            "output": "17\n12"
+          },
+          "needs": [
+            "arithmetic",
+            "functions",
+            "variables"
+          ],
+          "targets": [
+            "parameters"
+          ]
+        },
+        "exercise": {
+          "kind": "function",
+          "parameters": [],
+          "title": "Total with defaults",
+          "instructions": "Define total(cost, qty=2, fee=1) returning cost*qty+fee. cost is required, qty and fee have defaults. Calls may supply one, two, or three arguments in order.",
+          "entry": "total",
+          "starter": "def total(cost, qty, fee):\n    return cost * qty + fee",
+          "reference_solution": "def total(cost, qty=2, fee=1):\n    return cost * qty + fee",
+          "preserve_input": false,
+          "cases": [
+            {
+              "arguments": [
+                4
+              ],
+              "expected": 9
+            },
+            {
+              "arguments": [
+                7,
+                3
+              ],
+              "expected": 22
+            },
+            {
+              "arguments": [
+                2,
+                3,
+                5
+              ],
+              "expected": 11
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "7f8866ea1fbd3ad6f426a186caaa5f9efdfb00fee1f8e9787fb531ed25c1c114",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "functions",
+            "variables"
+          ],
+          "targets": [
+            "parameters"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "function",
+          "parameters": [],
+          "title": "Score with defaults",
+          "instructions": "Define score(base, bonus=5, extra=1) returning base+bonus+extra. base is required, bonus and extra are optional. Callers pass arguments in order and may omit trailing ones.",
+          "entry": "score",
+          "starter": "def score(base, bonus, extra):\n    return base + bonus + extra",
+          "reference_solution": "def score(base, bonus=5, extra=1):\n    return base + bonus + extra",
+          "preserve_input": false,
+          "cases": [
+            {
+              "arguments": [
+                10
+              ],
+              "expected": 16
+            },
+            {
+              "arguments": [
+                3,
+                1
+              ],
+              "expected": 5
+            },
+            {
+              "arguments": [
+                0,
+                1,
+                3
+              ],
+              "expected": 4
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "2f5480b028c3eae8faa4708ed7ce761e310194a76f0edb5225211afb8b52fc40",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "functions",
+            "variables"
+          ],
+          "targets": [
+            "parameters"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "A default lets a function be called with fewer arguments",
+        "quote": "specify a default value for one or more arguments",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "Function with defaults can be called with fewer arguments",
+        "quote": "This creates a function that can be called with fewer arguments than it is defined to allow.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-basics-0002",
+        "claim": "Parameters can have default values when omitted",
+        "quote": "you can give parameters default values.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "parameters",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0001",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#default-argument-values",
+      "start": null,
+      "end": null,
+      "heading": "4.9.1. Default Argument Values",
+      "text": "specify a default value for one or more arguments\nThis creates a function that can be called with fewer arguments than it is defined to allow.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-basics-0002",
+      "source_id": "cs50-basics",
+      "source_title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk&t=5520",
+      "start": 5520.38,
+      "end": 5640.62,
+      "heading": "CS50 lecture excerpt",
+      "text": "you can give parameters default values.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-basics",
+      "title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk",
+      "fetched_at": 1793519944.202026,
+      "content_hash": "719c9905c3908594dd459224b78d5ac9f5cfbc6e06b4dadd67d9f1ea98ecac2c",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558618.112561,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Fixed approved reference/video pair; rejected Meta draft corrected and rechecked.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-basics"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "parameters",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Aligned declared error with the checked exception type; bug/fix code retained.",
+    "Corrected the two addition expectations to match the stated base-plus-bonus-plus-extra contract.",
+    "```python\ndef greet(name, greeting=\"hello\"):\n    return greeting + name\n\nfirst = greet(\"an -> clarified",
+    "Here `name` is required because it has no default. Every call must supply it. `greeting` i -> clarified",
+    "Kept examples numeric, disambiguated both defaults and varied required inputs as well as call arity."
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "arithmetic",
+  "title": "Arithmetic and changing values",
+  "curriculum": {
+    "title": "Arithmetic and Changing Values in Python",
+    "answer": "## Arithmetic and Changing Values\n\nConcept introduction: Python can work like a desk calculator for numbers. You write an expression with operators, Python evaluates it to a value, and you can save that value in a variable. Reassigning the same variable lets a running result change step by step.\n\nNumbers come in two main kinds. Integers have no fractional part, while floats do. Division with `/` always makes a float, even from integers. `//` gives floor division: it rounds the quotient down toward negative infinity. `%` gives the remainder. This lesson uses the arithmetic operators supported by the practice runner. Parentheses control grouping.\n\n```python\nwidth = 20\nheight = 5 * 9\narea = width * height\nprint(area)\n```\n\n```text\n900\n```\n\nHere every variable starts from a visible value. `width` starts as `20`. `height` starts as `5 * 9`, so `45`. `area` becomes `900`. The flow is top to bottom: assign, calculate, assign the new result, then print.\n\nAssignment means calculate the right side first, then store it on the left. Reassignment works the same way: the old value is used on the right, then replaced.\n\n```python\nprice = 100.50\ntax_rate = 12.5 / 100\ntax = price * tax_rate\ntotal = price + tax\ntotal = total + 2\nprint(tax)\nprint(total)\n```\n\n```text\n12.5625\n115.0625\n```\n\n`tax_rate` is `0.125`. `tax` becomes `12.5625`. `total` first becomes `113.0625`, then the next line reads that old `total`, adds `2`, and stores `115.0625` back into `total`.\n\nCommon mistakes are using an undefined variable, expecting `/` to discard decimals, and thinking `=` checks equality. `=` always stores. Read `total = total + 2` as take the current `total`, add `2`, and store the answer again.",
+    "sources": [
+      "hub-cs50-basics-0001",
+      "hub-cs50-basics-0003",
+      "hub-python-introduction-0001"
+    ],
+    "units": [
+      {
+        "id": "arithmetic-values-01",
+        "title": "Numbers and Reassignment",
+        "explanation": "Numbers, operators, reassignment, and the running-total pattern are checked before practice.",
+        "opening_question": "How can one variable hold a result that grows through several calculation steps?",
+        "sources": [
+          "hub-cs50-basics-0001",
+          "hub-cs50-basics-0003",
+          "hub-python-introduction-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What values are printed?",
+            "code": "x = 17 // 3\ny = 17 % 3\nprint(x)\nprint(y)",
+            "options": [
+              "5 and 5",
+              "5 and 2",
+              "6 and 2",
+              "5.66 and 2"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "Floor division rounds the quotient down, and modulo gives the remainder. For these positive numbers, 17 // 3 is 5 and 17 % 3 is 2.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "c5f65e8bceffb6b7ceb62db9792d964233dfd3a06b5057c9502d3b44c6df369c",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "arithmetic"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the line that makes the program print 14.",
+            "code": "base = 10\nadd = 4\n___\nprint(total)",
+            "options": [
+              "total = base + add",
+              "total = base - add",
+              "total = base * add",
+              "total = base / add"
+            ],
+            "answer_index": 0,
+            "expected_output": "14",
+            "explanation": "Adding the two stored numbers gives 14, which is assigned to total and printed.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-basics-0003"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "cbf53a688240ee97e716e2ca79909a7846ae29123217c8cfae70ebd9b40461fd"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "arithmetic"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "What does this program print?",
+            "code": "x = 7 / 2\nprint(x)",
+            "options": [
+              "3.5",
+              "3",
+              "2",
+              "4"
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "Division always returns a float, so 7 / 2 is 3.5 rather than the floor-division result 3.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "e2bb0556bff0fff1bfa56544f1da19efea716ecaca139d9868d9407e70eb78a3",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "arithmetic"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the line that makes the program print the correct total price.",
+            "code": "count = 3\nprice = 2.5\n___\nprint(total)",
+            "options": [
+              "total = count + price",
+              "total = count - price",
+              "total = count * price",
+              "total = price - count"
+            ],
+            "answer_index": 2,
+            "expected_output": "7.5",
+            "explanation": "Three items at 2.5 each cost 7.5, so multiplication is needed. Addition gives 5.5 instead.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-basics-0003"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "887766382b912f313f2242d6b3a3d06104e47b03849f4c9f643e4932ec164827"
+            },
+            "needs": [
+              "variables"
+            ],
+            "targets": [
+              "arithmetic"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "5.5",
+            "bug_verification": {
+              "observed": "5.5",
+              "fixed_output": "7.5",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "x = 5\ny = 2\nx = x + y\nx = x * 3\nprint(x)",
+          "options": [
+            "21",
+            "17",
+            "11"
+          ],
+          "expected_output": "21",
+          "explanation": "First x becomes 7 after adding y. Then 7 * 3 replaces x with 21, so print shows 21.",
+          "sources": [
+            "hub-python-introduction-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "1f8d00127a45c7a5d290541a7437b36465bc61af40c4ecc5c9a785e9712d91c6",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 5,
+            "output": "21"
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "arithmetic"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "start",
+            "add",
+            "times"
+          ],
+          "title": "Update a Running Total",
+          "instructions": "Inputs start, add, and times are numbers already in memory. First combine start and add, then multiply that running value by times. Assign the final value to total. Example: if start is 10, add is 5, times is 2, total should become 30.",
+          "entry": "total",
+          "starter": "total = start",
+          "reference_solution": "total = start + add\ntotal = total * times",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                10,
+                5,
+                2
+              ],
+              "expected": 30
+            },
+            {
+              "arguments": [
+                0,
+                4,
+                3
+              ],
+              "expected": 12
+            },
+            {
+              "arguments": [
+                0,
+                0,
+                5
+              ],
+              "expected": 0
+            }
+          ],
+          "sources": [
+            "hub-cs50-basics-0003",
+            "hub-python-introduction-0001"
+          ],
+          "verification": {
+            "source_hash": "a66c3e49e6770a355d590b6284e3e783c9fe48eb4c4c84447fc7ac4b97b9cb6c",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "arithmetic"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "score",
+            "bonus",
+            "penalty"
+          ],
+          "title": "Apply Bonus Then Penalty",
+          "instructions": "Inputs score, bonus, and penalty are numbers already in memory. Compute the player's ending score from all three inputs. Assign the ending value to final_score. Example: if score is 10, bonus is 5, penalty is 3, final_score should become 12.",
+          "entry": "final_score",
+          "starter": "final_score = score",
+          "reference_solution": "final_score = score + bonus\nfinal_score = final_score - penalty",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                10,
+                5,
+                3
+              ],
+              "expected": 12
+            },
+            {
+              "arguments": [
+                0,
+                0,
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "arguments": [
+                20,
+                2,
+                7
+              ],
+              "expected": 15
+            }
+          ],
+          "sources": [
+            "hub-cs50-basics-0003",
+            "hub-python-introduction-0001"
+          ],
+          "verification": {
+            "source_hash": "bcae6ec27ad74b43fdc55afdaeb9441b41bccfbcf3900ac97077d98a4db01549",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "variables"
+          ],
+          "targets": [
+            "arithmetic"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "Arithmetic operators and parentheses group expressions",
+        "quote": "the operators +, -, * and / can be used to perform arithmetic",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "Division always produces a float",
+        "quote": "Division (/) always returns a float.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "Assignment stores a value in a variable",
+        "quote": "The equal sign (=) is used to assign a value to a variable.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-basics-0001",
+        "claim": "Integers are whole numbers in Python",
+        "quote": "namely integers, otherwise known in Python as INT-- I-N-T.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-basics-0003",
+        "claim": "Python can be used as a calculator",
+        "quote": "And you can use Python really as a fancy calculator.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "arithmetic",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-introduction-0001",
+      "source_id": "python-introduction",
+      "source_title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html#numbers",
+      "start": null,
+      "end": null,
+      "heading": "3.1.1. Numbers",
+      "text": "the operators +, -, * and / can be used to perform arithmetic\nDivision (/) always returns a float.\nThe equal sign (=) is used to assign a value to a variable.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-basics-0001",
+      "source_id": "cs50-basics",
+      "source_title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk&t=3482",
+      "start": 3482.13,
+      "end": 3604.26,
+      "heading": "CS50 lecture excerpt",
+      "text": "namely integers, otherwise known in Python as INT-- I-N-T.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-basics-0003",
+      "source_id": "cs50-basics",
+      "source_title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk&t=3721",
+      "start": 3721.635,
+      "end": 3841.11,
+      "heading": "CS50 lecture excerpt",
+      "text": "And you can use Python really as a fancy calculator.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-introduction",
+      "title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html",
+      "fetched_at": 1793513454.0496233,
+      "content_hash": "a5738564ca0e8ca88fa217a8fc3653a6c6e46b23c093e019b1104b959d7f6c7a",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-basics",
+      "title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk",
+      "fetched_at": 1793519944.202026,
+      "content_hash": "719c9905c3908594dd459224b78d5ac9f5cfbc6e06b4dadd67d9f1ea98ecac2c",
+      "reviewed_sections": 2,
+      "available_sections": 7,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793520017.622208,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "The approved topic catalog has one reference/video pair; use it without a paid selection request.",
+      "source_ids": [
+        "python-introduction",
+        "cs50-basics"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": false,
+      "validation": {
+        "concept": "arithmetic",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "`//` keeps only the whole part of division, `%` keeps the remainder, and `**` makes a powe -> clarified"
+  ]
+}

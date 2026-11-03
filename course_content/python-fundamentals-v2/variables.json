@@ -1,0 +1,400 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "variables",
+  "title": "Values, names and output",
+  "curriculum": {
+    "title": "Values, Names, and Output",
+    "answer": "A variable name refers to a value. Assignment evaluates the right side and binds the name on the left to that value; it does not automatically make a separate copy of an object. Printing shows the value currently referred to by a name. Reassignment changes that binding.\n\n### Assignment gives a value a name\n\nThink of a variable name as a label attached to a value. The name is on the left, and `=` binds it to the value produced by the right side. The value can be text in quotes, a whole number, or a decimal number.\n\n```python\nname = \"Sam\"\nprint(name)\n```\n```text\nSam\n```\n\nHere `\"Sam\"` is the starting value. The first line stores it in `name`. The second line prints the current contents of `name`, so `Sam` appears.\n\n### Printing shows the current value\n\n`print` displays values on the screen. You can print a value directly, or print a name to display whatever was stored there. To understand a later print, follow which value the name currently refers to.\n\n```python\ncount = 4\ncount = 7\nprint(count)\n```\n```text\n7\n```\n\nThe first line puts `4` in `count`. The second line replaces it with `7`. The name `count` no longer refers to `4`. Printing then shows `7`.\n\n### Common mistakes\n\n`=` means assignment, not a check for equality. `count = 4` stores `4`; it does not ask a question. Names also matter exactly: `copy_name` and `nickname2` are different names. Using a name before anything is assigned to it causes a `NameError`. Reassignment is normal, but every name must be assigned before it is printed.",
+    "sources": [
+      "hub-cs50-basics-0001",
+      "hub-cs50-basics-0002",
+      "hub-python-introduction-0001"
+    ],
+    "units": [
+      {
+        "id": "variables-names-output",
+        "title": "Values, Names, and Output",
+        "explanation": "Assignment binds a name to a value. Another assignment can bind the same name to a different value. print shows the current value. In the coding task, the checker provides the input name before your code starts; you assign the requested output name.",
+        "opening_question": "Where can a program keep a value so it can be printed later?",
+        "sources": [
+          "hub-cs50-basics-0001",
+          "hub-cs50-basics-0002",
+          "hub-python-introduction-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What is printed?",
+            "code": "count = 4\ncount = 7\nprint(count)",
+            "options": [
+              "4",
+              "7",
+              "count"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "The second assignment replaces 4 with 7, so print shows 7.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "ce12ed2585b3135094220053d699f1dad99b15cb7a41ea400931b4a5b94bfd1e",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [],
+            "targets": [
+              "variables"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Which line completes the program?",
+            "code": "label = \"hello\"\n___\nprint(message)",
+            "options": [
+              "message = label",
+              "message = \"message\"",
+              "label = message"
+            ],
+            "answer_index": 0,
+            "expected_output": "hello\n",
+            "explanation": "Copy label into message, then print message shows hello.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "9c522ab3d39667b676b626a3caa2d693b02cad57c1874c3546caebd405c63e0c"
+            },
+            "needs": [],
+            "targets": [
+              "variables"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "What is the purpose of the assignment operator in this program?",
+            "code": "name = \"Sam\"\nprint(name)",
+            "options": [
+              "Check for equality",
+              "Print the word name",
+              "Store Sam in name, then print Sam"
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "Assignment binds the left-side name to the right-side value; it does not check equality.",
+            "sources": [
+              "hub-cs50-basics-0002"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "473874fc6bba4f5643cd154e6dc6ef01d4f49e8e44891fba2ee177d4815d2cc4",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [],
+            "targets": [
+              "variables"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Which line completes the program?",
+            "code": "nickname = \"Sam\"\n___\nprint(copy_name)",
+            "options": [
+              "copy_name = nickname",
+              "copy_name = nickname2",
+              "copy_name = \"copy_name\""
+            ],
+            "answer_index": 0,
+            "expected_output": "Sam\n",
+            "explanation": "Correct line copies nickname into copy_name. Using nickname2 fails because that name was never assigned.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "09752c1fa99b4b6bad93a643e2ca6c2d1842dae199555aaeefdcc8ee29a10fa6"
+            },
+            "needs": [],
+            "targets": [
+              "variables"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "NameError",
+            "bug_verification": {
+              "observed": "NameError",
+              "fixed_output": "Sam\n",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What is printed?",
+          "code": "first = \"hello\"\nsecond = first\nprint(second)",
+          "options": [
+            "hello",
+            "first",
+            "second"
+          ],
+          "expected_output": "hello\n",
+          "explanation": "first holds hello, second copies it, so print shows hello.",
+          "sources": [
+            "hub-python-introduction-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "5cf2f1285c7fe61dda841d598d9545fe08f9fab68c2690cbec2a86559485fdf5",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 3,
+            "output": "hello"
+          },
+          "needs": [],
+          "targets": [
+            "variables"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "value"
+          ],
+          "title": "Store and print value",
+          "instructions": "The checker supplies value, which may be text or a number. Assign that value to result. You may print it to inspect it; the checker reads the assigned variable and preserves its original type.",
+          "entry": "result",
+          "starter": "# value is already supplied; assign it to result\nprint(result)",
+          "reference_solution": "result = value\nprint(result)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                "hello"
+              ],
+              "expected": "hello"
+            },
+            {
+              "arguments": [
+                "Sam"
+              ],
+              "expected": "Sam"
+            },
+            {
+              "arguments": [
+                42
+              ],
+              "expected": 42
+            }
+          ],
+          "sources": [
+            "hub-python-introduction-0001"
+          ],
+          "verification": {
+            "source_hash": "a0c68abf52ecdfb5a1fb9ea83ffadaed8fb11b35cb616ddf3cf5ceefc19f9e9e",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [],
+          "targets": [
+            "variables"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "nickname"
+          ],
+          "title": "Copy nickname for display",
+          "instructions": "The checker supplies nickname, which may be text or a number. Assign that value to copy_name. You may print it to inspect it; the checker reads the assigned variable and preserves its original type.",
+          "entry": "copy_name",
+          "starter": "# nickname is already supplied; make copy_name hold it\nprint(copy_name)",
+          "reference_solution": "copy_name = nickname\nprint(copy_name)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                "Mia"
+              ],
+              "expected": "Mia"
+            },
+            {
+              "arguments": [
+                "Leo"
+              ],
+              "expected": "Leo"
+            },
+            {
+              "arguments": [
+                7
+              ],
+              "expected": 7
+            }
+          ],
+          "sources": [
+            "hub-cs50-basics-0002"
+          ],
+          "verification": {
+            "source_hash": "e43bf4c5d8b51ba9f4dcd6459575da3d2988abe1f9370e75faf1d7dd717c16c4",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [],
+          "targets": [
+            "variables"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "Equal sign assigns a value to a variable",
+        "quote": "The equal sign (=) is used to assign a value to a variable.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-basics-0001",
+        "claim": "Variable is a container for a value",
+        "quote": "A variable is just a container for some value inside of a computer",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-basics-0002",
+        "claim": "Single equal sign means assignment",
+        "quote": "a single equal sign is the assignment operator",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "variables",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-introduction-0001",
+      "source_id": "python-introduction",
+      "source_title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html#numbers",
+      "start": null,
+      "end": null,
+      "heading": "3.1.1. Numbers",
+      "text": "The equal sign (=) is used to assign a value to a variable.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-basics-0001",
+      "source_id": "cs50-basics",
+      "source_title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk&t=841",
+      "start": 841.16,
+      "end": 966.74,
+      "heading": "CS50 lecture excerpt",
+      "text": "A variable is just a container for some value inside of a computer",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-basics-0002",
+      "source_id": "cs50-basics",
+      "source_title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk&t=966",
+      "start": 966.74,
+      "end": 1080.44,
+      "heading": "CS50 lecture excerpt",
+      "text": "a single equal sign is the assignment operator",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-introduction",
+      "title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html",
+      "fetched_at": 1793513454.0496233,
+      "content_hash": "a5738564ca0e8ca88fa217a8fc3653a6c6e46b23c093e019b1104b959d7f6c7a",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-basics",
+      "title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk",
+      "fetched_at": 1793519944.202026,
+      "content_hash": "719c9905c3908594dd459224b78d5ac9f5cfbc6e06b4dadd67d9f1ea98ecac2c",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558562.8513656,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Fixed approved reference/video pair; rejected Meta draft corrected and rechecked.",
+      "source_ids": [
+        "python-introduction",
+        "cs50-basics"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "variables",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Aligned declared error with the checked exception type; bug/fix code retained.",
+    "Removed ambiguous operator notation from prose prompt; complete code retained.",
+    "Graded the assigned scalar value rather than mistakenly comparing it with printed output text.",
+    "A name stores one value at a time for later use in Python. Assignment copies a value from  -> clarified",
+    "### Assignment creates a container -> clarified",
+    "Think of a variable as a labeled container. The name is on the left, the value is on the r -> clarified",
+    "The program does not remember how the value was created, only what is stored now. -> clarified",
+    "The old `4` is gone. -> clarified"
+  ]
+}

@@ -1,0 +1,515 @@
+{
+  "version": "python-fundamentals-v2",
+  "concept_id": "nested_loops",
+  "title": "Outer and inner iterations",
+  "curriculum": {
+    "title": "Outer and Inner Iterations with Nested Loops",
+    "answer": "### Outer loop plus inner loop\n\nA nested loop is one `for` loop placed fully inside another `for` loop. The outer loop picks one item, then the inner loop visits every item from its own list before the outer loop moves on.\n\nPython `for` loops visit list items in order, so an outer-inner pair visits combinations in outer-then-inner order.\n\n```python\nrows = [\"R1\", \"R2\"]\ncols = [\"a\", \"b\"]\nresult = []\nfor r in rows:\n    for c in cols:\n        result.append(r + c)\nprint(result)\n```\n```text\n['R1a', 'R1b', 'R2a', 'R2b']\n```\n\nThe flow is: fix `R1`, pair it with `a`, then `b`; fix `R2`, pair it with `a`, then `b`. The inner loop therefore runs completely once for every single outer item. That complete rerun is the main idea to remember.\n\n### Where each line belongs\n\nIndentation controls what repeats. The inner `for` line belongs to the outer loop, and the `append` line belongs to the inner loop:\n\n```python\ncolors = [\"red\", \"blue\"]\nshapes = [\"circle\", \"square\"]\nresult = []\nfor c in colors:\n    for s in shapes:\n        result.append(c + s)\nprint(result)\nprint(len(result))\n```\n```text\n['redcircle', 'redsquare', 'bluecircle', 'bluesquare']\n4\n```\n\nHere `colors`, `shapes`, and `result` are all created before the loops, so every variable has a clear origin. The printed length is `2 * 2`, because each of the two colors meets each of the two shapes.\n\nA common mistake is reusing one loop name for both loops, such as `for t in teams` outside and `for t in slots` inside. The inner assignment rebinds `t`, so inside that body the name no longer refers to the current outer item. The original first list itself is unchanged. Another mistake is putting the action at the outer level, which runs only once per outer item. Use two different names and keep the combining step inside the inner loop.",
+    "sources": [
+      "hub-python-control-flow-0001",
+      "hub-cs50-loops-0004"
+    ],
+    "units": [
+      {
+        "id": "nested-loops-pairs",
+        "title": "Outer and Inner Iterations",
+        "explanation": "One loop can run completely inside another loop. The outer loop fixes one item, the inner loop visits every inner item, then the outer loop advances to its next item.",
+        "opening_question": "If one loop visits every row and another visits every seat in that row, how many pairs do you get?",
+        "sources": [
+          "hub-python-control-flow-0001",
+          "hub-cs50-loops-0004"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "How do the outer and inner loops progress in this code?",
+            "code": "rows = [\"R1\", \"R2\"]\ncols = [\"a\", \"b\"]\nresult = []\nfor r in rows:\n    for c in cols:\n        result.append(r + c)\nprint(result)",
+            "options": [
+              "Inner runs once total.",
+              "Inner runs fully per outer item.",
+              "Both move together.",
+              "Outer restarts per inner."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "The outer loop fixes R1 while inner visits a and b, then fixes R2 while inner visits a and b, giving four pairs in that order.",
+            "sources": [
+              "hub-python-control-flow-0001",
+              "hub-cs50-loops-0004"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "6fa44f0aa739c66a0482000bb00489c60498b78da18d550ac96b2edfb6584444",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "nested_loops"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the inner action so result holds every color-shape pair:",
+            "code": "colors = [\"red\", \"blue\"]\nshapes = [\"circle\", \"square\"]\nresult = []\nfor c in colors:\n    for s in shapes:\n        ___\nprint(result)",
+            "options": [
+              "result.append(c + s)",
+              "result.append(c)",
+              "result.append(s)",
+              "print(c)"
+            ],
+            "answer_index": 0,
+            "expected_output": "['redcircle', 'redsquare', 'bluecircle', 'bluesquare']\n",
+            "explanation": "Appending c + s inside the inner loop creates every color-shape pair in outer-then-inner order.",
+            "sources": [
+              "hub-python-control-flow-0001",
+              "hub-cs50-loops-0004"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "45e638b5c382edb1f48b531f8b09c3395e85c948695a545c689e5228ce1971b3"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "nested_loops"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Why should these nested loops use different variable names to make team-slot pairs?",
+            "code": "teams = [\"red\", \"blue\"]\nslots = [\"1\", \"2\"]\nresult = []\nfor t in teams:\n    for t in slots:\n        result.append(t + t)\nprint(result)",
+            "options": [
+              "It runs faster.",
+              "Strings need same name.",
+              "The inner assignment changes t, so it no longer holds the current team.",
+              "Inner needs no variable."
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "Inside the inner body, t holds the slot label, so t + t joins the slot with itself. Use separate names to keep both current items available; neither original list was lost.",
+            "sources": [
+              "hub-python-control-flow-0001",
+              "hub-cs50-loops-0004"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "8e4f4d623dd6e870d378d274f0be21fd3df1ebe28c5848b962332308b6354d36",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "nested_loops"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the missing inner loop line so each row pairs with cols:",
+            "code": "rows = [\"m\", \"n\"]\ncols = [\"p\", \"q\"]\nresult = []\nfor r in rows:\n    ___\n        result.append(r + c)\nprint(result)",
+            "options": [
+              "for c in cols:",
+              "for c in rows:",
+              "for r in cols:"
+            ],
+            "answer_index": 0,
+            "expected_output": "['mp', 'mq', 'np', 'nq']\n",
+            "explanation": "The inner loop must iterate over cols; looping over rows again pairs each row letter with itself instead of with p and q.",
+            "sources": [
+              "hub-python-control-flow-0001",
+              "hub-cs50-loops-0004"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "b9a6e34f536525083509475aa77aed32180ce242a7834af388344865b5d71187"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "nested_loops"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "['mm', 'mn', 'nm', 'nn']\n",
+            "bug_verification": {
+              "observed": "['mm', 'mn', 'nm', 'nn']",
+              "fixed_output": "['mp', 'mq', 'np', 'nq']\n",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this nested pairing program print?",
+          "code": "kinds = [\"x\", \"y\"]\nends = [\"1\", \"2\"]\nresult = []\nfor k in kinds:\n    for e in ends:\n        result.append(k + e)\nprint(result)",
+          "options": [
+            "['x1', 'x2', 'y1', 'y2']",
+            "['x1', 'y1', 'x2', 'y2']",
+            "['x1', 'y2']"
+          ],
+          "expected_output": "['x1', 'x2', 'y1', 'y2']",
+          "explanation": "Outer fixes x while inner makes x1, x2, then outer fixes y while inner makes y1, y2.",
+          "sources": [
+            "hub-python-control-flow-0001",
+            "hub-cs50-loops-0004"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "f8d8d7ab70e69e0ba128f6899fc20156b1637cc949d30eae6634af02d0c404b4",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 17,
+            "output": "['x1', 'x2', 'y1', 'y2']"
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "nested_loops"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "teams",
+            "slots"
+          ],
+          "title": "Team Slot Pairs",
+          "instructions": "Inputs are teams, a list of strings, and slots, a list of strings. Example: teams is [\"red\", \"blue\"] and slots is [\"1\", \"2\"]. Build result as a new list with every teams-plus-slots string in outer-then-inner order. Use two nested for loops over lists and append each t + s. Do not change teams or slots.",
+          "entry": "result",
+          "starter": "result = []\nfor t in teams:\n    result.append(t)",
+          "reference_solution": "result = []\nfor t in teams:\n    for s in slots:\n        result.append(t + s)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  "red",
+                  "blue"
+                ],
+                [
+                  "1",
+                  "2"
+                ]
+              ],
+              "expected": [
+                "red1",
+                "red2",
+                "blue1",
+                "blue2"
+              ]
+            },
+            {
+              "arguments": [
+                [],
+                [
+                  "1",
+                  "2"
+                ]
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                [
+                  "q"
+                ],
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              "expected": [
+                "qa",
+                "qb",
+                "qc"
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001",
+            "hub-cs50-loops-0004"
+          ],
+          "verification": {
+            "source_hash": "b342141256ce34a49060d4a3e9b391b3fd5ece5c1eb8ba5540754535155f5831",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "nested_loops"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "adjs",
+            "nouns"
+          ],
+          "title": "Label Combinations",
+          "instructions": "Inputs adjs and nouns are lists of strings. Build combos with every adjective-noun pairing, ordered by adjective first and then noun. Each result string has the adjective, a hyphen, then the noun. For adjs [\"hot\", \"cold\"] and nouns [\"tea\", \"soup\"], the first two results are \"hot-tea\" and \"hot-soup\". Do not change either input list.",
+          "entry": "combos",
+          "starter": "combos = []\nfor a in adjs:\n    combos.append(a)",
+          "reference_solution": "combos = []\nfor a in adjs:\n    for n in nouns:\n        combos.append(a + \"-\" + n)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  "hot",
+                  "cold"
+                ],
+                [
+                  "tea",
+                  "soup"
+                ]
+              ],
+              "expected": [
+                "hot-tea",
+                "hot-soup",
+                "cold-tea",
+                "cold-soup"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "up"
+                ],
+                [
+                  "hill",
+                  "stairs",
+                  "road"
+                ]
+              ],
+              "expected": [
+                "up-hill",
+                "up-stairs",
+                "up-road"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "fast",
+                  "slow"
+                ],
+                []
+              ],
+              "expected": []
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001",
+            "hub-cs50-loops-0004"
+          ],
+          "verification": {
+            "source_hash": "74e8f0d8b8381bfd16739ea8f7789a1d85819148fd04f7301fd80eae70fe9820",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "nested_loops"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "Python for loops iterate over items of a sequence in order.",
+        "quote": "Python’s for statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0004",
+        "claim": "A nested loop can be described as for each outer item, for each inner item.",
+        "quote": "For each row in square, for each brick in row, print brick.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "nested_loops",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0001",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#for-statements",
+      "start": null,
+      "end": null,
+      "heading": "4.2. for Statements",
+      "text": "Python’s for statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0004",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=4560",
+      "start": 4560.75,
+      "end": 4683.01,
+      "heading": "CS50 lecture excerpt",
+      "text": "For each row in square, for each brick in row, print brick.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 6,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793513950.9819446,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Selecting official reference and creator video to read for for_loop and lists covering outer and inner iterations.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "nested_loops",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "review_corrections": [
+    {
+      "field": "notes",
+      "before": "The inner `t` overwrites the outer value, so the first list is lost.",
+      "after": "The inner assignment rebinds `t`, so inside that body the name no longer refers to the current outer item. The original first list itself is unchanged.",
+      "reason": "Distinguished a rebound name from loss or mutation of a list."
+    },
+    {
+      "field": "quiz.common_mistake",
+      "before": {
+        "prompt": "Someone rewrites the inner loop as for t in slots: What is wrong?",
+        "code": "teams = [\"red\", \"blue\"]\nslots = [\"1\", \"2\"]\nresult = []\nfor t in teams:\n    for s in slots:\n        result.append(t + s)\nprint(result)",
+        "answer": "Use different inner name.",
+        "explanation": "Reusing t for the inner loop overwrites the outer team value, so the pairing is lost; use a different inner name such as s."
+      },
+      "after": {
+        "prompt": "Why should these nested loops use different variable names to make team-slot pairs?",
+        "code": "teams = [\"red\", \"blue\"]\nslots = [\"1\", \"2\"]\nresult = []\nfor t in teams:\n    for t in slots:\n        result.append(t + t)\nprint(result)",
+        "answer": "The inner assignment changes t, so it no longer holds the current team.",
+        "explanation": "Inside the inner body, t holds the slot label, so t + t joins the slot with itself. Use separate names to keep both current items available; neither original list was lost."
+      },
+      "reason": "Showed the complete variable-reuse example and explained the binding rather than implying that the source list disappears."
+    },
+    {
+      "field": "fresh_exercise.instructions",
+      "before": "Inputs are adjs, a list of strings, and nouns, a list of strings. Example: adjs is [\"hot\", \"cold\"] and nouns is [\"tea\", \"soup\"]. Build combos as a new list with every a + \"-\" + n string, ordered by outer item then inner item. Do not change adjs or nouns.",
+      "after": "Inputs adjs and nouns are lists of strings. Build combos with every adjective-noun pairing, ordered by adjective first and then noun. Each result string has the adjective, a hyphen, then the noun. For adjs [\"hot\", \"cold\"] and nouns [\"tea\", \"soup\"], the first two results are \"hot-tea\" and \"hot-soup\". Do not change either input list.",
+      "reason": "Described the required string format without giving its implementation expression."
+    }
+  ],
+  "operator_review": {
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA",
+    "human_teacher_review": false,
+    "notes_and_questions_inspected": true,
+    "checks_rerun_after_corrections": true
+  },
+  "flow": "lesson-first",
+  "reused_from": {
+    "version": "python-fundamentals-v1",
+    "sha256": "c32d04f4c7aef81a46753f52336fd06b2d6e460fd967aaa86e8db407b6ba6cef"
+  }
+}

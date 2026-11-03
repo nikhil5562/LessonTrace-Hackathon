@@ -1,0 +1,1975 @@
+{
+  "recorded_at_utc": "2026-11-03T06:03:33.654600+00:00",
+  "mode": "live-meta-original-sample",
+  "models": [
+    "muse-spark-1.3"
+  ],
+  "source_kind": "original operator-authored source",
+  "source_text": "Original LessonTrace sample, written during the hackathon.\nIn nested loops, break exits only the nearest enclosing loop. The outer loop can continue with its next item. A second break placed in the outer body stops that outer loop. The indentation and the actual reached line determine which loop stops.\nA function returns its result to its caller. Appending a value changes that list. A loop over an empty list executes its body zero times. An outer list may contain empty rows; the inner loop simply has no values for those rows.\nThe example uses groups A and B, each with values 1 and 2. Its break is inside the inner loop, so each group prints only its first value. These are original examples, not a copied lecture or a claim that quiz performance proves mastery.",
+  "source_sha256": "119928004f76ebcdcbff77debf9e3ba87eed0247bd41a8f7de144167cfea2304",
+  "starter": "def first_in_each(rows):\n    firsts = []\n    for row in rows:\n        for number in row:\n            firsts.append(number)\n            break\n        break\n    return firsts",
+  "reference_solution": "def first_in_each(rows):\n    firsts = []\n    for row in rows:\n        for number in row:\n            firsts.append(number)\n            break\n    return firsts",
+  "scope": "One real tutor request plus independent review, actual Python runs. Not a recording of the native UI; not a student learning study.",
+  "learner_question": "I expected [4, 5] but this returns [4]. I thought break only stops its nearest loop. Give a small hint about which reached break prevents visiting the second row, using the observed trace. Do not write the corrected program.",
+  "http_status": 200,
+  "tutor_response": {
+    "message": {
+      "role": "assistant",
+      "text": "You are right about the inner `break` \u2014 it correctly stops after `4`.\n\nThe trace tells a second story: at `return`, `firsts` is `[4]` and **both** loops show `broken: True`. That means a second reached line stopped the outer `row` loop after only its first item, so the second row was never visited.\n\nThink finger-by-finger: which loop does that outer-body `break` belong to?",
+      "follow_up": "If that outer break line were never reached, what would the outer loop do after the first row?",
+      "sources": [
+        "hub-lessontrace-original-break-0001"
+      ],
+      "unit_id": "original-inner-break",
+      "at": 1793685834.6480541,
+      "model": "muse-spark-1.3",
+      "action_result": {
+        "kind": "hint",
+        "reason": "Learner correctly understands inner break but misses the outer break shown as broken in trace."
+      },
+      "evidence_quotes": [
+        {
+          "source_id": "hub-lessontrace-original-break-0001",
+          "claim": "break exits only its nearest enclosing loop",
+          "quote": "break exits only the nearest enclosing loop.",
+          "quote_verified": true
+        },
+        {
+          "source_id": "hub-lessontrace-original-break-0001",
+          "claim": "a second break in outer body stops outer loop",
+          "quote": "A second break placed in the outer body stops that outer loop.",
+          "quote_verified": true
+        }
+      ],
+      "claim_review": {
+        "version": "claim-support-v1",
+        "status": "supported",
+        "model": "muse-spark-1.3",
+        "request_hash": "669a5a769b9b3ab622dfaf48c396682db1b02b6fcbc4671a2ca9d41deb0dcf77",
+        "items_checked": 2,
+        "coverage_checked": 0,
+        "coverage_format": "backend-selected literal excerpts v1",
+        "scope": "Separate automated support review; not proof, teacher approval or a learner pass."
+      },
+      "activity_id": "practice"
+    }
+  },
+  "request_activity": [
+    {
+      "session_id": "db63994a25b44860a7675294e73f8cdb",
+      "purpose": "adaptive current-video teaching decision",
+      "mode": "live",
+      "endpoint": "https://api.meta.ai/v1/chat/completions",
+      "model": "muse-spark-1.3",
+      "started_at": 1793685814.3783517,
+      "status": "response_received",
+      "request_id": "chatcmpl-01a1a001-a80a-7625-9063-e99e45213575",
+      "finished_at": 1793685825.4151464,
+      "latency_ms": 11034,
+      "failure": null,
+      "reported_tokens": {
+        "completion_tokens": 1323,
+        "prompt_tokens": 2464,
+        "total_tokens": 3787
+      }
+    },
+    {
+      "session_id": "db63994a25b44860a7675294e73f8cdb",
+      "purpose": "independent claim-support review",
+      "mode": "live",
+      "endpoint": "https://api.meta.ai/v1/chat/completions",
+      "model": "muse-spark-1.3",
+      "started_at": 1793685825.4243152,
+      "status": "response_received",
+      "request_id": "chatcmpl-01a1a001-cc37-7202-b3db-ff1e775b0301",
+      "finished_at": 1793685834.634298,
+      "latency_ms": 9210,
+      "failure": null,
+      "reported_tokens": {
+        "completion_tokens": 1124,
+        "prompt_tokens": 2116,
+        "total_tokens": 3240
+      }
+    }
+  ],
+  "failed_execution": {
+    "lesson_id": "db63994a25b44860a7675294e73f8cdb",
+    "unit_id": "original-inner-break",
+    "source": "def first_in_each(rows):\n    firsts = []\n    for row in rows:\n        for number in row:\n            firsts.append(number)\n            break\n        break\n    return firsts",
+    "source_hash": "8f9249d1d8da323a612c4b4ed8847fb35ad7727b04a3bf7c2910fc7ab59bde81",
+    "runtime": "CPython 3.15.0 / WASI",
+    "trace": [
+      {
+        "step": 0,
+        "line": 2,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": []
+          }
+        },
+        "output": "",
+        "loops": []
+      },
+      {
+        "step": 1,
+        "line": 3,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": []
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "line": 4,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": []
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "line": 5,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "line": 6,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2",
+            "broken": true
+          }
+        ],
+        "control": {
+          "action": "break",
+          "loop_line": 4
+        }
+      },
+      {
+        "step": 5,
+        "line": 7,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1",
+            "broken": true
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2",
+            "broken": true
+          }
+        ],
+        "control": {
+          "action": "break",
+          "loop_line": 3
+        }
+      },
+      {
+        "step": 6,
+        "line": 8,
+        "kind": "return",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1",
+            "broken": true
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2",
+            "broken": true
+          }
+        ],
+        "returned_value": {
+          "kind": "reference",
+          "object_id": "o4"
+        }
+      }
+    ],
+    "output": "",
+    "actual": [
+      4
+    ],
+    "error": null,
+    "checks": [
+      {
+        "input": [
+          [
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              9
+            ]
+          ]
+        ],
+        "expected": [
+          4,
+          5
+        ],
+        "actual": [
+          4
+        ],
+        "error": null,
+        "passed": false,
+        "input_unchanged": true
+      },
+      {
+        "input": [
+          []
+        ],
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true,
+        "input_unchanged": true
+      },
+      {
+        "input": [
+          [
+            [],
+            [
+              3
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        ],
+        "expected": [
+          3,
+          2
+        ],
+        "actual": [],
+        "error": null,
+        "passed": false,
+        "input_unchanged": true
+      }
+    ],
+    "all_passed": false,
+    "origin": "qa_walkthrough",
+    "video_mode": "exercise",
+    "trace_case": 0,
+    "skill_requirement": null,
+    "activity_id": "practice",
+    "activity_kind": "practice",
+    "supported": false,
+    "independent_check": false
+  },
+  "corrected_execution": {
+    "lesson_id": "db63994a25b44860a7675294e73f8cdb",
+    "unit_id": "original-inner-break",
+    "source": "def first_in_each(rows):\n    firsts = []\n    for row in rows:\n        for number in row:\n            firsts.append(number)\n            break\n    return firsts",
+    "source_hash": "658f19952b8dee0ace81a5de98737bef53fbdcdcdb57be5ccbbc594fdb85abcc",
+    "runtime": "CPython 3.15.0 / WASI",
+    "trace": [
+      {
+        "step": 0,
+        "line": 2,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": []
+          }
+        },
+        "output": "",
+        "loops": []
+      },
+      {
+        "step": 1,
+        "line": 3,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": []
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "line": 4,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": []
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "line": 5,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "line": 6,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 0,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2",
+            "broken": true
+          }
+        ],
+        "control": {
+          "action": "break",
+          "loop_line": 4
+        }
+      },
+      {
+        "step": 5,
+        "line": 3,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o3"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 4
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 1,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o2",
+            "broken": true
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "line": 4,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o3"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 5
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 1,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o3"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "line": 5,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o3"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 5
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 1,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o3"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "line": 6,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o3"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 5
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 1,
+            "target": "row",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o3",
+            "broken": true
+          }
+        ],
+        "control": {
+          "action": "break",
+          "loop_line": 4
+        }
+      },
+      {
+        "step": 9,
+        "line": 3,
+        "kind": "line",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o3"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 5
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 2,
+            "target": "row",
+            "length": 2,
+            "exhausted": true,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o3",
+            "broken": true
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "line": 7,
+        "kind": "return",
+        "frames": [
+          {
+            "id": "f1",
+            "name": "first_in_each",
+            "bindings": {
+              "rows": {
+                "kind": "reference",
+                "object_id": "o1"
+              },
+              "firsts": {
+                "kind": "reference",
+                "object_id": "o4"
+              },
+              "row": {
+                "kind": "reference",
+                "object_id": "o3"
+              },
+              "number": {
+                "kind": "scalar",
+                "value": 5
+              }
+            }
+          }
+        ],
+        "objects": {
+          "o1": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "reference",
+                "object_id": "o2"
+              },
+              {
+                "kind": "reference",
+                "object_id": "o3"
+              }
+            ]
+          },
+          "o2": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 8
+              }
+            ]
+          },
+          "o3": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 5
+              },
+              {
+                "kind": "scalar",
+                "value": 9
+              }
+            ]
+          },
+          "o4": {
+            "type": "list",
+            "items": [
+              {
+                "kind": "scalar",
+                "value": 4
+              },
+              {
+                "kind": "scalar",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "output": "",
+        "loops": [
+          {
+            "line": 3,
+            "index": 2,
+            "target": "row",
+            "length": 2,
+            "exhausted": true,
+            "iterable_id": "o1"
+          },
+          {
+            "line": 4,
+            "index": 0,
+            "target": "number",
+            "length": 2,
+            "exhausted": false,
+            "iterable_id": "o3",
+            "broken": true
+          }
+        ],
+        "returned_value": {
+          "kind": "reference",
+          "object_id": "o4"
+        }
+      }
+    ],
+    "output": "",
+    "actual": [
+      4,
+      5
+    ],
+    "error": null,
+    "checks": [
+      {
+        "input": [
+          [
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              9
+            ]
+          ]
+        ],
+        "expected": [
+          4,
+          5
+        ],
+        "actual": [
+          4,
+          5
+        ],
+        "error": null,
+        "passed": true,
+        "input_unchanged": true
+      },
+      {
+        "input": [
+          []
+        ],
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true,
+        "input_unchanged": true
+      },
+      {
+        "input": [
+          [
+            [],
+            [
+              3
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        ],
+        "expected": [
+          3,
+          2
+        ],
+        "actual": [
+          3,
+          2
+        ],
+        "error": null,
+        "passed": true,
+        "input_unchanged": true
+      }
+    ],
+    "all_passed": true,
+    "origin": "qa_walkthrough",
+    "video_mode": "exercise",
+    "trace_case": 0,
+    "skill_requirement": null,
+    "activity_id": "practice",
+    "activity_kind": "practice",
+    "supported": true,
+    "independent_check": false
+  },
+  "api_requests": 2,
+  "tutoring_accepted": true,
+  "publication_note": "Original source, question, code, model reply and actual execution receipts. Local allowance totals, cookies, authorization and internal reservation IDs excluded."
+}

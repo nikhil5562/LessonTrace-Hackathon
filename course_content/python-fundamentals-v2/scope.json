@@ -1,0 +1,445 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "scope",
+  "title": "Local names and call frames",
+  "curriculum": {
+    "title": "Local Names and Call Frames",
+    "answer": "## Local names live inside one call\n\nEach call gets a fresh local frame. Names created as parameters or by assignment inside the function belong to that frame. Parameters are bound when the call starts. Assignment creates or rebinds other local names when that assignment executes; separate calls have separate local bindings.\n\nModule names are different: a name assigned at the top level lives in the module namespace and can be read from inside functions.\n\n### Example 1: parameter plus local\n\nThe complete program below defines where every value comes from: `score` comes from the call argument `4`, and `bonus` comes from the module assignment.\n\n```python\nbonus = 10\n\ndef add_bonus(score):\n    extra = score + bonus\n    return extra\n\nprint(add_bonus(4))\n```\n\n```text\n14\n```\n\nWalkthrough for `add_bonus(4)`: Python creates a new frame, binds parameter `score` to `4`, reads module name `bonus` as `10`, binds local `extra` to `14`, returns `14`, and the active call finishes. Its `score` and `extra` are not module-level names; a later call receives new local bindings.\n\n### Example 2: two helpers keep separate locals\n\nThe complete program below shows both inputs: `make_total(6)` supplies `amount = 6` to every helper call.\n\n```python\ndef add_fee(amount):\n    total = amount + 5\n    return total\n\ndef double_it(amount):\n    total = amount * 2\n    return total\n\ndef make_total(amount):\n    first = add_fee(amount)\n    second = double_it(amount)\n    result = first + second\n    return result\n\nprint(make_total(6))\n```\n\n```text\n23\n```\n\nWalkthrough: `make_total(6)` binds its own `amount` to `6`. It calls `add_fee(6)`, which creates another frame with its own `amount` and `total`, returns `11`, then forgets them. It next calls `double_it(6)`, which creates a different frame and returns `12`. The two names called `total` never meet.\n\nCommon mistake: using `total` or `message` directly in another function. Each local name is directly accessible only in its own textual function, so call the helper and use the returned value.",
+    "sources": [
+      "hub-python-scopes-0001",
+      "hub-python-scopes-0002",
+      "hub-cs50-basics-0002"
+    ],
+    "units": [
+      {
+        "id": "scope-frames-01",
+        "title": "Local Names and Call Frames",
+        "explanation": "Each call has its own local frame. Parameters are bound on entry, and assignments create or rebind local names as they execute. These helpers pass their local results through arguments and return values; the notes also show reading a separate module-level name.",
+        "opening_question": "If two helpers both use a local called total, can one helper read the other's total?",
+        "sources": [
+          "hub-python-scopes-0001",
+          "hub-python-scopes-0002",
+          "hub-cs50-basics-0002"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "Which statement describes the names in this code?",
+            "code": "bonus = 10\ndef add_bonus(score):\n    extra = score + bonus\n    return extra\nprint(add_bonus(4))",
+            "options": [
+              "score and extra are shared across calls and stay alive after return",
+              "score and extra are created fresh for the call and forgotten after return",
+              "bonus is local to add_bonus and hidden from the module",
+              "assignment to extra changes bonus in the module"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "score and extra are created for the call and forgotten after return; bonus is read from the module.",
+            "sources": [
+              "hub-python-scopes-0001",
+              "hub-python-scopes-0002"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "6e3425fe4eed92d8555e77ba048f432e84297dd9e476b883aa028c19a85f2b4a",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "functions",
+              "variables"
+            ],
+            "targets": [
+              "scope"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the line that combines the values returned by both helpers.",
+            "code": "def add_fee(amount):\n    total = amount + 5\n    return total\ndef double_it(amount):\n    total = amount * 2\n    return total\ndef make_total(amount):\n    ___\n    return result\nprint(make_total(6))",
+            "options": [
+              "result = add_fee(amount)",
+              "result = total + total",
+              "result = add_fee(amount) + double_it(amount)"
+            ],
+            "answer_index": 2,
+            "expected_output": "23",
+            "explanation": "Both helpers are called with amount 6, returns saved in locals, then added into result.",
+            "sources": [
+              "hub-python-scopes-0002"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "eb1aa271b290566d4159efbc9f0f42a6e0ede3295493767778868cf266dce3f1"
+            },
+            "needs": [
+              "arithmetic",
+              "functions",
+              "parameters",
+              "variables"
+            ],
+            "targets": [
+              "scope"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Why is it a mistake for hello to try to use message directly?",
+            "code": "def make_greeting(name):\n    message = name + 1\n    return message\ndef hello(name):\n    greeting = make_greeting(name)\n    return greeting\nprint(hello(5))",
+            "options": [
+              "hello cannot read message because message is local to make_greeting",
+              "hello can read message directly because all locals are shared",
+              "message stays alive in the module after make_greeting returns"
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "message exists only inside make_greeting; hello must use its own local or the returned value.",
+            "sources": [
+              "hub-cs50-basics-0002",
+              "hub-python-scopes-0002"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "da411bf0c14c1fdec4299bc7669674e00be2bad8f590e0fc25455d36b7414638",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "functions",
+              "parameters",
+              "variables"
+            ],
+            "targets": [
+              "scope"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the call chain so the shown call prints the target output.",
+            "code": "def double_it(amount):\n    total = amount * 2\n    return total\ndef make_total(amount):\n    ___\n    return result\nprint(make_total(5))",
+            "options": [
+              "result = total + 10",
+              "result = double_it(amount) + double_it(amount)",
+              "result = double_it(total) + 5"
+            ],
+            "answer_index": 1,
+            "expected_output": "20",
+            "explanation": "total is local to double_it and gone after return; make_total must call the helper and use its return.",
+            "sources": [
+              "hub-python-scopes-0002"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "a2d5619dc2a8e2841b0619ccb560ef317fd429fc025ffb49756c6d4f474187f9"
+            },
+            "needs": [
+              "arithmetic",
+              "functions",
+              "parameters",
+              "variables"
+            ],
+            "targets": [
+              "scope"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "NameError",
+            "bug_verification": {
+              "observed": "NameError",
+              "fixed_output": "20",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this complete program print?",
+          "code": "bonus = 10\n\ndef add_bonus(score):\n    extra = score + bonus\n    return extra\n\nprint(add_bonus(4))\nprint(add_bonus(1))",
+          "options": [
+            "14\n11",
+            "14\n14",
+            "4\n1"
+          ],
+          "expected_output": "14\n11",
+          "explanation": "Each call binds score fresh and makes a new extra, reads module bonus 10, returns, then forgets locals.",
+          "sources": [
+            "hub-python-scopes-0001",
+            "hub-python-scopes-0002"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "ecc9fcd9900154e8ddefa83e6fd74d467d9c6cc53f87e4f0ca45acb12bae84bc",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 8,
+            "output": "14\n11"
+          },
+          "needs": [
+            "arithmetic",
+            "functions",
+            "parameters",
+            "variables"
+          ],
+          "targets": [
+            "scope"
+          ]
+        },
+        "exercise": {
+          "kind": "function",
+          "parameters": [],
+          "title": "Combine Two Helpers With Local Frames",
+          "instructions": "Keep add_fee and double_it as supplied: add_fee returns amount plus 5, and double_it returns amount times 2. Complete make_total so it calls both helpers with amount, saves their returned values in local names, and returns their sum. Both helper calls are required so you can inspect their separate frames.",
+          "entry": "make_total",
+          "starter": "def add_fee(amount):\n    total = amount + 5\n    return total\ndef double_it(amount):\n    total = amount * 2\n    return total\ndef make_total(amount):\n    first = add_fee(amount)\n    result = first + 5\n    return result",
+          "reference_solution": "def add_fee(amount):\n    total = amount + 5\n    return total\ndef double_it(amount):\n    total = amount * 2\n    return total\ndef make_total(amount):\n    first = add_fee(amount)\n    second = double_it(amount)\n    result = first + second\n    return result",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                6
+              ],
+              "expected": 23
+            },
+            {
+              "arguments": [
+                0
+              ],
+              "expected": 5
+            },
+            {
+              "arguments": [
+                10
+              ],
+              "expected": 35
+            }
+          ],
+          "sources": [
+            "hub-python-scopes-0001",
+            "hub-python-scopes-0002"
+          ],
+          "verification": {
+            "source_hash": "5b7382ef23070996c4a770ffadd378119eb18616a8a99ebb2d56a2ddb3dfa68b",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "functions",
+            "parameters",
+            "variables"
+          ],
+          "targets": [
+            "scope"
+          ],
+          "required_helpers": [
+            "add_fee",
+            "double_it"
+          ]
+        },
+        "fresh_exercise": {
+          "kind": "function",
+          "parameters": [],
+          "title": "Combine Helpers For A Game Score",
+          "instructions": "Keep add_one and triple_it as supplied: add_one returns points plus 1, and triple_it returns points times 3. Complete make_score by calling both helpers with points and returning the sum of their results. Both helper calls are required so you can inspect their separate frames.",
+          "entry": "make_score",
+          "starter": "def add_one(points):\n    bonus = points + 1\n    return bonus\ndef triple_it(points):\n    bonus = points * 3\n    return bonus\ndef make_score(points):\n    a = add_one(points)\n    total = a + 1\n    return total",
+          "reference_solution": "def add_one(points):\n    bonus = points + 1\n    return bonus\ndef triple_it(points):\n    bonus = points * 3\n    return bonus\ndef make_score(points):\n    a = add_one(points)\n    b = triple_it(points)\n    total = a + b\n    return total",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                4
+              ],
+              "expected": 17
+            },
+            {
+              "arguments": [
+                0
+              ],
+              "expected": 1
+            },
+            {
+              "arguments": [
+                7
+              ],
+              "expected": 29
+            }
+          ],
+          "sources": [
+            "hub-python-scopes-0001",
+            "hub-python-scopes-0002"
+          ],
+          "verification": {
+            "source_hash": "6a05349b5700b12064ca025572eb6af11b1f00a34a76ebd36e133978fb27aaca",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "functions",
+            "parameters",
+            "variables"
+          ],
+          "targets": [
+            "scope"
+          ],
+          "required_helpers": [
+            "add_one",
+            "triple_it"
+          ]
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-scopes-0001",
+        "claim": "Local names belong to one function invocation",
+        "quote": "the local names in a function invocation.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-scopes-0002",
+        "claim": "Function frame is created on call and deleted on return",
+        "quote": "is created when the function is called, and deleted when the function returns",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-scopes-0002",
+        "claim": "Innermost scope holds local names",
+        "quote": "the innermost scope, which is searched first, contains the local names",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-basics-0002",
+        "claim": "A variable defined in main is not visible in another function",
+        "quote": "But the catch is that name exists now only in Main.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "scope",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-scopes-0001",
+      "source_id": "python-scopes",
+      "source_title": "Python · Scopes and namespaces",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces#python-scopes-and-namespaces",
+      "start": null,
+      "end": null,
+      "heading": "9.2. Python Scopes and Namespaces",
+      "text": "the local names in a function invocation.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-python-scopes-0002",
+      "source_id": "python-scopes",
+      "source_title": "Python · Scopes and namespaces",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces#python-scopes-and-namespaces",
+      "start": null,
+      "end": null,
+      "heading": "9.2. Python Scopes and Namespaces",
+      "text": "is created when the function is called, and deleted when the function returns\nthe innermost scope, which is searched first, contains the local names",
+      "truncated": true,
+      "source_offset": 2600,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-basics-0002",
+      "source_id": "cs50-basics",
+      "source_title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk&t=5880",
+      "start": 5880.29,
+      "end": 6002.232,
+      "heading": "CS50 lecture excerpt",
+      "text": "But the catch is that name exists now only in Main.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-scopes",
+      "title": "Python · Scopes and namespaces",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces",
+      "fetched_at": 1793519946.909978,
+      "content_hash": "b3154522e75330a9c007ca3bc6e06ad3ecc40b5ab80824253ef237f5ddc5f59a",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-basics",
+      "title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk",
+      "fetched_at": 1793519944.202026,
+      "content_hash": "719c9905c3908594dd459224b78d5ac9f5cfbc6e06b4dadd67d9f1ea98ecac2c",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558241.5417013,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Fixed approved reference/video pair; rejected Meta draft corrected and rechecked.",
+      "source_ids": [
+        "python-scopes",
+        "cs50-basics"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "scope",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Aligned declared error with the checked exception type; bug/fix code retained.",
+    "Kept complete setup in code, removed empty lines and an accidentally correct hard-coded distractor.",
+    "They are created when the call starts and forgotten when the function returns. -> clarified",
+    "returns `14`, then deletes `score` and `extra`. A later call starts empty again. -> clarified",
+    "Clarified local-binding timing, explicit helper contracts and checked actual helper frames."
+  ]
+}

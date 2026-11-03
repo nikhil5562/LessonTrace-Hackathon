@@ -1,0 +1,495 @@
+{
+  "version": "python-fundamentals-v2",
+  "concept_id": "range",
+  "title": "Range and its excluded boundary",
+  "curriculum": {
+    "title": "Range and Its Excluded Stop",
+    "answer": "## Range stops before the end\n\n`range` hands a `for` loop a sequence of numbers to visit. The **stop** value is never visited. That excluded boundary is the whole trick.\n\n```python\nfor i in range(4):\n    print(i)\n```\n\nThe loop variable `i` is defined by the `for` header. `range(4)` means: start at `0`, keep going while below `4`. It visits `0`, `1`, `2`, `3`, then stops. `4` itself is never produced.\n\nStart and step change where the walk begins and how big each jump is, but the stop rule stays the same:\n\n```python\nvals = []\nfor i in range(5, 9):\n    vals.append(i)\nprint(vals)\n```\n\nHere `vals` starts as `[]` and `i` comes from the loop. `range(5, 9)` starts at `5` and excludes `9`, so it visits `5, 6, 7, 8`. The program prints `[5, 6, 7, 8]`.\n\n```python\nsteps = []\nfor i in range(0, 10, 3):\n    steps.append(i)\nprint(steps)\n```\n\n`steps` starts as `[]`. The three-argument form is `range(start, stop, step)`. This visits `0`, `3`, `6`, `9`. The next jump would be `12`, which is past the stop, so the loop ends. `10` itself is never included.\n\nA common pattern is walking the positions of a list:\n\n```python\na = [10, 20, 30, 40]\nfor i in range(len(a)):\n    print(i, a[i])\n```\n\n`a` is defined on the first line. `len(a)` is `4`, so `range(len(a))` is `range(4)`: visits `0, 1, 2, 3`, exactly the valid positions for a length-`4` list.\n\n### Common mistakes\n\n- Expecting `range(4)` to include `4`. It stops at `3`.\n- Writing `range(5, 8)` when you want `5` through `8`. You need `range(5, 9)`.\n- Expecting `range(0, 10, 3)` to land on `10`. Steps that do not hit the stop exactly just pass it by; `10` never appears.\n- Starting at `1` when you need index `0`. Bare `range(n)` always starts at `0`.",
+    "sources": [
+      "hub-python-control-flow-0001",
+      "hub-cs50-loops-0006"
+    ],
+    "units": [
+      {
+        "id": "range-excluded-stop",
+        "title": "Range Stops Before the End",
+        "explanation": "A range count and its excluded stop control how many times a for loop visits and appends, so off-by-one stops add or miss one item.",
+        "opening_question": "If range(4) gives four numbers, why is 4 itself never one of them?",
+        "sources": [
+          "hub-python-control-flow-0001",
+          "hub-cs50-loops-0006"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What numbers does this loop visit?",
+            "code": "for i in range(4):\n    print(i)",
+            "options": [
+              "It prints 0, 1, 2, 3 and never prints 4.",
+              "It prints 1, 2, 3, 4 and never prints 0.",
+              "It prints 0, 1, 2, 3, 4 including both ends."
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "range(4) produces 0, 1, 2, 3. The stop 4 is excluded, so 4 is never printed.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "ddedbe73162dece8a58cbb759cd2f3a31aa499b2607cb53ba39397b5a39ca658",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "for_loop",
+              "variables"
+            ],
+            "targets": [
+              "range"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the blank to build the expected list.",
+            "code": "nums = []\nfor i in ___:\n    nums.append(i)\nprint(nums)",
+            "options": [
+              "range(9)",
+              "range(5, 9)",
+              "range(5, 8)",
+              "range(4)"
+            ],
+            "answer_index": 1,
+            "expected_output": "[5, 6, 7, 8]",
+            "explanation": "Only range(5, 9) visits 5, 6, 7, 8. Starting at 0 or stopping at 8 misses the required walk.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "af7b10da33d3eb4e3603b704f7fbba2dbacaaf7d04ffe429c58e3fc54acc4c32"
+            },
+            "needs": [
+              "for_loop",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "range"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Which statement about this stepped range is correct?",
+            "code": "vals = []\nfor i in range(0, 10, 3):\n    vals.append(i)\nprint(vals)",
+            "options": [
+              "It must include 10 because the stop is always included.",
+              "It visits 0 through 10 one by one.",
+              "It visits 0, 3, 6, 9 and never includes 10."
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "Steps are 0, 3, 6, 9. The next step 12 passes the excluded stop 10, and 10 itself is never produced.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "bdaae4d15c55a3cc87a012c75954206867f5bf24e1e80ed7c3ca84f7231acfbc",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "for_loop",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "range"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the blank to produce the expected output.",
+            "code": "nums = []\nfor i in ___:\n    nums.append(i * 2)\nprint(nums)",
+            "options": [
+              "range(3)",
+              "range(4)",
+              "range(1, 3)"
+            ],
+            "answer_index": 0,
+            "expected_output": "[0, 2, 4]",
+            "explanation": "range(3) visits 0, 1, 2, giving [0, 2, 4]. Using range(4) adds an extra visit 3, producing an unwanted 6.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "b3c4b616ead33562b95bb199a730e39b0962b0c0c7cbce0ddda020dd96ac94cf"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "range"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "[0, 2, 4, 6]",
+            "bug_verification": {
+              "observed": "[0, 2, 4, 6]",
+              "fixed_output": "[0, 2, 4]",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the blank to collect every valid index of a.",
+            "code": "a = [10, 20, 30, 40]\nidx = []\nfor i in ___:\n    idx.append(i)\nprint(idx)",
+            "options": [
+              "range(1, 4)",
+              "range(5)",
+              "range(len(a))",
+              "range(0, 3)"
+            ],
+            "answer_index": 2,
+            "expected_output": "[0, 1, 2, 3]",
+            "explanation": "A list of length 4 has positions 0 through 3. range(len(a)) is range(4), which excludes 4 and visits exactly those positions.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "3042e7e3f82e6dd5288d4a5e703fcf68af40c2240c6371acd804d9a54023713b"
+            },
+            "needs": [
+              "for_loop",
+              "list_mutation",
+              "lists",
+              "strings",
+              "variables"
+            ],
+            "targets": [
+              "range"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "nums = []\nfor i in range(3):\n    nums.append(i * 10)\nprint(nums)",
+          "options": [
+            "[0, 10, 20]",
+            "[10, 20, 30]",
+            "[0, 10, 20, 30]"
+          ],
+          "expected_output": "[0, 10, 20]",
+          "explanation": "range(3) visits 0, 1, 2 and excludes 3. Multiplying gives 0, 10, 20, so the list is [0, 10, 20].",
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "bb602e9f6e0c1c2a0006109a2578c9f77f0dbafafc8da5e84cc15135eb01a95b",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 9,
+            "output": "[0, 10, 20]"
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "range"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "n"
+          ],
+          "title": "Build First N Evens",
+          "instructions": "Build the first n even numbers starting at 0. Input n is a non-negative integer count. Use a for loop over a range to append each value to the result list. For example, if n is 4 then result should become [0, 2, 4, 6]. Do not change n.",
+          "entry": "result",
+          "starter": "result = []",
+          "reference_solution": "result = []\nfor i in range(n):\n    result.append(i * 2)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                0
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                3
+              ],
+              "expected": [
+                0,
+                2,
+                4
+              ]
+            },
+            {
+              "arguments": [
+                5
+              ],
+              "expected": [
+                0,
+                2,
+                4,
+                6,
+                8
+              ]
+            },
+            {
+              "arguments": [
+                4
+              ],
+              "expected": [
+                0,
+                2,
+                4,
+                6
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "c90de216ecf476d7fcf649468914b3e7726bea458e5038564466ab40b7be03d7",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "range"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "start_val",
+            "count"
+          ],
+          "title": "Build Consecutive Run",
+          "instructions": "Build a run of consecutive integers. Inputs start_val and count are integers, with count zero or more. Create the list out containing count numbers beginning at start_val, each one larger than the last by 1. For example, start_val 7 with count 3 gives [7, 8, 9]. Do not change start_val or count.",
+          "entry": "out",
+          "starter": "out = []\nfor i in range(count):\n    out.append(start_val)",
+          "reference_solution": "out = []\nfor i in range(count):\n    out.append(start_val + i)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                10,
+                0
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                10,
+                1
+              ],
+              "expected": [
+                10
+              ]
+            },
+            {
+              "arguments": [
+                7,
+                4
+              ],
+              "expected": [
+                7,
+                8,
+                9,
+                10
+              ]
+            },
+            {
+              "arguments": [
+                3,
+                5
+              ],
+              "expected": [
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "b491539931809362bac74710050c5ef6040bea8c74285a2188838f7a33331908",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "range"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "The stop value of range is never part of the sequence.",
+        "quote": "The given end point is never part of the generated sequence; range(10) generates 10 values",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0006",
+        "claim": "range(n) starts at 0 and does not go through n.",
+        "quote": "but they will go up two but not through the number you specify",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "range",
+      "worked_examples_run": 4,
+      "quiz_questions": 6,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 4,
+      "fresh_cases": 4,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0001",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#the-range-function",
+      "start": null,
+      "end": null,
+      "heading": "4.3. The range() Function",
+      "text": "The given end point is never part of the generated sequence; range(10) generates 10 values",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0006",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=1206",
+      "start": 1206.88,
+      "end": 1323.05,
+      "heading": "CS50 lecture excerpt",
+      "text": "but they will go up two but not through the number you specify",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 10,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793513849.9049408,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Retained original selected sources; offline operator recheck after validation correction.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "range",
+        "worked_examples_run": 4,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "review_corrections": [],
+  "operator_review": {
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA",
+    "human_teacher_review": false,
+    "notes_and_questions_inspected": true,
+    "checks_rerun_after_corrections": true
+  },
+  "flow": "lesson-first",
+  "reused_from": {
+    "version": "python-fundamentals-v1",
+    "sha256": "022931e10860f6426b909b6ba48e5ed68c509a861fa0d2e1e8de8fcf39b62d73"
+  }
+}

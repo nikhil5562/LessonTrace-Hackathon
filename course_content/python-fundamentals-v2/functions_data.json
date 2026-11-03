@@ -1,0 +1,496 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "functions_data",
+  "title": "Functions over collections",
+  "curriculum": {
+    "title": "Functions Over Collections: Build and Return a New List",
+    "answer": "## Functions that build new lists\n\nA function can take a list, walk it with `for`, and return a new list. The caller supplies the old list; the function creates an empty result, appends one new value per item, then returns the result.\n\n```python\ndef shout_all(words):\n    result = []\n    for w in words:\n        result.append(w + \"!\")\n    return result\n\nprint(shout_all([\"hi\", \"yo\"]))\n```\n```text\n['hi!', 'yo!']\n```\n\nFlow: `words` is bound to `[\"hi\", \"yo\"]`. `result` starts as `[]`. First loop item `w` is `\"hi\"`, so `\"hi!\"` is appended. Next `w` is `\"yo\"`, so `\"yo!\"` is appended. `return result` hands back `['hi!', 'yo!']` and the input list is unchanged.\n\nThe same shape works for numbers:\n\n```python\ndef double_all(nums):\n    result = []\n    for n in nums:\n        result.append(n + n)\n    return result\n\nprint(double_all([2, 5, 0]))\n```\n```text\n[4, 10, 0]\n```\n\nFlow: each `n` is read from `nums`, doubled with `+`, and appended to `result`. An empty input gives an empty output because the loop body never runs.\n\nCommon mistakes: forgetting `return result` gives `None`; appending to the input instead of `result` mutates the caller's list; printing inside the loop does not append to the result list; returning that unchanged list gives `[]`. Keep one job per function: loop, append to a fresh list, return it.",
+    "sources": [
+      "hub-python-control-flow-0002",
+      "hub-python-control-flow-0003",
+      "hub-cs50-loops-0001",
+      "hub-cs50-loops-0003"
+    ],
+    "units": [
+      {
+        "id": "functions-data-lists",
+        "title": "Build New Lists With Functions",
+        "explanation": "A function can receive a list, loop over each item directly, append a new value to a fresh list, and return that list without changing the input.",
+        "opening_question": "If a function loops over a list and appends to a new list, what should it hand back to the caller?",
+        "sources": [
+          "hub-python-control-flow-0002",
+          "hub-cs50-loops-0001",
+          "hub-cs50-loops-0003"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What does shout_all do for a list of strings?",
+            "code": "def shout_all(words):\n    result = []\n    for w in words:\n        result.append(w + \"!\")\n    return result",
+            "options": [
+              "It returns a new list with one new value per input item.",
+              "It prints the input list and returns None.",
+              "It changes the input list in place and returns nothing."
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "The function builds a fresh list and returns it, leaving the input unchanged.",
+            "sources": [
+              "hub-python-control-flow-0002"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "7987ebdc158f901bf3025a6eae2407920d0dd4cfeac24791dac4c27d14ba1c07",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "functions",
+              "list_mutation",
+              "lists",
+              "parameters",
+              "variables"
+            ],
+            "targets": [
+              "functions_data"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the missing line so the code prints the exclaimed list.",
+            "code": "def shout_all(words):\n    result = []\n    for w in words:\n        ___\n    return result\n\nprint(shout_all([\"hi\", \"yo\"]))",
+            "options": [
+              "result.append(w + \"!\")",
+              "result.append(\"!\")",
+              "print(w + \"!\")"
+            ],
+            "answer_index": 0,
+            "expected_output": "['hi!', 'yo!']",
+            "explanation": "Each loop value must be transformed and appended to the new list.",
+            "sources": [
+              "hub-cs50-loops-0003"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "9d20fd96df0d8b200ca2f614e31b9d25bd0c51277775dccdfd15aa5f9dedbc0a"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "functions",
+              "list_mutation",
+              "lists",
+              "parameters",
+              "strings",
+              "variables"
+            ],
+            "targets": [
+              "functions_data"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "After building a new list and returning it, what happens to the input?",
+            "code": "def double_all(nums):\n    result = []\n    for n in nums:\n        result.append(n + n)\n    return result\n\ndata = [2, 5]\nprint(double_all(data))\nprint(data)",
+            "options": [
+              "data becomes [4, 10] because result is the same object.",
+              "data becomes empty because the loop consumes it.",
+              "data stays [2, 5] because only the new list was changed."
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "Appending only to result leaves the supplied list unchanged for the second print.",
+            "sources": [
+              "hub-python-control-flow-0002"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "b3d59042ac2281f17a25113f2af20aca8c965e031b2a2873a3466977e016858f",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "functions",
+              "list_mutation",
+              "lists",
+              "parameters",
+              "variables"
+            ],
+            "targets": [
+              "functions_data"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the last line so the program prints the doubled list.",
+            "code": "def double_all(nums):\n    result = []\n    for n in nums:\n        result.append(n + n)\n    ___\n\nprint(double_all([2, 5]))",
+            "options": [
+              "return result",
+              "return nums",
+              "print(result)"
+            ],
+            "answer_index": 0,
+            "expected_output": "[4, 10]",
+            "explanation": "The function must return the new list; returning the input gives back undoubled values.",
+            "sources": [
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "d3b408108b5fddc35355996f55746defb3a4f33a701e5cc0b8b7bb42b26a8e01"
+            },
+            "needs": [
+              "arithmetic",
+              "for_loop",
+              "functions",
+              "list_mutation",
+              "lists",
+              "parameters",
+              "variables"
+            ],
+            "targets": [
+              "functions_data"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "[2, 5]",
+            "bug_verification": {
+              "observed": "[2, 5]",
+              "fixed_output": "[4, 10]",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "def shout_all(words):\n    result = []\n    for w in words:\n        result.append(w + \"!\")\n    return result\n\nprint(shout_all([\"hi\", \"yo\"]))",
+          "options": [
+            "['hi!', 'yo!']",
+            "['hi', 'yo']",
+            "None"
+          ],
+          "expected_output": "['hi!', 'yo!']",
+          "explanation": "The loop visits \"hi\" then \"yo\", appends each plus \"!\" to result, returns the new list, and print shows it.",
+          "sources": [
+            "hub-python-control-flow-0002",
+            "hub-cs50-loops-0003"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "20ac618fbbf85a4252aca6afdd8aab341d9c416270331fe63862abea414ccf52",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 9,
+            "output": "['hi!', 'yo!']"
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "functions",
+            "list_mutation",
+            "lists",
+            "parameters",
+            "strings",
+            "variables"
+          ],
+          "targets": [
+            "functions_data"
+          ]
+        },
+        "exercise": {
+          "kind": "function",
+          "parameters": [],
+          "title": "Shout Each Word",
+          "instructions": "Define function shout_all(words). It receives a list of strings called words. Build and return a new list where each string has \"!\" added at the end. Do not modify words. Example: if words is [\"hi\", \"yo\"], return [\"hi!\", \"yo!\"].",
+          "entry": "shout_all",
+          "starter": "def shout_all(words):\n    result = []\n    for w in words:\n        print(w)\n    return result",
+          "reference_solution": "def shout_all(words):\n    result = []\n    for w in words:\n        result.append(w + \"!\")\n    return result",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  "hi",
+                  "yo"
+                ]
+              ],
+              "expected": [
+                "hi!",
+                "yo!"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "a"
+                ]
+              ],
+              "expected": [
+                "a!"
+              ]
+            },
+            {
+              "arguments": [
+                []
+              ],
+              "expected": []
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0002",
+            "hub-cs50-loops-0003"
+          ],
+          "verification": {
+            "source_hash": "7987ebdc158f901bf3025a6eae2407920d0dd4cfeac24791dac4c27d14ba1c07",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "functions",
+            "list_mutation",
+            "lists",
+            "parameters",
+            "strings",
+            "variables"
+          ],
+          "targets": [
+            "functions_data"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "function",
+          "parameters": [],
+          "title": "Double Each Number",
+          "instructions": "Define function double_all(nums). It receives a list of numbers called nums. Build and return a new list with each number doubled. Do not modify nums. Example: if nums is [2, 5], return [4, 10].",
+          "entry": "double_all",
+          "starter": "def double_all(nums):\n    result = []\n    for n in nums:\n        print(n + n)\n    return result",
+          "reference_solution": "def double_all(nums):\n    result = []\n    for n in nums:\n        result.append(n + n)\n    return result",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  2,
+                  5
+                ]
+              ],
+              "expected": [
+                4,
+                10
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  0,
+                  -3,
+                  7
+                ]
+              ],
+              "expected": [
+                0,
+                -6,
+                14
+              ]
+            },
+            {
+              "arguments": [
+                []
+              ],
+              "expected": []
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0002",
+            "hub-cs50-loops-0001"
+          ],
+          "verification": {
+            "source_hash": "013e8be9d3b0d159280d3ec63a7294c2ffc268257bcd92d7d6d4d5af548a5377",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "for_loop",
+            "functions",
+            "list_mutation",
+            "lists",
+            "parameters",
+            "variables"
+          ],
+          "targets": [
+            "functions_data"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0002",
+        "claim": "def introduces a function with parameters and indented body",
+        "quote": "The keyword def introduces a function definition.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-control-flow-0003",
+        "claim": "Python supports defining functions with different argument forms",
+        "quote": "It is also possible to define functions with a variable number of arguments.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0001",
+        "claim": "A function parameter can control repeated loop work",
+        "quote": "How do you meow n times? Well, for underscore n, the range of n, go ahead and just print meow.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0003",
+        "claim": "for loops can do more than counting numbers",
+        "quote": "You can use a for loop not just to count from 0 to 1 to 2,",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "functions_data",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0002",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions",
+      "start": null,
+      "end": null,
+      "heading": "4.8. Defining Functions",
+      "text": "The keyword def introduces a function definition.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-python-control-flow-0003",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions",
+      "start": null,
+      "end": null,
+      "heading": "4.9. More on Defining Functions",
+      "text": "It is also possible to define functions with a variable number of arguments.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0001",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=1922",
+      "start": 1922.4,
+      "end": 2042.33,
+      "heading": "CS50 lecture excerpt",
+      "text": "How do you meow n times? Well, for underscore n, the range of n, go ahead and just print meow.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0003",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=2160",
+      "start": 2160.5,
+      "end": 2281.31,
+      "heading": "CS50 lecture excerpt",
+      "text": "You can use a for loop not just to count from 0 to 1 to 2,",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793520445.0927045,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "The approved topic catalog has one reference/video pair; use it without a paid selection request.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": false,
+      "validation": {
+        "concept": "functions_data",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "printing inside the loop instead of building a list leaves nothing to return. -> clarified"
+  ]
+}

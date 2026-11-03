@@ -1,0 +1,18 @@
+# Frozen lesson manifests verify bytes, so clones must preserve their line endings.
+course_content/** -text
+*.png -text
+*.jpg -text
+*.js text eol=lf
+*.mjs text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+course_content/** -text
+*.md text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.txt text eol=lf
+*.ps1 text eol=lf
+*.example text eol=lf
+# Preserve upstream generated/template whitespace and verbatim licence texts.
+app/assets/lesson-editor.bundle.js -whitespace
+licenses/** -whitespace

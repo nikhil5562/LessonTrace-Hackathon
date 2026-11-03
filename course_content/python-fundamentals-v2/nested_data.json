@@ -1,0 +1,473 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "nested_data",
+  "title": "Nested collections and tuples",
+  "curriculum": {
+    "title": "Nested collections and tuples",
+    "answer": "## Nested collections and tuples\n\nA nested collection is a collection stored inside another collection. The inner value can be a list, a dictionary, or a tuple, and you reach it by reading the outer container first, then the inner one.\n\n### 1. List of dictionaries\n\nMany programs keep rows of similar data as a list where every position holds a dictionary:\n\n```python\nstudents = [{\"name\": \"Hermione\", \"house\": \"Gryffindor\"}, {\"name\": \"Draco\", \"house\": \"Slytherin\"}]\nresult = students[1][\"house\"]\nprint(result)\n```\n\n```text\nSlytherin\n```\n\n`students[1]` selects the second dictionary. Adding `[\"house\"]` then selects the value inside that dictionary. The order matters: list position first, dictionary key second.\n\n### 2. Tuples and tuples inside containers\n\nA tuple groups values with commas and is read with positions starting at zero. Tuples can also be nested or stored inside lists and dictionaries:\n\n```python\npair = (5, 9)\nfirst = pair[0]\ninfo = {\"name\": \"Bo\", \"tags\": (\"red\", \"blue\")}\ncolour = info[\"tags\"][1]\nprint(first)\nprint(colour)\nprint(pair)\n```\n\n```text\n5\nblue\n(5, 9)\n```\n\nHere `pair[0]` is `5`. For `info`, `info[\"tags\"]` is the tuple `(\"red\", \"blue\")`, so `info[\"tags\"][1]` is `\"blue\"`. Parentheses show a tuple on output.\n\nA common mistake is swapping the steps, writing `record[\"name\"][0]` when `record` is a list. A list needs a numeric position first. Another mistake is using position `1` for the first item; position `0` is first, position `1` is second. \n\nA tuple position cannot be reassigned after the tuple is created. A list position can be reassigned. Reading a position does not change either collection.",
+    "sources": [
+      "hub-python-data-structures-0001",
+      "hub-cs50-loops-0001",
+      "hub-cs50-loops-0002"
+    ],
+    "units": [
+      {
+        "id": "nested-data-basics",
+        "title": "Reading Nested Data",
+        "explanation": "A list can hold dictionaries and a tuple can group values. Reading proceeds outside-in: choose the list position, then the dictionary key or tuple position. Order and zero-based positions are the main sources of errors.",
+        "opening_question": "How do you read one value stored inside a list of dictionaries or inside a tuple?",
+        "sources": [
+          "hub-python-data-structures-0001",
+          "hub-cs50-loops-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What value is selected by the nested access in the code?",
+            "code": "students = [{\"name\": \"Hermione\", \"house\": \"Gryffindor\"}, {\"name\": \"Draco\", \"house\": \"Slytherin\"}]\nprint(students[1][\"house\"])",
+            "options": [
+              "Slytherin",
+              "Hermione",
+              "Gryffindor"
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "Index 1 selects the second dictionary, then \"house\" selects its house value.",
+            "sources": [
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "b139a6e4dfb826b7dc4de75cd3e7863b2c96d865246fb39d061860f10ff839f5",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "dictionaries",
+              "indexing",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "nested_data"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the missing line so the program prints the stored name.",
+            "code": "record = [{\"name\": \"Bo\", \"score\": 18}]\n___\nprint(result)",
+            "options": [
+              "result = record[0][\"name\"]",
+              "result = record[\"name\"][0]",
+              "result = record[1][\"name\"]"
+            ],
+            "answer_index": 0,
+            "expected_output": "Bo",
+            "explanation": "record[0] is the first dictionary, then [\"name\"] reads its name.",
+            "sources": [
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "8c66e4f4af3a857e3a6ee5a014c06ee49b84a3f061697690f2afd3173646a567"
+            },
+            "needs": [
+              "dictionaries",
+              "indexing",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "nested_data"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "What value is selected by the nested index in the code?",
+            "code": "pair = (5, (8, 9))\nprint(pair[1][0])",
+            "options": [
+              "5",
+              "8",
+              "9"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "pair[1] is the inner tuple, and [0] selects its first item. Positions start at zero.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "4001efbe3577066a0497a1b1bbb4481c5729353d5375a374039aa8d1b027b821",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "indexing",
+              "variables"
+            ],
+            "targets": [
+              "nested_data"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the program so it prints the lower-left value from the grid.",
+            "code": "grid = [[1, 2], [3, 4]]\n___\nprint(result)",
+            "options": [
+              "result = grid[0][1]",
+              "result = grid[1][0]",
+              "result = grid[1][1]"
+            ],
+            "answer_index": 1,
+            "expected_output": "3",
+            "explanation": "grid[1] is [3, 4], then [0] selects 3. The swapped access selects 2.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "3b3558325494076aee59eb658c4ec348c31f865e75f7cee37048b77c57a33ffb"
+            },
+            "needs": [
+              "indexing",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "nested_data"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "2",
+            "bug_verification": {
+              "observed": "2",
+              "fixed_output": "3",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "info = {\"name\": \"Bo\", \"tags\": (\"red\", \"blue\")}\nprint(info[\"tags\"][1])\nprint(info[\"name\"])",
+          "options": [
+            "blue\nBo",
+            "red\nBo",
+            "blue\nblue"
+          ],
+          "expected_output": "blue\nBo",
+          "explanation": "info[\"tags\"] selects the tuple, [1] selects \"blue\". info[\"name\"] selects \"Bo\". Each print adds one line.",
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "82055241cc60cee36855be29b2bd8ab68b73e7b97fb39745c35456a996372f8f",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 3,
+            "output": "blue\nBo"
+          },
+          "needs": [
+            "dictionaries",
+            "indexing",
+            "variables"
+          ],
+          "targets": [
+            "nested_data"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "class_list"
+          ],
+          "title": "Second house lookup",
+          "instructions": "class_list is a list with exactly two dictionaries. Each dictionary has keys \"name\" and \"house\". Assign to result the \"house\" value from the second dictionary in class_list. For example, if class_list were [{\"name\": \"Bo\", \"house\": \"Red\"}, {\"name\": \"Al\", \"house\": \"Blue\"}], result would become \"Blue\". Do not change class_list.",
+          "entry": "result",
+          "starter": "result = class_list[0][\"house\"]",
+          "reference_solution": "result = class_list[1][\"house\"]",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  {
+                    "house": "Red",
+                    "name": "Bo"
+                  },
+                  {
+                    "house": "Blue",
+                    "name": "Al"
+                  }
+                ]
+              ],
+              "expected": "Blue"
+            },
+            {
+              "arguments": [
+                [
+                  {
+                    "house": "Maple",
+                    "name": "Jo"
+                  },
+                  {
+                    "house": "Oak",
+                    "name": "Kit"
+                  }
+                ]
+              ],
+              "expected": "Oak"
+            },
+            {
+              "arguments": [
+                [
+                  {
+                    "house": "",
+                    "name": "Zed"
+                  },
+                  {
+                    "house": "Elm",
+                    "name": "Ana"
+                  }
+                ]
+              ],
+              "expected": "Elm"
+            }
+          ],
+          "sources": [
+            "hub-cs50-loops-0001"
+          ],
+          "verification": {
+            "source_hash": "61419f8082342c2a74e06288e33685ea7add3827c54aa3647d7dba5115395f37",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "dictionaries",
+            "indexing",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "nested_data"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "parcel"
+          ],
+          "title": "Parcel corner lookup",
+          "instructions": "parcel is a dictionary with key \"label\" and key \"corner\". The value of \"corner\" is a list with exactly two numbers. Assign to picked the second number stored in parcel[\"corner\"]. For example, if parcel were {\"label\": \"A\", \"corner\": (4, 7)}, picked would become 7. Do not change parcel.",
+          "entry": "picked",
+          "starter": "picked = parcel[\"corner\"]",
+          "reference_solution": "picked = parcel[\"corner\"][1]",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                {
+                  "corner": [
+                    4,
+                    7
+                  ],
+                  "label": "A"
+                }
+              ],
+              "expected": 7
+            },
+            {
+              "arguments": [
+                {
+                  "corner": [
+                    0,
+                    0
+                  ],
+                  "label": "Origin"
+                }
+              ],
+              "expected": 0
+            },
+            {
+              "arguments": [
+                {
+                  "corner": [
+                    -3,
+                    12
+                  ],
+                  "label": "B"
+                }
+              ],
+              "expected": 12
+            }
+          ],
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "verification": {
+            "source_hash": "256271fca77b5b1491655c8a40cd23b35cf21635b383ad27358a1dc6f4b74875",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "dictionaries",
+            "indexing",
+            "variables"
+          ],
+          "targets": [
+            "nested_data"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-data-structures-0001",
+        "claim": "Tuples group comma-separated values",
+        "quote": "A tuple consists of a number of values separated by commas, for instance:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-data-structures-0001",
+        "claim": "Tuples may be nested",
+        "quote": "# Tuples may be nested:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0001",
+        "claim": "Program can use a list of dictionaries",
+        "quote": "My students variable now, I'm going to propose we think of it as a list.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0002",
+        "claim": "Each list element can be one dictionary",
+        "quote": "I'm now going to create a dictionary, one dictionary per student.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "nested_data",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-data-structures-0001",
+      "source_id": "python-data-structures",
+      "source_title": "Python · Data structures",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences",
+      "start": null,
+      "end": null,
+      "heading": "5.3. Tuples and Sequences",
+      "text": "A tuple consists of a number of values separated by commas, for instance:\n# Tuples may be nested:",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0001",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=3361",
+      "start": 3361.7,
+      "end": 3481.343,
+      "heading": "CS50 lecture excerpt",
+      "text": "My students variable now, I'm going to propose we think of it as a list.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0002",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=3481",
+      "start": 3481.343,
+      "end": 3602.29,
+      "heading": "CS50 lecture excerpt",
+      "text": "I'm now going to create a dictionary, one dictionary per student.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-data-structures",
+      "title": "Python · Data structures",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html",
+      "fetched_at": 1793519945.7708907,
+      "content_hash": "017c8239f7d174e0df5b90dbc1c7802a82aa2b5f2b5f8b07bb843c687080a948",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 4,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558232.88667,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "The approved topic catalog has one reference/video pair; use it without a paid selection request.",
+      "source_ids": [
+        "python-data-structures",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "nested_data",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Explained tuple immutability and limited the checked input contract to JSON lists."
+  ]
+}

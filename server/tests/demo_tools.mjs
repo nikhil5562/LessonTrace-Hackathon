@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url),{JSDOM}=require(process.argv[2]);
+const dom=new JSDOM('<div id="course-panel"><div class="cp-heading"></div></div><div id="vs-meta"></div>',{url:'http://localhost/#courses',runScripts:'outside-only'});
+const w=dom.window;let requests=[],selected=null;
+w.LessonTraceVideoStudio={isBusy:()=>false,saveDraft(){},async setRecord(record){selected=record;}};
+Object.defineProperty(w.document,'hidden',{value:false});
+w.fetch=async(path,options={})=>{
+  requests.push([path,options]);
+  if(path==='/api/session')return {ok:true,json:async()=>({csrf:'test-csrf'})};
+  if(path==='/api/demo/start')return {ok:true,json:async()=>({session:{original_demo:true,provider:'prepared-original'}})};
+  if(path==='/api/meta/activity')return {ok:true,json:async()=>({events:[{mode:'controlled-test',status:'response_received',model:'fixture',purpose:'<img src=x onerror=alert(1)>',endpoint:'https://api.meta.ai/v1/chat/completions',started_at:0,request_id:'fixture',reported_tokens:{total_tokens:15}}]})};
+  throw new Error(path);
+};
+w.eval(fs.readFileSync(new URL('../../app/assets/demo-tools.js',import.meta.url),'utf8'));
+assert.equal(requests.length,0,'Rendering does not spend or fetch model activity');
+w.document.querySelector('.demo-entry button').click();
+await new Promise(resolve=>setTimeout(resolve,20));
+assert.equal(selected.original_demo,true);assert.equal(w.location.hash,'#hub-learn');
+assert.equal(requests[1][1].headers['X-LessonTrace-CSRF'],'test-csrf');
+const panel=w.document.getElementById('meta-activity');panel.open=true;panel.dispatchEvent(new w.Event('toggle'));
+await new Promise(resolve=>setTimeout(resolve,20));
+assert.match(panel.textContent,/CONTROLLED TEST/);assert.doesNotMatch(panel.textContent,/LIVE META/);assert.equal(panel.querySelectorAll('img').length,0);
+assert.match(panel.textContent,/fixture/);assert.match(panel.textContent,/15/);
+panel.open=false;panel.dispatchEvent(new w.Event('toggle'));w.close();console.log('Original sample and safe request-status UI passed');

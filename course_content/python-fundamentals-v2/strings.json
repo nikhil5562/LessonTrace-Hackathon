@@ -1,0 +1,435 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "strings",
+  "title": "Strings, quotes and length",
+  "curriculum": {
+    "title": "Strings, Quotes and Length",
+    "answer": "## Strings, quotes and length\n\nText in Python is called a string, meaning a sequence of characters such as a word or sentence. A string is written with matching single quotes or double quotes around the characters. Both styles make the same kind of value, so you can choose the style that keeps your sentence readable.\n\n```python\na = 'Paris'\nb = \"rabbit\"\nprint(a)\nprint(b)\n```\n```text\nParis\nrabbit\n```\n\nThe examples show the origin of every value: `a` and `b` are created first, then printed. Quoted digits are still strings. `'1975'` is text, not a number, so `+` will glue it rather than do arithmetic.\n\nUse `+` to concatenate strings, meaning glue the right part after the left part. Use `*` with a number to repeat a string. Use `len()` to count characters, including spaces and punctuation. It counts characters in the resulting string value; the surrounding source-code quote marks are not counted.\n\n```python\nfirst = 'Good'\nsecond = 'night'\nfull = first + ' ' + second\nprint(full)\nprint(len(full))\nprint(3 * 'un' + 'ium')\n```\n```text\nGood night\n10\nunununium\n```\n\nHere `first` and `second` are created by the assignments at the start of this standalone example. In the coding task, input names are supplied separately by the checker. `full` is built only from those inputs plus one literal space. Its length is 10 because `len()` counts 4 letters, 1 space, and 5 letters. A common mistake is writing `first + second` and losing the space, or writing `'1975' + '75'` and expecting `2050`. Another mistake is mixing text and numbers, as in `'yum' + 5`, which raises `TypeError` because both sides of string `+` must be strings.",
+    "sources": [
+      "hub-python-introduction-0001",
+      "hub-python-introduction-0002",
+      "hub-cs50-basics-0004"
+    ],
+    "units": [
+      {
+        "id": "strings-quotes-length",
+        "title": "Strings, Quotes and Length",
+        "explanation": "Strings are quoted text. Single and double quotes make the same string type, quoted digits stay strings, + glues strings, and len() counts every character including spaces. The lesson practices building a new string from supplied input variables and checking its exact text and length.",
+        "opening_question": "If '1975' looks like a number, why does Python treat it as text?",
+        "sources": [
+          "hub-python-introduction-0001",
+          "hub-python-introduction-0002",
+          "hub-cs50-basics-0004"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "Which statement about Python strings is correct?",
+            "code": "",
+            "options": [
+              "Single and double quotes always make different types.",
+              "Single quotes and double quotes make the same string when used consistently.",
+              "'1975' is a number because it contains digits.",
+              "Strings cannot contain spaces or punctuation."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "Both quote styles make the same string, and quoted digits remain strings rather than numbers.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Meta-authored concept check; no executable context supplied"
+            },
+            "needs": [],
+            "targets": [
+              "strings"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the replacement for ___:",
+            "code": "a = 'Good'\nb = 'night'\nmsg = ___\nprint(msg)\nprint(len(msg))",
+            "options": [
+              "a + ' ' + b",
+              "a + b",
+              "a + '  ' + b",
+              "b + ' ' + a"
+            ],
+            "answer_index": 0,
+            "expected_output": "Good night\n10",
+            "explanation": "Join with a space, then len counts all 10 characters including the space.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-python-introduction-0002"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "dc43d0a6670c110171a72bf918b9ea21ddbb963429aeb503032184824bd873c1"
+            },
+            "needs": [
+              "arithmetic",
+              "variables"
+            ],
+            "targets": [
+              "strings"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "What does this code print?",
+            "code": "x = '1975'\ny = '75'\nprint(x + y)",
+            "options": [
+              "2050",
+              "197575 as a number",
+              "197575",
+              "An error because digits cannot be quoted"
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "Quotes make both values strings, so + concatenates to '197575' instead of adding numbers. Quote marks delimit strings in source; print does not display those delimiters.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "8b9ab87fb94a5e30daa27efb3ad417939b60c6aae4756008a209da8f808fc97e",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "variables"
+            ],
+            "targets": [
+              "strings"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the replacement for ___:",
+            "code": "word = 'yum'\nexcited = ___\nprint(excited)",
+            "options": [
+              "word + '!'",
+              "word + 5",
+              "word * 2",
+              "'yum'"
+            ],
+            "answer_index": 0,
+            "expected_output": "yum!",
+            "explanation": "String plus string works, but string plus int raises TypeError.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-basics-0004"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "7181be98c5397d306aac9f6953891a7c0b1c7d9a3568e446e0dc7c568aa8c5b0"
+            },
+            "needs": [
+              "arithmetic",
+              "variables"
+            ],
+            "targets": [
+              "strings"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "TypeError",
+            "bug_verification": {
+              "observed": "TypeError",
+              "fixed_output": "yum!",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "greet = 'Hi' + ' ' + 'there'\nprint(greet)\nprint(len(greet))",
+          "options": [
+            "Hi there\n8",
+            "Hithere\n7",
+            "Hi there\n7"
+          ],
+          "expected_output": "Hi there\n8",
+          "explanation": "First 'Hi' plus a space plus 'there' makes 'Hi there'. len counts 2 + 1 + 5 = 8.",
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-python-introduction-0002"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "c33f42974071927a1f54d03e375134cf3ad1dd70d3ec0f009bc7c3281483cd5c",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 3,
+            "output": "Hi there\n8"
+          },
+          "needs": [
+            "arithmetic",
+            "variables"
+          ],
+          "targets": [
+            "strings"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "first",
+            "last"
+          ],
+          "title": "Join with one space",
+          "instructions": "Two input strings first and last are supplied. Make one string full by joining first, one single space ' ', then last, in that order. Assign the result to full.",
+          "entry": "full",
+          "starter": "full = first + last",
+          "reference_solution": "full = first + ' ' + last",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                "Ann",
+                "Lee"
+              ],
+              "expected": "Ann Lee"
+            },
+            {
+              "arguments": [
+                "Good",
+                "night"
+              ],
+              "expected": "Good night"
+            },
+            {
+              "arguments": [
+                "",
+                "Hi"
+              ],
+              "expected": " Hi"
+            }
+          ],
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-cs50-basics-0004"
+          ],
+          "verification": {
+            "source_hash": "1010e580197cf1303b75db1a2281128ad599ae2d59ad3571cf3f8dd6b0edbcd7",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "variables"
+          ],
+          "targets": [
+            "strings"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "word1",
+            "word2"
+          ],
+          "title": "Length of joined label",
+          "instructions": "Two input strings word1 and word2 are supplied. Join them with one single space between them, then find the length of that joined message. Assign that number to total_len.",
+          "entry": "total_len",
+          "starter": "total_len = len(word1) + len(word2)",
+          "reference_solution": "total_len = len(word1 + ' ' + word2)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                "red",
+                "cat"
+              ],
+              "expected": 7
+            },
+            {
+              "arguments": [
+                "a",
+                "b"
+              ],
+              "expected": 3
+            },
+            {
+              "arguments": [
+                "",
+                ""
+              ],
+              "expected": 1
+            }
+          ],
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-python-introduction-0002"
+          ],
+          "verification": {
+            "source_hash": "1174d87f8a8b1c0a4575d2bd940029abc41e585908250f6bfe9485dc06748fbd",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "variables"
+          ],
+          "targets": [
+            "strings"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "Single and double quotes make the same string value",
+        "quote": "They can be enclosed in single quotes ('...') or double quotes (\"...\") with the same result [2].",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "+ concatenates strings and * repeats them",
+        "quote": "Strings can be concatenated (glued together) with the + operator, and repeated with *:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-introduction-0002",
+        "claim": "len returns the length of a string",
+        "quote": "The built-in function len() returns the length of a string:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-basics-0004",
+        "claim": "String means a sequence of text",
+        "quote": "\"String\" is a technical term in a programming language and again, it means a sequence of text",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "strings",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-introduction-0001",
+      "source_id": "python-introduction",
+      "source_title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html#text",
+      "start": null,
+      "end": null,
+      "heading": "3.1.2. Text",
+      "text": "They can be enclosed in single quotes ('...') or double quotes (\"...\") with the same result [2].\nStrings can be concatenated (glued together) with the + operator, and repeated with *:",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-python-introduction-0002",
+      "source_id": "python-introduction",
+      "source_title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html#text",
+      "start": null,
+      "end": null,
+      "heading": "3.1.2. Text",
+      "text": "The built-in function len() returns the length of a string:",
+      "truncated": true,
+      "source_offset": 5000,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-basics-0004",
+      "source_id": "cs50-basics",
+      "source_title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk&t=1800",
+      "start": 1800.56,
+      "end": 1922.42,
+      "heading": "CS50 lecture excerpt",
+      "text": "\"String\" is a technical term in a programming language and again, it means a sequence of text",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-introduction",
+      "title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html",
+      "fetched_at": 1793513454.0496233,
+      "content_hash": "a5738564ca0e8ca88fa217a8fc3653a6c6e46b23c093e019b1104b959d7f6c7a",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-basics",
+      "title": "CS50P · Functions and variables",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JP7ITIXGpHk",
+      "fetched_at": 1793519944.202026,
+      "content_hash": "719c9905c3908594dd459224b78d5ac9f5cfbc6e06b4dadd67d9f1ea98ecac2c",
+      "reviewed_sections": 2,
+      "available_sections": 10,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558234.3453174,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Fixed approved reference/video pair; rejected Meta draft corrected and rechecked.",
+      "source_ids": [
+        "python-introduction",
+        "cs50-basics"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "strings",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Aligned declared error with the checked exception type; bug/fix code retained.",
+    "Distinguished printed text from a quoted string representation.",
+    "The count includes every character between the quotes. -> clarified",
+    "Here `first` and `second` are supplied inputs. -> clarified"
+  ]
+}

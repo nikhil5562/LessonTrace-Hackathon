@@ -1,0 +1,492 @@
+{
+  "version": "python-fundamentals-v1",
+  "concept_id": "while_loop",
+  "title": "While loops and changing state",
+  "curriculum": {
+    "title": "While Loops and Changing State",
+    "answer": "## While loops repeat while a question stays true\n\nA `while` loop asks a true-or-false question before every pass. If the answer is true it runs the indented body once, then asks again. If the answer is false it stops and continues after the loop.\n\nYou need two parts:\n\n1. A state variable created **before** the loop.\n2. An update **inside** the body that moves that variable toward making the question false.\n\n### Example 1: count down\n\n```python\ni = 3\nwhile i != 0:\n    print(i)\n    i = i - 1\nprint(\"done\")\n```\n\nFlow:\n\n- Start with `i = 3`.\n- Check `i != 0`. For `3`, `2`, `1` it is true, so the body prints and then does `i = i - 1`.\n- When `i` becomes `0`, `i != 0` is false, so the loop stops.\n\nOutput is:\n\n```text\n3\n2\n1\ndone\n```\n\nWithout the last line `i = i - 1`, the question would never change and the loop would keep going.\n\n### Example 2: build a total step by step\n\n```python\nn = 1\ntotal = 0\nwhile n < 4:\n    total = total + n\n    n = n + 1\nprint(total)\n```\n\nFlow:\n\n- Start with `n = 1` and `total = 0`. Both origins are shown.\n- Pass 1: `1 < 4` is true, so `total` becomes `1` and `n` becomes `2`.\n- Pass 2: `2 < 4` is true, so `total` becomes `3` and `n` becomes `3`.\n- Pass 3: `3 < 4` is true, so `total` becomes `6` and `n` becomes `4`.\n- Now `4 < 4` is false, so the loop stops and prints `6`.\n\nCommon mistakes:\n\n- Forgetting the update, so the condition never becomes false.\n- Updating the wrong variable, for example changing `total` but never changing `n`.\n- Wrong starting test, for example starting with `n = 0` and testing `n > 0`, which is false immediately, so the body runs zero times.\n- Wrong indentation: only the indented lines repeat as part of the loop.",
+    "sources": [
+      "hub-cs50-loops-0002",
+      "hub-cs50-loops-0003",
+      "hub-python-introduction-0001"
+    ],
+    "units": [
+      {
+        "id": "while-changing-state",
+        "title": "Repeating With While",
+        "explanation": "A small counter drives the repetition: each pass checks the comparison, adds to the running total, then moves the counter one step closer to stopping.",
+        "opening_question": "How can a program repeat work without copying the same lines many times?",
+        "sources": [
+          "hub-cs50-loops-0002",
+          "hub-cs50-loops-0003",
+          "hub-python-introduction-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What does while do here?",
+            "code": "i = 3\nwhile i != 0:\n    print(i)\n    i = i - 1",
+            "options": [
+              "It runs zero times because the question is asked only once.",
+              "It runs again and again while i != 0, printing 3, 2, 1.",
+              "It runs forever because while always repeats.",
+              "It prints only 0."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "The condition is checked before each pass. It is true for 3, 2, 1 and false when i reaches 0, so the body runs three times.",
+            "sources": [
+              "hub-cs50-loops-0002",
+              "hub-cs50-loops-0003"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "e73c8f389b7f32c3746d301b10314708f893f14a235561fcb9b636fbf1c6b951",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "while_loop"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the ___ condition so it prints 6:",
+            "code": "n = 3\ntotal = 0\nwhile ___:\n    total = total + n\n    n = n - 1\nprint(total)",
+            "options": [
+              "n > 0",
+              "n < 0",
+              "n == 0",
+              "total > 0"
+            ],
+            "answer_index": 0,
+            "expected_output": "6",
+            "explanation": "The loop adds 3, then 2, then 1 to total while counting n down to 0, giving 6.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-loops-0003"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "e35fca67e89137deacfa2f753bdd3dc6aea1ff83101dd07d3a28cc492b8c5976"
+            },
+            "needs": [
+              "arithmetic",
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "while_loop"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the ___ update so it prints 3:",
+            "code": "n = 3\ncount = 0\nwhile n > 0:\n    ___\n    n = n - 1\nprint(count)",
+            "options": [
+              "count = count + 1",
+              "count = count - 1",
+              "count = n",
+              "count = count + 0"
+            ],
+            "answer_index": 0,
+            "expected_output": "3",
+            "explanation": "Both variables must change: count records passes and n moves toward 0. Without the n update the condition would stay true.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-loops-0003"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "1569cb93f8c45edb2c702c6b1af5fcdb31f3e4af545b10dfa88797a18ad4bef9"
+            },
+            "needs": [
+              "arithmetic",
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "while_loop"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the ___ condition so it prints 3:",
+            "code": "n = 0\ntotal = 0\nwhile ___:\n    total = total + 1\n    n = n + 1\nprint(total)",
+            "options": [
+              "n < 3",
+              "n > 0",
+              "n < 2",
+              "n == 0"
+            ],
+            "answer_index": 0,
+            "expected_output": "3",
+            "explanation": "Starting from n = 0, n < 3 is true three times, so total becomes 3. The buggy n > 0 is false immediately, so it prints 0.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-loops-0003"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "450f76847f1f9d86b7784b0da90e36e1a3b305ae89ae69fafe56f8db5400f75f"
+            },
+            "needs": [
+              "arithmetic",
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "while_loop"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "0",
+            "bug_verification": {
+              "observed": "0",
+              "fixed_output": "3",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          },
+          {
+            "kind": "concept",
+            "prompt": "When does this loop stop?",
+            "code": "a = 0\nb = 1\nwhile a < 10:\n    print(a)\n    a = a + b\n    b = b + a",
+            "options": [
+              "The loop body always runs exactly once.",
+              "Indentation does not matter for the loop body.",
+              "The loop keeps running while a < 10 stays true and stops when it becomes false.",
+              "The condition is checked only after the loop finishes."
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "The test a < 10 is checked before each repetition; changing a inside the body is what eventually makes it false.",
+            "sources": [
+              "hub-python-introduction-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "c75785e38ab308f6864f89f61a005de978c7d4a4143d61c5cf9f3b543dd560e0",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "comparisons",
+              "variables"
+            ],
+            "targets": [
+              "while_loop"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "n = 4\ntotal = 0\nwhile n > 0:\n    total = total + n\n    n = n - 1\nprint(total)",
+          "options": [
+            "10",
+            "6",
+            "4"
+          ],
+          "expected_output": "10",
+          "explanation": "The loop adds 4, then 3, then 2, then 1 while n counts down to 0, so total ends as 10.",
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-cs50-loops-0003"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "f3550534e06e8394c4f51e60ae6c20712ebf1478fb3bf32903c7ba9a7536f801",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 16,
+            "output": "10"
+          },
+          "needs": [
+            "arithmetic",
+            "comparisons",
+            "variables"
+          ],
+          "targets": [
+            "while_loop"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "n",
+            "limit"
+          ],
+          "title": "Sum Up To Limit",
+          "instructions": "Inputs n and limit are whole numbers. Set total to 0 and x to n. While x is less than limit, add x to total and increase x by 1. Leave n and limit unchanged. The result in total is the sum of all values from n up to but not including limit. For example, if n is 1 and limit is 4, total is 6.",
+          "entry": "total",
+          "starter": "total = 0\nx = n\nwhile x < limit:\n    total = total + 1\n    x = x + 1",
+          "reference_solution": "total = 0\nx = n\nwhile x < limit:\n    total = total + x\n    x = x + 1",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                1,
+                4
+              ],
+              "expected": 6
+            },
+            {
+              "arguments": [
+                2,
+                6
+              ],
+              "expected": 14
+            },
+            {
+              "arguments": [
+                5,
+                5
+              ],
+              "expected": 0
+            },
+            {
+              "arguments": [
+                0,
+                3
+              ],
+              "expected": 3
+            }
+          ],
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-cs50-loops-0003"
+          ],
+          "verification": {
+            "source_hash": "d09bd30ed9758c95bd71fceff2356ea96d0fc2878499cb60e7b6def17acf02f5",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "arithmetic",
+            "comparisons",
+            "variables"
+          ],
+          "targets": [
+            "while_loop"
+          ]
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "count",
+            "value"
+          ],
+          "title": "Repeat Addition With While",
+          "instructions": "Inputs count and value are whole numbers, with count zero or more. Assign to answer the total obtained by adding value count times, using a while loop. Leave the supplied inputs unchanged. For count 2 and value 5, answer is 10.",
+          "entry": "answer",
+          "starter": "answer = 0\nc = count\nwhile c > 0:\n    answer = answer + 1\n    c = c - 1",
+          "reference_solution": "answer = 0\nc = count\nwhile c > 0:\n    answer = answer + value\n    c = c - 1",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                3,
+                4
+              ],
+              "expected": 12
+            },
+            {
+              "arguments": [
+                5,
+                2
+              ],
+              "expected": 10
+            },
+            {
+              "arguments": [
+                0,
+                7
+              ],
+              "expected": 0
+            },
+            {
+              "arguments": [
+                1,
+                9
+              ],
+              "expected": 9
+            }
+          ],
+          "sources": [
+            "hub-cs50-loops-0002",
+            "hub-cs50-loops-0003"
+          ],
+          "verification": {
+            "source_hash": "ef9a520bdba33afc67b41a254c0e2b40343774263d1525b0c37dd8c0dc475de1",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "arithmetic",
+            "comparisons",
+            "variables"
+          ],
+          "targets": [
+            "while_loop"
+          ]
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "while repeats while its condition remains true",
+        "quote": "The while loop executes as long as the condition (here: a < 10) remains true.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0002",
+        "claim": "while is the keyword for repeating a block",
+        "quote": "there's a keyword called while.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0003",
+        "claim": "loop uses a counter and checks not equal to zero",
+        "quote": "while i does not equal 0",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "while_loop",
+      "worked_examples_run": 2,
+      "quiz_questions": 6,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 4,
+      "fresh_cases": 4,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-introduction-0001",
+      "source_id": "python-introduction",
+      "source_title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html#first-steps-towards-programming",
+      "start": null,
+      "end": null,
+      "heading": "3.2. First Steps Towards Programming",
+      "text": "The while loop executes as long as the condition (here: a < 10) remains true.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0002",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=123",
+      "start": 123.55,
+      "end": 241.765,
+      "heading": "CS50 lecture excerpt",
+      "text": "there's a keyword called while.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0003",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=241",
+      "start": 241.765,
+      "end": 361.2,
+      "heading": "CS50 lecture excerpt",
+      "text": "while i does not equal 0",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-introduction",
+      "title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html",
+      "fetched_at": 1793513454.0496233,
+      "content_hash": "a5738564ca0e8ca88fa217a8fc3653a6c6e46b23c093e019b1104b959d7f6c7a",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 8,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793513852.0835054,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Retained original selected sources; offline operator recheck after validation correction.",
+      "source_ids": [
+        "python-introduction",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "while_loop",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "review_corrections": [
+    {
+      "field": "fresh_exercise.instructions",
+      "before": "Inputs count and value are whole numbers. Set answer to 0 and c to count. While c is greater than 0, add value to answer and decrease c by 1. Leave count and value unchanged. The result in answer is value added count times. For example, if count is 2 and value is 5, answer is 10.",
+      "after": "Inputs count and value are whole numbers, with count zero or more. Assign to answer the total obtained by adding value count times, using a while loop. Leave the supplied inputs unchanged. For count 2 and value 5, answer is 10.",
+      "reason": "Removed line-by-line solution scaffolding from the independent task; inputs, cases and goal remain unchanged."
+    }
+  ],
+  "operator_review": {
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA",
+    "human_teacher_review": false,
+    "notes_and_questions_inspected": true,
+    "checks_rerun_after_corrections": true
+  }
+}

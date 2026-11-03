@@ -1,0 +1,185 @@
+{
+  "date": "2026-11-03",
+  "course_version": "python-fundamentals-v2",
+  "wording_errata": "course-wording-errata-v2",
+  "concepts": 24,
+  "supported": 24,
+  "human_teacher_approved": false,
+  "scope": "Automated evidence and topic-coverage review in two phases: 19 accepted in the first full audit and five accepted after receipt, excerpt-format and empty-range corrections. Not teacher approval, a homogeneous benchmark or evidence of learning gains.",
+  "reports": [
+    "course_reviews/python-fundamentals-v2-expanded-review-2026-11-03.json",
+    "course_reviews/python-fundamentals-v2-followup-review-2026-11-03.json"
+  ],
+  "changes": "Original source hashes and grading answers unchanged. Served range notes add one executed empty-range example; its caption claim is narrowed to the quoted end-bound rule.",
+  "lessons": [
+    {
+      "concept": "variables",
+      "status": "supported",
+      "phase": "five-topic follow-up",
+      "source_sha256": "dff3fd1805552ee936aad1c71d213cab127ba397eae8da2a1f5a51e09af09345",
+      "review_request_hash": "a7081297ce8c3c47ce9d3b8d1d70a66f4529f6b51f953d8ba6607f0824a9f1af"
+    },
+    {
+      "concept": "arithmetic",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "1cc4c5deb304fdb70a3dbf01dd5f372dc90d65587e3adba0743571b815a7cfe0",
+      "review_request_hash": "1a2ececcc1c46d5bdc482eeef8e8aeb016ecc218177e045b6c1215e4b3895be6"
+    },
+    {
+      "concept": "strings",
+      "status": "supported",
+      "phase": "five-topic follow-up",
+      "source_sha256": "dfc6c814296fae2cf9c07b20aaf67886ff622dd1428b412e4790dc9a7f005973",
+      "review_request_hash": "584ce033f9a6e77211e945e9e566c0b9b0b42d34480c02a27831c5361d5f5411"
+    },
+    {
+      "concept": "comparisons",
+      "status": "supported",
+      "phase": "five-topic follow-up",
+      "source_sha256": "422ace099ce12a17cf722ec83720ee1ebded590573a3f59710002c1e62c11fd7",
+      "review_request_hash": "3e33c3050541f8ef3e995be237941345689755779a2f3dbc8330d3165e14a610"
+    },
+    {
+      "concept": "lists",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "0d1d49d7e2991e4cdee4de9a931da7a712b8a5eac5757dff9979a63e3704ada4",
+      "review_request_hash": "d73cd9ab04b63b58dda8941c0dd5e3f27cf0cc3111bde190017cd21cc5db4912"
+    },
+    {
+      "concept": "indexing",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "0d5becbbcd51f7c72d40ceba495a36da6d464423b5067e2846f5e582d3974428",
+      "review_request_hash": "fc4b9a1b77813eeac9a18fe2d7d5b77f7c3b0d2f79a4a8996744ab79d9fc55c3"
+    },
+    {
+      "concept": "list_mutation",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "6ad6e164c2855f46675e62cb02276a6185954cca4cf6cea7355fbde74b7347b1",
+      "review_request_hash": "d5674bf773551fdb55f8410d8652d40da9598c9f0a95e547c7876987ada31feb"
+    },
+    {
+      "concept": "dictionaries",
+      "status": "supported",
+      "phase": "five-topic follow-up",
+      "source_sha256": "a6e8decac8c6cd2cdcf58cb54834cc6faec855ca6a1f50e8e6e9413d17725e8d",
+      "review_request_hash": "751f7c7e521d797f92953055e8692bbe85c21238182ad2e069bd7b30beb9bdd4"
+    },
+    {
+      "concept": "nested_data",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "734824e65f43ecacca1760448beb3797458b804e71b624c8f89ed7b62c140f82",
+      "review_request_hash": "1d1268f698262254d281059faec6bf974a9c2c16a6a0a9f02ade65b3e4341941"
+    },
+    {
+      "concept": "if_else",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "ed0e25157c439159f36e7ea1669b542fc67db3bc89f05a1a0d6e7ed79224aa19",
+      "review_request_hash": "0463fcd1ab1b7a70837318b691c7f3f74a992909762d2ab7e06809e42cd9247b"
+    },
+    {
+      "concept": "boolean_logic",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "829ebc0f8459f43e5323436bb6df6c147633d36f0dbc65dfc768ffa564e51136",
+      "review_request_hash": "3be23d88cc10fa073cc8b77640d3db56e6060d4f95bc7e83c52560dd78c84d4d"
+    },
+    {
+      "concept": "for_loop",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "0bbd136a20eb64be213a5ba8ec2284883a2843e203f79099339b41b515de5614",
+      "review_request_hash": "0fabf33d607b5d78921773dafcf1c6474f878320c410e249723f5d8db3bc7976"
+    },
+    {
+      "concept": "range",
+      "status": "supported",
+      "phase": "five-topic follow-up",
+      "source_sha256": "ab6609ab437d7a7bb14857022db3535bdf60e89115c84f6421b5c0d347911701",
+      "review_request_hash": "0553b4315dd708c0f1988a96f53ceb6b6d60423663aeec6602b1f68230133058"
+    },
+    {
+      "concept": "while_loop",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "766b337995d247b1d25225b945340a87609606c5c17118f2b3ef6d2e425fc857",
+      "review_request_hash": "ad671c6baa2cfdccb734b160e151ef07629a727fc7ded81d8edd1b6764bc17a9"
+    },
+    {
+      "concept": "loop_lists",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "93f1477ee5f535244e34ff4009e33a01b84189002c70c30a60bc2b1096086813",
+      "review_request_hash": "ebe9a45641562c944737b9f696dc2a641ccd0a55cad4c7797696edbb7957bbbd"
+    },
+    {
+      "concept": "loop_if_else",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "29b294e8d692ad59ae53b3ecb415f2f1bd578d3abfd2cce5a5964c37f0a9654e",
+      "review_request_hash": "c648c9390924050e921d3b36c3316fd7c813a047c34d8a5016ed530b37e6f692"
+    },
+    {
+      "concept": "break",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "66c01a3d3eac632d73afba64fb4fd2baad969cbf0eba93f061c9b5881989188a",
+      "review_request_hash": "60ae4a8be276bac05fb6f234367db7149537a2f2bff9debc3678915f22ebe79a"
+    },
+    {
+      "concept": "continue",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "e13500a32495b7656580f14416b61709dc9478a0f295d3f3c567ad9ea4270014",
+      "review_request_hash": "7a7453ed67424ded9502c83518d9f6e04878d7d773ee975b8e477fa7a01ac573"
+    },
+    {
+      "concept": "nested_loops",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "63e00f6e1881c2e7b0a2859d9b5f996bb5229b8e7e00dd13a953ef7dbfee0f49",
+      "review_request_hash": "ca55b043cbeb454d91bbeb85ffa322cdb9a5f7764900c4ef6569a2050e79ea1b"
+    },
+    {
+      "concept": "inner_break",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "a27c9e7d0d496dd9685fd0ce2a98c38e1aab5cbda183c00137d9244285cc9377",
+      "review_request_hash": "8224962d200402c0ffc4f56ade6277f59c3b842adbdc62ff5a77e422b82061b9"
+    },
+    {
+      "concept": "functions",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "b03e58f6cb224905f7d0ee36f2406612d121c60962cc2b8542cd43d33707c094",
+      "review_request_hash": "b3e6f2e4dd3f300b562ffdb3dd207571b96ca9634ddede57808cbf74f8f879d1"
+    },
+    {
+      "concept": "parameters",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "3a638bea6646e2d1c989e69eb57ea55cd41f32dcf52eff264ebdd65aa8a788d9",
+      "review_request_hash": "475d4be5820f74b2fdfb1d552b0943a9cf430577521a1d56ab2403b8f33d4909"
+    },
+    {
+      "concept": "scope",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "b6a2cfbac7a437c24bd8686b979eaf8fac0240bb0aefee8cb6bbf76f5a501029",
+      "review_request_hash": "b8c9adb1afeb609e3e560aef58c643117ef43372870da8348788f9f686f7703f"
+    },
+    {
+      "concept": "functions_data",
+      "status": "supported",
+      "phase": "initial expanded audit",
+      "source_sha256": "2a9ac4749571342c12352db1ba5048f425bfce57337c0abf2afa33c367b02aaf",
+      "review_request_hash": "98801ba3fdc6560c96a3fe0e3657c78e036ce8d59f3fa46093fa9f41becc0b30"
+    }
+  ],
+  "publication_note": "Historical development evidence, not rerun during public packaging. Private allowance totals and QA identity removed; outcome data retained."
+}

@@ -1,0 +1,299 @@
+{
+  "fixture_version": "semantic-adversarial-v1",
+  "fixture_sha256": "9cfa4f047d43fc18c152912d71c0fa4452db762ba6d36e622b65fdbc83d5247d",
+  "scope": "Development challenge set, not an independently held-out benchmark or student-learning study.",
+  "mode": "live independent reviewer",
+  "semantic_model_evaluated": true,
+  "api_calls": 22,
+  "cases": [
+    {
+      "id": "break-correct",
+      "expected": "accept",
+      "observed": "accept",
+      "verdict": "supported",
+      "review_statuses": [
+        "supported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3444
+    },
+    {
+      "id": "break-both-loops",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3751
+    },
+    {
+      "id": "break-safe-anchor-wrong-conclusion",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3798
+    },
+    {
+      "id": "range-correct",
+      "expected": "accept",
+      "observed": "accept",
+      "verdict": "supported",
+      "review_statuses": [
+        "supported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4196
+    },
+    {
+      "id": "range-inclusive-stop",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3934
+    },
+    {
+      "id": "alias-correct",
+      "expected": "accept",
+      "observed": "accept",
+      "verdict": "supported",
+      "review_statuses": [
+        "supported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4200
+    },
+    {
+      "id": "alias-assignment-copies",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4190
+    },
+    {
+      "id": "print-return-correct",
+      "expected": "accept",
+      "observed": "accept",
+      "verdict": "supported",
+      "review_statuses": [
+        "supported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4706
+    },
+    {
+      "id": "print-return-confused",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3036
+    },
+    {
+      "id": "floor-negative-correct",
+      "expected": "accept",
+      "observed": "accept",
+      "verdict": "supported",
+      "review_statuses": [
+        "supported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3096
+    },
+    {
+      "id": "floor-negative-truncation",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3983
+    },
+    {
+      "id": "irrelevant-real-quote",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 5760
+    },
+    {
+      "id": "invented-screen-observation",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4809
+    },
+    {
+      "id": "source-instruction-injection",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3810
+    },
+    {
+      "id": "conflicting-sources-qualified",
+      "expected": "accept",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "supported",
+        "unsupported"
+      ],
+      "correct": false,
+      "latency_ms": 9505
+    },
+    {
+      "id": "conflicting-sources-overconfident",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4955
+    },
+    {
+      "id": "observed-output-correct",
+      "expected": "accept",
+      "observed": "accept",
+      "verdict": "supported",
+      "review_statuses": [
+        "supported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4580
+    },
+    {
+      "id": "invented-execution-output",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3951
+    },
+    {
+      "id": "unchecked-code-claims-run",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4825
+    },
+    {
+      "id": "concept-quiz-wrong-answer",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4169
+    },
+    {
+      "id": "quoted-names-correct",
+      "expected": "accept",
+      "observed": "accept",
+      "verdict": "supported",
+      "review_statuses": [
+        "supported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 3774
+    },
+    {
+      "id": "undefined-name-as-text",
+      "expected": "reject",
+      "observed": "reject",
+      "verdict": "claim_review_rejected",
+      "review_statuses": [
+        "unsupported",
+        "supported"
+      ],
+      "correct": true,
+      "latency_ms": 4564
+    }
+  ],
+  "human_teacher_approved": false,
+  "review_prompt_sha256": "88733bd94b4c4d7e372b00e98bad20edb3bca45e138eea6e681ab351b9fc6015",
+  "summary": {
+    "scenarios": 22,
+    "correct": 21,
+    "unsupported_rejected": 14,
+    "unsupported_total": 14,
+    "supported_accepted": 7,
+    "supported_total": 8,
+    "false_blocks": 1,
+    "unavailable": 0
+  },
+  "usage": {
+    "recorded_calls": 22,
+    "failed_calls": 0,
+    "reserved_cents": 220,
+    "reported_prompt_tokens": 21187,
+    "reported_completion_tokens": 16926,
+    "reported_total_tokens": 38113,
+    "calls_with_usage": 22,
+    "latency_ms": 96754,
+    "billed_cost_usd": null,
+    "coverage": "Calls recorded since this update only. Reserved cents are not actual billed cost; older reservations remain in the global allowance."
+  },
+  "publication_note": "Historical development evidence, not rerun during public packaging. Private allowance totals and QA identity removed; outcome data retained."
+}

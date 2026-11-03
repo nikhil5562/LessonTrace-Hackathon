@@ -1,0 +1,450 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "indexing",
+  "title": "Zero-based list indexing",
+  "curriculum": {
+    "title": "Zero-Based List Indexing in Python",
+    "answer": "## Zero-based list indexing\n\n### Concept introduction\nA list keeps items in order, and each order place has a number called an index. In Python the order starts at `0`, so the first item is at place `0` and the next item is at place `1`. You read one item with `name[place]`.\n\n### How it works\nA list variable names the whole ordered group. Writing square brackets with a non-negative whole number after the variable selects exactly one stored item. The number is the position counted from zero, not from one. So `colors[0]` is the first item and `colors[1]` is the second item.\n\n```python\ncolors = [\"red\", \"green\", \"blue\"]\nprint(colors[0])\nprint(colors[1])\n```\n\n```text\nred\ngreen\n```\n\nThe program first creates `colors` with three items. Then `colors[0]` looks at position `0` and supplies `\"red\"`. Next `colors[1]` looks at position `1` and supplies `\"green\"`. Each indexed read returns one item, while `colors` still holds the whole list.\n\nThe index must name an existing position in that supplied nonempty list. A three-item list has valid non-negative positions `0`, `1`, and `2` only. The last position is therefore different from the number of items.\n\n```python\nstudents = [\"Hermione\", \"Harry\", \"Ron\"]\nfirst = students[0]\nsecond = students[1]\nthird = students[2]\nprint(first)\nprint(second)\nprint(third)\n```\n\n```text\nHermione\nHarry\nRon\n```\n\nHere `first`, `second`, and `third` are new variables. Each assignment binds a new name to the selected item from `students`. The original list is unchanged.\n\n### Common mistakes\nNew programmers often read `students[1]` as the first student. It is the second because counting starts at zero. Another mistake is expecting `students[0]` to return the whole list. It returns only the item at position `0`.",
+    "sources": [
+      "hub-python-introduction-0001",
+      "hub-cs50-loops-0001"
+    ],
+    "units": [
+      {
+        "id": "indexing-zero-based-lists",
+        "title": "Reading List Items by Position",
+        "explanation": "Non-negative positions start at 0, so select existing positions directly from the supplied list and store the result without changing the input.",
+        "opening_question": "If a list holds three names in order, how do you read only the first one?",
+        "sources": [
+          "hub-python-introduction-0001",
+          "hub-cs50-loops-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What does this program print and why?",
+            "code": "colors = [\"red\", \"green\", \"blue\"]\nprint(colors[0])",
+            "options": [
+              "red, because 0 is the first position",
+              "green, because 0 means the second position",
+              "blue, because 0 means the last position",
+              "red green blue, because one index returns the whole list"
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "Position 0 is the first ordered place, so colors[0] is red. Counting starts at 0, not 1.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "d6819bf37253fe0d5cc1adb3a2cd6a385d4399c8b2fcf91b10a110303d28f07e",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "indexing"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the line that makes the program print \"red\".",
+            "code": "items = [\"red\", \"green\", \"blue\"]\nfirst_item = ___\nprint(first_item)",
+            "options": [
+              "items[0]",
+              "items[1]",
+              "items[2]"
+            ],
+            "answer_index": 0,
+            "expected_output": "red",
+            "explanation": "The first item is at position 0, so items[0] prints red.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "e5a9751e646d70f6e89805702730be1cf926dbf989acb1ba3326d1f3f04e6470"
+            },
+            "needs": [
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "indexing"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "What does this program print?",
+            "code": "students = [\"Hermione\", \"Harry\", \"Ron\"]\nprint(students[1])",
+            "options": [
+              "Hermione",
+              "Harry",
+              "Ron",
+              "Hermione Harry Ron"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "Position 1 is the second item, so it is Harry. Expecting Hermione confuses 1-based counting with zero-based positions.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "a37e34e35c3c99a5e2cc8b3284c41bce48b9909bc481d0d7aa810e3a8b3d50b8",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "indexing"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Which line selects the first item?",
+            "code": "tools = [\"pen\", \"brush\", \"ruler\"]\nchoice = ___\nprint(choice)",
+            "options": [
+              "tools[1]",
+              "tools[2]",
+              "tools[0]"
+            ],
+            "answer_index": 2,
+            "expected_output": "pen",
+            "explanation": "The first item is at position 0, so tools[0] prints pen. Using tools[1] prints brush because 1 is the second position.",
+            "sources": [
+              "hub-python-introduction-0001",
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "966a73902d7ebe55f3ef0ee9fea4b5d84f82ca755c541c6e445f3359ef0ef306"
+            },
+            "needs": [
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "indexing"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "brush",
+            "bug_verification": {
+              "observed": "brush",
+              "fixed_output": "pen",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "pets = [\"cat\", \"dog\", \"bird\"]\nprint(pets[0])\nprint(pets[2])",
+          "options": [
+            "cat\nbird",
+            "dog\nbird",
+            "cat\ndog"
+          ],
+          "expected_output": "cat\nbird",
+          "explanation": "Position 0 gives cat and position 2 gives bird, so those two values print on separate lines.",
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-cs50-loops-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "ca93230fb1c973e879969602eea351fce2f9b57f34c69e7445b0612a2504aa4e",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 3,
+            "output": "cat\nbird"
+          },
+          "needs": [
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "indexing"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "colors"
+          ],
+          "title": "Pick First and Third Items",
+          "instructions": "A nonempty list named colors with at least 3 items is supplied. Example: colors is [\"red\", \"green\", \"blue\", \"yellow\"]. Assign to picked a new list containing the first item of colors followed by the third item of colors. Do not change colors.",
+          "entry": "picked",
+          "starter": "picked = [colors[0], colors[1]]",
+          "reference_solution": "picked = [colors[0], colors[2]]",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  "red",
+                  "green",
+                  "blue"
+                ]
+              ],
+              "expected": [
+                "red",
+                "blue"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "a",
+                  "b",
+                  "c",
+                  "d"
+                ]
+              ],
+              "expected": [
+                "a",
+                "c"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "sun",
+                  "cloud",
+                  "rain",
+                  "snow",
+                  "wind"
+                ]
+              ],
+              "expected": [
+                "sun",
+                "rain"
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-cs50-loops-0001"
+          ],
+          "verification": {
+            "source_hash": "4dc86e72f273a43c8731e585cebd6b3c1c77dbf6a03348c25074dbeb57009051",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "indexing"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "scores"
+          ],
+          "title": "Read the Second Score",
+          "instructions": "A nonempty list named scores with at least 2 numbers is supplied. Example: scores is [10, 20, 30]. Assign to second_score the second item of scores. Do not change scores.",
+          "entry": "second_score",
+          "starter": "second_score = scores[0]",
+          "reference_solution": "second_score = scores[1]",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  10,
+                  20,
+                  30
+                ]
+              ],
+              "expected": 20
+            },
+            {
+              "arguments": [
+                [
+                  5,
+                  9
+                ]
+              ],
+              "expected": 9
+            },
+            {
+              "arguments": [
+                [
+                  7,
+                  14,
+                  21,
+                  28
+                ]
+              ],
+              "expected": 14
+            }
+          ],
+          "sources": [
+            "hub-python-introduction-0001",
+            "hub-cs50-loops-0001"
+          ],
+          "verification": {
+            "source_hash": "9b356cccc6203c3672e5aeacc0e60cc86e9e1110f8ddffd7e755a8e54bb73494",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "indexing"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "Lists can be indexed with square brackets",
+        "quote": "lists can be indexed and sliced:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-introduction-0001",
+        "claim": "Index 0 returns the stored item",
+        "quote": "squares[0]  # indexing returns the item",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0001",
+        "claim": "Python lists are zero-indexed",
+        "quote": "These lists in Python are, shall we say, zero-indexed.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0001",
+        "claim": "First item is at location 0",
+        "quote": "The first item in a list is at location 0",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "indexing",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-introduction-0001",
+      "source_id": "python-introduction",
+      "source_title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html#lists",
+      "start": null,
+      "end": null,
+      "heading": "3.1.3. Lists",
+      "text": "lists can be indexed and sliced:\nsquares[0]  # indexing returns the item",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0001",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=2160",
+      "start": 2160.5,
+      "end": 2281.31,
+      "heading": "CS50 lecture excerpt",
+      "text": "These lists in Python are, shall we say, zero-indexed.\nThe first item in a list is at location 0",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-introduction",
+      "title": "Python · Introduction",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/introduction.html",
+      "fetched_at": 1793513454.0496233,
+      "content_hash": "a5738564ca0e8ca88fa217a8fc3653a6c6e46b23c093e019b1104b959d7f6c7a",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793520162.4594243,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "The approved topic catalog has one reference/video pair; use it without a paid selection request.",
+      "source_ids": [
+        "python-introduction",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "indexing",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Correctly included zero in indexing terminology.",
+    "Each assignment copies one selected item out of `students`. -> clarified"
+  ]
+}

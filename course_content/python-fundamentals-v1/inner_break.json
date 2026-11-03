@@ -1,0 +1,517 @@
+{
+  "version": "python-fundamentals-v1",
+  "concept_id": "inner_break",
+  "title": "A break inside nested loops",
+  "curriculum": {
+    "title": "Inner Break in Nested Loops",
+    "answer": "## Inner `break` keeps the outer loop going\n\nAn inner `break` exits the nearest inner loop. Any remaining statements in the current outer-loop body run next. Only after that body finishes does the outer loop advance to its next item. That pattern is useful when each inner list needs only one action, such as counting rows that contain a value.\n\n```python\nrooms = [[1, 2], [3, 4], [2, 9]]\nwanted = 2\nhits = 0\nfor room in rooms:\n    for seat in room:\n        if seat == wanted:\n            hits = hits + 1\n            break\nprint(hits)\n```\n\n```text\n2\n```\n\nWalk the values: `room` is first `[1, 2]`. The inner loop checks `1`, then `2`. On `2` the test is true, `hits` becomes `1`, and `break` leaves the inner loop. Control returns to the outer loop, so `room` becomes `[3, 4]`. Neither item matches, so `hits` stays `1`. Finally `room` is `[2, 9]`; the first item matches, `hits` becomes `2`, and `break` stops that inner scan. Then `print` shows `2`.\n\n```python\nbags = [[5, 5], [6, 7]]\nwanted = 5\ntotal = 0\nfor bag in bags:\n    for marble in bag:\n        if marble == wanted:\n            total = total + 1\n            break\nprint(total)\n```\n\n```text\n1\n```\n\nHere the first bag has two `5` values, but `total` grows only once because `break` skips the rest of that inner list. A common mistake is thinking `break` stops both loops. It does not: without an outer stop, later rows are still visited. Another mistake is forgetting `break`, so `[5, 5]` would add `2` instead of `1`. Checked attempts are not proof of durable mastery.\n",
+    "sources": [
+      "hub-python-control-flow-0001",
+      "hub-cs50-loops-0004"
+    ],
+    "units": [
+      {
+        "id": "inner-break-nested",
+        "title": "Break Inside Nested Loops",
+        "explanation": "Inner break stops one row scan while the outer scan continues.",
+        "opening_question": "If break runs inside an inner loop, does the outer loop still move on?",
+        "sources": [
+          "hub-python-control-flow-0001",
+          "hub-cs50-loops-0004"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What does break do when it is inside the inner loop?",
+            "code": "for row in [[1, 2], [3, 4]]:\n    for item in row:\n        if item == 2:\n            break",
+            "options": [
+              "Only the inner loop stops; the outer loop continues.",
+              "Both loops stop immediately.",
+              "The outer loop restarts from the first row."
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "Break exits only the inner loop, so the outer loop still moves to [3, 4].",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "cf41f6ea083b5b18bf668d08e56a60fbb03367df7f2b11798e9a8dc3551b4314",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "break",
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "nested_loops",
+              "variables"
+            ],
+            "targets": [
+              "inner_break"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Choose the line that counts each matching row only once.",
+            "code": "shelves = [[1, 2], [3, 4]]\nwanted = 2\ncount = 0\nfor row in shelves:\n    for item in row:\n        if item == wanted:\n            count = count + 1\n            ___\nprint(count)",
+            "options": [
+              "break",
+              "count = count + 1",
+              "print(count)"
+            ],
+            "answer_index": 0,
+            "expected_output": "1",
+            "explanation": "Break stops the inner scan after one count, so only the first row adds 1.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "1f9c2de36548d0d01b46b970e102511244466fa6fd0368d46a4933d1655f2007"
+            },
+            "needs": [
+              "arithmetic",
+              "break",
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "nested_loops",
+              "variables"
+            ],
+            "targets": [
+              "inner_break"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Which statement about this inner break is true?",
+            "code": "for row in [[7, 7], [7, 7]]:\n    for item in row:\n        if item == 7:\n            break",
+            "options": [
+              "No rows are visited after the first break.",
+              "The outer loop still visits the next row.",
+              "The program ends with an error."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "The outer loop continues, so the second row is still visited.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "915d73b20e0cea896c72b76d971c9b28151bd14e3c4c409f385b50d3d7774860",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "break",
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "nested_loops",
+              "variables"
+            ],
+            "targets": [
+              "inner_break"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Pick the line that makes total count bags containing 1, not every 1.",
+            "code": "bags = [[1, 1], [2, 3]]\nwanted = 1\ntotal = 0\nfor bag in bags:\n    for marble in bag:\n        if marble == wanted:\n            total = total + 1\n            ___\nprint(total)",
+            "options": [
+              "total = total + 1",
+              "print(total)",
+              "break"
+            ],
+            "answer_index": 2,
+            "expected_output": "1",
+            "explanation": "Break counts the first bag once; adding again counts both 1s twice plus extra.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "2f19130ec9da0413a0b18a9e8030a7360d3ff584dd11c782e005a1cf2ff561fe"
+            },
+            "needs": [
+              "arithmetic",
+              "break",
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "nested_loops",
+              "variables"
+            ],
+            "targets": [
+              "inner_break"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "4",
+            "bug_verification": {
+              "observed": "4",
+              "fixed_output": "1",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "groups = [[4, 4], [5, 6]]\nwanted = 4\ntotal = 0\nfor g in groups:\n    for v in g:\n        if v == wanted:\n            total = total + 1\n            break\nprint(total)",
+          "options": [
+            "1",
+            "2",
+            "0"
+          ],
+          "expected_output": "1",
+          "explanation": "First group matches once then inner break skips the second 4; second group has no match.",
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "6b5ba4eb7f1ffb3f3e8b517eb21128c14020648eb3c6fa3e10a78fd2e6b24fcf",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 16,
+            "output": "1"
+          },
+          "needs": [
+            "arithmetic",
+            "break",
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "lists",
+            "nested_loops",
+            "variables"
+          ],
+          "targets": [
+            "inner_break"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "boxes",
+            "wanted"
+          ],
+          "title": "Count Boxes With Wanted Item",
+          "instructions": "Count boxes that contain wanted. Inputs: boxes is a list of lists of numbers; wanted is one number. Use nested for loops and break the inner loop after the first match in a box so each box adds at most 1. Assign the count to hits. Example: boxes=[[1,2],[3,4]] and wanted=2 gives hits=1.",
+          "entry": "hits",
+          "starter": "hits = 0\nfor box in boxes:\n    for item in box:\n        if item == wanted:\n            hits = hits + 1",
+          "reference_solution": "hits = 0\nfor box in boxes:\n    for item in box:\n        if item == wanted:\n            hits = hits + 1\n            break",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  [
+                    1,
+                    2
+                  ],
+                  [
+                    2,
+                    2
+                  ],
+                  [
+                    3,
+                    4
+                  ]
+                ],
+                2
+              ],
+              "expected": 2
+            },
+            {
+              "arguments": [
+                [
+                  [
+                    5,
+                    5
+                  ],
+                  [
+                    6,
+                    7
+                  ]
+                ],
+                5
+              ],
+              "expected": 1
+            },
+            {
+              "arguments": [
+                [
+                  [],
+                  [
+                    8,
+                    9
+                  ]
+                ],
+                8
+              ],
+              "expected": 1
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001",
+            "hub-cs50-loops-0004"
+          ],
+          "verification": {
+            "source_hash": "440f2700ab95503509cce117b61da7342ccfcc22ab678601c06769659a2614d7",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "break",
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "lists",
+            "nested_loops",
+            "variables"
+          ],
+          "targets": [
+            "inner_break"
+          ]
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "trays",
+            "mark"
+          ],
+          "title": "Count Trays With Mark",
+          "instructions": "Count trays that contain mark. Inputs: trays is a list of lists of words; mark is one word. Scan each tray from left to right and count a tray once when mark is found, then stop that inner scan and continue with the next tray. Assign the count to found. Example: trays=[[\"a\",\"b\"],[\"c\",\"a\"]] and mark=\"a\" gives found=2.",
+          "entry": "found",
+          "starter": "found = 0\nfor tray in trays:\n    for word in tray:\n        if word == mark:\n            found = found + 1",
+          "reference_solution": "found = 0\nfor tray in trays:\n    for word in tray:\n        if word == mark:\n            found = found + 1\n            break",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  [
+                    "red",
+                    "blue"
+                  ],
+                  [
+                    "green",
+                    "yellow"
+                  ],
+                  [
+                    "blue",
+                    "blue"
+                  ]
+                ],
+                "blue"
+              ],
+              "expected": 2
+            },
+            {
+              "arguments": [
+                [
+                  [
+                    "red",
+                    "red"
+                  ],
+                  [
+                    "green",
+                    "green"
+                  ]
+                ],
+                "red"
+              ],
+              "expected": 1
+            },
+            {
+              "arguments": [
+                [
+                  [],
+                  [],
+                  [
+                    "red"
+                  ]
+                ],
+                "red"
+              ],
+              "expected": 1
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001",
+            "hub-cs50-loops-0004"
+          ],
+          "verification": {
+            "source_hash": "58cc78ff1408964de6fc08f9478e62a3c9ca1b0851819fea28d0b13e67b60ba3",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "arithmetic",
+            "break",
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "lists",
+            "nested_loops",
+            "variables"
+          ],
+          "targets": [
+            "inner_break"
+          ]
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "break exits only the innermost enclosing loop",
+        "quote": "The break statement breaks out of the innermost enclosing for or while loop:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0004",
+        "claim": "nested loops visit each brick in each row",
+        "quote": "For each row in square, for each brick in row, print brick.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "inner_break",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0001",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements",
+      "start": null,
+      "end": null,
+      "heading": "4.4. break and continue Statements",
+      "text": "The break statement breaks out of the innermost enclosing for or while loop:",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0004",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=4560",
+      "start": 4560.75,
+      "end": 4683.01,
+      "heading": "CS50 lecture excerpt",
+      "text": "For each row in square, for each brick in row, print brick.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 6,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793514077.2774265,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Original source selections retained; offline operator review corrected metadata and reran all checks.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "inner_break",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "review_corrections": [
+    {
+      "field": "exercise.kind",
+      "before": "function",
+      "after": "program",
+      "reason": "Corrected format metadata to match the existing top-level program. No def/return wrapper was introduced."
+    },
+    {
+      "field": "fresh_exercise.kind",
+      "before": "function",
+      "after": "program",
+      "reason": "Corrected format metadata to match the existing top-level program. No def/return wrapper was introduced."
+    },
+    {
+      "field": "notes",
+      "before": "An inner `break` stops only the loop it sits in. The outer loop then carries on with its next item.",
+      "after": "An inner `break` exits the nearest inner loop. Any remaining statements in the current outer-loop body run next. Only after that body finishes does the outer loop advance to its next item.",
+      "reason": "Prevented the generalization that break always jumps immediately to the next outer value."
+    }
+  ],
+  "operator_review": {
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA",
+    "human_teacher_review": false,
+    "notes_and_questions_inspected": true,
+    "checks_rerun_after_corrections": true
+  }
+}

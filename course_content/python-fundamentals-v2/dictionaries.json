@@ -1,0 +1,427 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "dictionaries",
+  "title": "Dictionary keys and defaults",
+  "curriculum": {
+    "title": "Dictionary keys and defaults",
+    "answer": "## Dictionary keys and defaults\n\nA dictionary pairs each **key** with one **value**. Think of a word with its definition: you use the exact word to find the meaning. Lists use positions, but a dictionary uses the key you chose.\n\nCreate a dictionary with braces and `key: value` pairs:\n\n```python\ntel = {'jack': 4098, 'sape': 4139}\nprint(tel['jack'])\nprint(tel.get('sape', 0))\n```\n```text\n4098\n4139\n```\n\nThe lookup `tel['jack']` uses the exact quoted key. Python finds the stored value for that key and returns it. Storing works the same way: `tel['guido'] = 4127` adds a new pair, and storing again with an existing key replaces the old value.\n\nKeys must match exactly. `'jack'` and `'Jack'` are different strings because the capital letter is different. Numbers can also be keys, but a list cannot be used as a key.\n\nBracket lookup expects the key to exist. Asking for a missing key with `d[key]` raises `KeyError` and stops the program. Use `get()` when the key might be missing:\n\n```python\nhouses = {'Hermione': 'Gryffindor', 'Draco': 'Slytherin'}\nprint(houses['Hermione'])\nprint(houses.get('Harry', 'Unknown'))\nprint(houses.get('Harry'))\n```\n```text\nGryffindor\nUnknown\nNone\n```\n\nHere `houses.get('Harry', 'Unknown')` returns `'Unknown'` because `'Harry'` is not present. Without a second argument, `get()` returns `None` for a missing key. A common mistake is changing case or spelling, such as `houses['draco']`, which is missing and raises `KeyError` even though `'Draco'` exists. Always copy the quoted key exactly and choose `[]` for required keys and `get()` with a default for optional keys.",
+    "sources": [
+      "hub-cs50-loops-0001",
+      "hub-python-data-structures-0001"
+    ],
+    "units": [
+      {
+        "id": "dictionaries-keys-defaults",
+        "title": "Dictionary keys and defaults",
+        "explanation": "A dictionary links each exact key to a value. You look up a present key with brackets and use get with a default for a key that might be missing.",
+        "opening_question": "If a dictionary links names to values, how do you safely read a name that might be missing?",
+        "sources": [
+          "hub-python-data-structures-0001",
+          "hub-cs50-loops-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What happens when storing with a key already in use?",
+            "code": "tel = {'jack': 4098, 'sape': 4139}\ntel['jack'] = 5000\nprint(tel['jack'])",
+            "options": [
+              "Both values are kept",
+              "The old value is forgotten",
+              "The dictionary becomes a list",
+              "The key is deleted"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "Keys are unique, so storing again with jack forgets the old value and lookup shows 5000.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "4d747f6ec20ba6ced8ac70daa27c701aa0a2f33172c7ef5c73e41299e132ea0f",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "indexing",
+              "variables"
+            ],
+            "targets": [
+              "dictionaries"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "house maps names to houses. Fill the line to set found to Draco's house.",
+            "code": "house = {'Hermione': 'Gryffindor', 'Draco': 'Slytherin'}\n___\nprint(found)",
+            "options": [
+              "found = house['Draco'] + 'x'",
+              "found = house['draco']",
+              "found = house['Draco']",
+              "found = house['Harry']"
+            ],
+            "answer_index": 2,
+            "expected_output": "Slytherin",
+            "explanation": "Direct lookup with the exact key Draco returns its value Slytherin.",
+            "sources": [
+              "hub-cs50-loops-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "6e7f574c197fdd4483dc2369f33249a781a424daa2671bf877c3e90155fcb88d"
+            },
+            "needs": [
+              "arithmetic",
+              "indexing",
+              "strings",
+              "variables"
+            ],
+            "targets": [
+              "dictionaries"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "What does this program do and why?",
+            "code": "d = {'jack': 4098}\nprint(d.get('Jack', 0))",
+            "options": [
+              "It prints 0 because the key differs in case",
+              "It prints 4098 because case does not matter",
+              "It raises KeyError because get always fails",
+              "It prints None because defaults are ignored"
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "Keys must match exactly including capitals, so Jack differs from jack and the default 0 is used.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "0d583feb0487859d3700a1c1eeb233719f814b219ea7317f79bf1b49b0c200ce",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "strings",
+              "variables"
+            ],
+            "targets": [
+              "dictionaries"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "tel has jack and sape only. Fill the line so result is 0 for missing irv.",
+            "code": "tel = {'jack': 4098, 'sape': 4139}\n___\nprint(result)",
+            "options": [
+              "result = tel.get('irv')",
+              "result = tel.get('irv', 0)",
+              "result = tel.get('jack', 0)",
+              "result = tel['sape'] + 1"
+            ],
+            "answer_index": 1,
+            "expected_output": "0",
+            "explanation": "Missing irv without a default returns None, while get with default 0 safely returns 0.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "03cae7b52863dfc0911842b28de5b707ccd9b01e1b0a076a12ebee056b00e67e"
+            },
+            "needs": [
+              "arithmetic",
+              "indexing",
+              "strings",
+              "variables"
+            ],
+            "targets": [
+              "dictionaries"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "None",
+            "bug_verification": {
+              "observed": "None",
+              "fixed_output": "0",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "tel = {'jack': 4098, 'sape': 4139}\nprint(tel['jack'])\nprint(tel.get('irv', 0))\nprint(tel.get('irv'))",
+          "options": [
+            "4098\n0\nNone",
+            "4098\n4098\nNone",
+            "4098\n0\n0"
+          ],
+          "expected_output": "4098\n0\nNone",
+          "explanation": "Exact key jack returns 4098. Missing irv with default 0 returns 0, and without default returns None.",
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "159bf75a55afa988df9c108dd909f746bddbfa1d4ca4505fd4557b06df379b4f",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 4,
+            "output": "4098\n0\nNone"
+          },
+          "needs": [
+            "indexing",
+            "strings",
+            "variables"
+          ],
+          "targets": [
+            "dictionaries"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "tel",
+            "name"
+          ],
+          "title": "Safe number lookup",
+          "instructions": "Given tel dictionary and name string, set result to the value for name, or 0 when name is missing. Use get with a default and do not change tel.",
+          "entry": "result",
+          "starter": "result = tel[name]",
+          "reference_solution": "result = tel.get(name, 0)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                {
+                  "jack": 4098,
+                  "sape": 4139
+                },
+                "jack"
+              ],
+              "expected": 4098
+            },
+            {
+              "arguments": [
+                {
+                  "jack": 4098,
+                  "sape": 4139
+                },
+                "irv"
+              ],
+              "expected": 0
+            },
+            {
+              "arguments": [
+                {
+                  "sape": 4139
+                },
+                "Sape"
+              ],
+              "expected": 0
+            }
+          ],
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "verification": {
+            "source_hash": "5b092fc09a7e7f850703d32680e0b3e0d0890ed8c0593e796fb4308258ee9fdb",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "indexing",
+            "strings",
+            "variables"
+          ],
+          "targets": [
+            "dictionaries"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "houses",
+            "student"
+          ],
+          "title": "Safe house lookup",
+          "instructions": "Given houses dictionary and student string, set found to the house for student, or Unknown when student is missing. Do not change houses.",
+          "entry": "found",
+          "starter": "found = 'Unknown'",
+          "reference_solution": "found = houses.get(student, 'Unknown')",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                {
+                  "Hermione": "Gryffindor",
+                  "Draco": "Slytherin"
+                },
+                "Draco"
+              ],
+              "expected": "Slytherin"
+            },
+            {
+              "arguments": [
+                {
+                  "Hermione": "Gryffindor",
+                  "Draco": "Slytherin"
+                },
+                "Harry"
+              ],
+              "expected": "Unknown"
+            },
+            {
+              "arguments": [
+                {
+                  "Hermione": "Gryffindor"
+                },
+                "hermione"
+              ],
+              "expected": "Unknown"
+            }
+          ],
+          "sources": [
+            "hub-cs50-loops-0001"
+          ],
+          "verification": {
+            "source_hash": "3843a217615b4ff45965f2deaece388da90ec48f895ec0ebb06f6b6e4c409074",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "indexing",
+            "strings",
+            "variables"
+          ],
+          "targets": [
+            "dictionaries"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-data-structures-0001",
+        "claim": "Dictionaries are indexed by keys which can be strings and numbers",
+        "quote": "dictionaries are indexed by keys, which can be any immutable type",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0001",
+        "claim": "A dictionary associates one thing with another thing",
+        "quote": "It allows you to associate something with something else.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "dictionaries",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-data-structures-0001",
+      "source_id": "python-data-structures",
+      "source_title": "Python · Data structures",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#dictionaries",
+      "start": null,
+      "end": null,
+      "heading": "5.5. Dictionaries",
+      "text": "dictionaries are indexed by keys, which can be any immutable type",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0001",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=2762",
+      "start": 2762.25,
+      "end": 2882.64,
+      "heading": "CS50 lecture excerpt",
+      "text": "It allows you to associate something with something else.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-data-structures",
+      "title": "Python · Data structures",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html",
+      "fetched_at": 1793519945.7708907,
+      "content_hash": "017c8239f7d174e0df5b90dbc1c7802a82aa2b5f2b5f8b07bb843c687080a948",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 4,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558235.978157,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Fixed approved reference/video pair; rejected Meta draft corrected and rechecked.",
+      "source_ids": [
+        "python-data-structures",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "dictionaries",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "Unwrapped generated named argument records to the positional values required by the program runner."
+  ]
+}

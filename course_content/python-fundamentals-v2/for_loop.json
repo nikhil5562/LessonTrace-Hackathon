@@ -1,0 +1,482 @@
+{
+  "version": "python-fundamentals-v2",
+  "concept_id": "for_loop",
+  "title": "One item at a time: for loops",
+  "curriculum": {
+    "title": "One Item at a Time: for Loops",
+    "answer": "## One item at a time: `for` loops\n\nA `for` loop visits every item in a list, one after another, in order. You choose a loop variable name and Python assigns it to the first item, runs the body, then assigns it to the second item, runs the body again, and so on.\n\nThink of it as: **for each item in the list, do the body once.**\n\n```python\nnums = [5, 6, 7]\nresult = []\nfor n in nums:\n    result.append(n + 1)\nprint(result)\n```\n\nWhat happens here:\n\n1. Before the loop, `nums` already holds `[5, 6, 7]` and `result` starts as `[]`.\n2. First pass: `n` is `5`, so `6` is appended. `result` is `[6]`.\n3. Second pass: `n` is `6`, so `7` is appended. `result` is `[6, 7]`.\n4. Third pass: `n` is `7`, so `8` is appended. `result` is `[6, 7, 8]`.\n\nThe common pattern for this lesson is:\n\n- make an empty new list before the loop\n- loop over the old list\n- `append` one transformed value for every original item\n- the old list keeps its order and length\n\n```python\nwords = ['cat', 'hi']\nlengths = []\nfor w in words:\n    lengths.append(len(w))\nprint(lengths)\nprint(words)\n```\n\nThis prints `[3, 2]` and then `['cat', 'hi']`. There is one new entry for every word, in the same order. The original `words` list is unchanged; we built a new collection instead of changing the one we looped over.\n\nCommon mistakes:\n\n- Forgetting `result = []` before the loop, so there is no list to grow.\n- Calling `append` on the number or string, such as `n.append(...)`, instead of on the new list.\n- Thinking the loop runs once with the whole list. It runs once *per item*.\n- Changing the loop list itself while looping. Make a new list with `append` instead.",
+    "sources": [
+      "hub-python-control-flow-0001"
+    ],
+    "units": [
+      {
+        "id": "for-loop-one-at-a-time",
+        "title": "One Item at a Time",
+        "explanation": "The loop variable takes each original item in order and append appends one new value per item, so the new list has the same length and order as the original.",
+        "opening_question": "If a loop should touch every list item once, how do you visit them one at a time in order?",
+        "sources": [
+          "hub-python-control-flow-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "How many times does the body run and what is n each time?",
+            "code": "nums = [5, 6]\nresult = []\nfor n in nums:\n    result.append(n + 1)\nprint(result)",
+            "options": [
+              "It runs only once with the whole list.",
+              "It runs once for 5 and once for 6, in order.",
+              "It runs three times with values 0, 1, 2."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "The body runs once per item, first with n as 5 then with n as 6.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "72cf774723bd990ae1ab8b7de73887285a1aee560342cfcfb3e9e078cce9d823",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "for_loop"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the loop so every item is doubled into result:",
+            "code": "nums = [1, 2, 3]\nresult = []\nfor n in nums:\n    ___\nprint(result)",
+            "options": [
+              "result.append(n * 2)",
+              "result.append(nums)",
+              "print(n * 2)"
+            ],
+            "answer_index": 0,
+            "expected_output": "[2, 4, 6]",
+            "explanation": "Each item multiplied by 2 must be appended to the new list.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "c277015daf9299d91e59d7612d8377097d598d3aef384548130727765c4190d2"
+            },
+            "needs": [
+              "arithmetic",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "for_loop"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "What does this loop do to build lengths?",
+            "code": "words = ['cat', 'hi']\nlengths = []\nfor w in words:\n    lengths.append(len(w))\nprint(lengths)",
+            "options": [
+              "It makes lengths longer than words by one.",
+              "It changes words to numbers.",
+              "It makes one new entry for every word, in the same order."
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "The loop visits cat then hi, appending one length per word in order.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "d104c1798ec2fe0ddb1e607608d14d31cdef5c6b9fc857d145ea5a9f4e2de793",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "list_mutation",
+              "lists",
+              "strings",
+              "variables"
+            ],
+            "targets": [
+              "for_loop"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "When building a new list with append inside a loop, which setup must exist before the first iteration?",
+            "code": "nums = [1, 2]\nresult = []\nfor n in nums:\n    result.append(n + 5)\nprint(result)",
+            "options": [
+              "The loop variable n is missing.",
+              "The line result = [] before the loop is missing.",
+              "The print line is missing."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "The new list must exist before the loop so append has a list to grow.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "1e4657a3f89e9f1eb9a594e6aec5a385e810e16eb780c92317ca0a9a6790f753",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "arithmetic",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "for_loop"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the loop so result holds each number plus one:",
+            "code": "nums = [3, 4]\nresult = []\nfor n in nums:\n    ___\nprint(result)",
+            "options": [
+              "result.append(n + 1)",
+              "result.append(nums)",
+              "result.append(n)"
+            ],
+            "answer_index": 0,
+            "expected_output": "[4, 5]",
+            "explanation": "Append n + 1 to grow one number per item. Appending nums puts the whole list in twice.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "6e2dc7cfe0138efd2a5a03af96b6262d95661ecf0338c218db1a795af65b90dd"
+            },
+            "needs": [
+              "arithmetic",
+              "list_mutation",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "for_loop"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "[[3, 4], [3, 4]]",
+            "bug_verification": {
+              "observed": "[[3, 4], [3, 4]]",
+              "fixed_output": "[4, 5]",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "nums = [2, 5]\nresult = []\nfor n in nums:\n    result.append(n * 2)\nprint(result)",
+          "options": [
+            "[4, 10]",
+            "[2, 5]",
+            "[4]"
+          ],
+          "expected_output": "[4, 10]",
+          "explanation": "The loop runs once for 2 then once for 5, appending 4 then 10 in order.",
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "28c31c43f5c1ed622059d9c5be496405fbf3165909afa41025e56567aee61f03",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 8,
+            "output": "[4, 10]"
+          },
+          "needs": [
+            "arithmetic",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "for_loop"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "nums"
+          ],
+          "title": "Double Every Item",
+          "instructions": "You are given a list called nums. Create a new list called doubled with one entry for every item in nums. Each entry is the original item multiplied by 2, kept in the same order. Use a for loop and append. Do not change nums. Example: if nums is [4, 5] then doubled should be [8, 10].",
+          "entry": "doubled",
+          "starter": "doubled = []\nfor n in nums:\n    doubled.append(n)",
+          "reference_solution": "doubled = []\nfor n in nums:\n    doubled.append(n * 2)",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                2,
+                4,
+                6
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  0,
+                  -4,
+                  10
+                ]
+              ],
+              "expected": [
+                0,
+                -8,
+                20
+              ]
+            },
+            {
+              "arguments": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                [
+                  7
+                ]
+              ],
+              "expected": [
+                14
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "9b736d4858d9537a25847ed37b28372ff8c31983a296eb6c30b57befbc6b0313",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "arithmetic",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "for_loop"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "words"
+          ],
+          "title": "Count Letters In Each Word",
+          "instructions": "You are given a list called words. Create a new list called counts with one entry for every item in words. Each entry is the length of that word, kept in the same order. Use a for loop and append. Do not change words. Example: if words is ['hi', 'hey'] then counts should be [2, 3].",
+          "entry": "counts",
+          "starter": "counts = []\nfor w in words:\n    counts.append(w)",
+          "reference_solution": "counts = []\nfor w in words:\n    counts.append(len(w))",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  "cat",
+                  "window"
+                ]
+              ],
+              "expected": [
+                3,
+                6
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "a",
+                  "hi",
+                  "bye"
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "arguments": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                [
+                  "x"
+                ]
+              ],
+              "expected": [
+                1
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "471bb12084d66b3a54662e52c6ba78f2a157420285b3ab4ee1f86e551a5043b3",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "list_mutation",
+            "lists",
+            "strings",
+            "variables"
+          ],
+          "targets": [
+            "for_loop"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "A for loop visits each item of a sequence in order",
+        "quote": "Python’s for statement iterates over the items of any sequence",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "for_loop",
+      "worked_examples_run": 2,
+      "quiz_questions": 6,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 4,
+      "fresh_cases": 4,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0001",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#for-statements",
+      "start": null,
+      "end": null,
+      "heading": "4.2. for Statements",
+      "text": "Python’s for statement iterates over the items of any sequence",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 10,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793513315.5683942,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Selected official Python reference and creator video to review for-loop iteration for the shared base lesson.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "for_loop",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "review_corrections": [
+    {
+      "field": "quiz.prompt",
+      "before": "A learner deletes the setup line. Which missing line breaks this program?",
+      "after": "When building a new list with append inside a loop, which setup must exist before the first iteration?",
+      "reason": "Removed a reference to an unseen buggy program; this remains a concept question about the shown notes."
+    }
+  ],
+  "operator_review": {
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA",
+    "human_teacher_review": false,
+    "notes_and_questions_inspected": true,
+    "checks_rerun_after_corrections": true
+  },
+  "flow": "lesson-first",
+  "reused_from": {
+    "version": "python-fundamentals-v1",
+    "sha256": "9a4208f0d60ad8f3ff7a46156a512c7090d8bde04c9260d6144f576fb210960a"
+  }
+}

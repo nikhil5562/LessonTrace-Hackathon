@@ -1,0 +1,25 @@
+"""Original exercises connected to reviewed concepts in the selected functions video."""
+def add_functions(topics,tasks):
+    topics['functions']={
+        'title':'Functions: inputs, work and a result','subtitle':'Practise the core ideas from the linked Codebasics lecture.',
+        'notes':[
+            {'id':'fn-block','title':'Define once, call with new inputs','text':'def defines a reusable function. Its body runs when called. Parameters are names in the definition; arguments are values supplied by a call.','video_start':205},
+            {'id':'fn-result','title':'Return a result to the caller','text':'return sends a value to the caller and ends that function call. print displays text. A function that only prints usually returns None.','video_start':250},
+            {'id':'fn-arguments','title':'Order and keyword arguments','text':'Positional arguments bind in parameter order. Keyword arguments name their parameters explicitly, so the written order can change.','video_start':560},
+            {'id':'fn-scope','title':'Each call has its own local names','text':'A local total and a module-level total can refer to different values. Updating the local name does not by itself update the outside name. Compare the function frames.','video_start':666},
+            {'id':'fn-default','title':'Defaults cover omitted arguments','text':'In def add(a, b=0), omitting b uses zero. Supplying b explicitly uses the supplied value instead. This pilot supports scalar literal defaults.','video_start':770},
+            {'id':'fn-doc','title':'Describe the function contract','text':'A docstring is a string at the beginning of a function body. State its inputs and returned result. It documents behaviour; it is not a test that proves the code correct.','video_start':854},
+        ],
+        'prediction':[
+            {'id':'fn-p1','prompt':'A function prints 7 but has no return statement. What value does the caller receive?','options':['7','None','The printed text'],'answer':'None','why':'Printing and returning are separate. Without an explicit return value, the function returns None.'},
+            {'id':'fn-p2','prompt':'def add(a, b=0) returns a + b. What does add(5) return?','options':['5','0','Missing-argument error'],'answer':'5','why':'The omitted second argument takes its default zero, so the result is 5 + 0.'},
+        ],
+        'example':'total = 100\ndef add_cost(first, second=0):\n    total = first + second\n    return total\nresult = add_cost(5)\nprint(result, total)\n',
+    }
+    solution='def cost_total(costs):\n    total = 0\n    for cost in costs:\n        total += cost\n    return total\n'
+    tasks['cost-total']={'id':'cost-total','topic':'functions','stage':'repair','entry':'cost_total','title':'Repair: give the caller the total','task':'Write cost_total(costs). Use an explicit loop to add the costs and return their total. Empty input returns 0. Displaying a result is different from returning it.','starter':solution.replace('return total','print(total)'),'solution':solution,'cases':[{'args':[[8,12,5]],'expected':25},{'args':[[]],'expected':0},{'args':[[7]],'expected':7},{'args':[[0,3]],'expected':3}],'sources':['fn-block','fn-result'],'requires_loop':True,'hint':'Look at the printed output and returned value separately. Which one does the caller need?'}
+    solution='def trip_cost(first, second=0):\n    return first + second\n'
+    tasks['trip-cost']={'id':'trip-cost','topic':'functions','stage':'write','entry':'trip_cost','title':'Write: make the second input optional','task':'Write trip_cost(first, second=0). Return the sum of the two costs. If the caller omits second, use 0.','starter':'def trip_cost(first, second=0):\n    pass\n','solution':solution,'cases':[{'args':[10],'expected':10},{'args':[4,6],'expected':10},{'args':[0],'expected':0},{'args':[-2,5],'expected':3}],'sources':['fn-arguments','fn-default','fn-result'],'hint':'Compare a call with one argument against a call with two. The default is used only for the omitted argument.'}
+    for identifier,entry,values,fee in [('invoice-cost','invoice_cost',[9,4],3),('group-cost','group_cost',[6,8,2],4)]:
+        solution=f'def {entry}(costs, fee=0):\n    total = 0\n    for cost in costs:\n        total += cost\n    return total + fee\n'
+        tasks[identifier]={'id':identifier,'topic':'functions','stage':'transfer','entry':entry,'title':'Apply: a reusable total with an optional fee','task':f'Write {entry}(costs, fee=0). Use an explicit loop to total all costs, add the fee once, and return the result. If costs is empty, return the fee.','starter':f'def {entry}(costs, fee=0):\n    pass\n','solution':solution,'cases':[{'args':[values,fee],'expected':sum(values)+fee},{'args':[values],'expected':sum(values)},{'args':[[],fee],'expected':fee},{'args':[[]],'expected':0}],'sources':['fn-block','fn-default','fn-result'],'requires_loop':True,'hint':'First finish the total of the list. Then account for the one optional fee. Which operation belongs inside the loop?'}

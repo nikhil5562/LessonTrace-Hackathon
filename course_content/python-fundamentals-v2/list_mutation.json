@@ -1,0 +1,413 @@
+{
+  "version": "python-fundamentals-v2",
+  "flow": "lesson-first",
+  "concept_id": "list_mutation",
+  "title": "Updating, copying and sharing lists",
+  "curriculum": {
+    "title": "Updating, Copying, and Sharing Lists",
+    "answer": "## Copying and growing a list\n\nA Python list variable names a list object, not a separate copy of the values. Assignment makes two names share one list, so a change through one name is visible through the other. This sharing is called aliasing.\n\n```python\nroster = [\"Hermione\", \"Harry\"]\nbackup = roster\nbackup.append(\"Ron\")\nprint(roster)\nprint(backup)\n```\n\n```text\n['Hermione', 'Harry', 'Ron']\n['Hermione', 'Harry', 'Ron']\n```\n\n`backup = roster` does not copy. Both names point to the same list, so `append` through `backup` also changes what `roster` sees.\n\nUse `copy` when the old list must stay unchanged. Copy first, then change only the copy:\n\n```python\nroster = [\"Hermione\", \"Harry\"]\nupdated = roster.copy()\nupdated.append(\"Ron\")\nprint(roster)\nprint(updated)\n```\n\n```text\n['Hermione', 'Harry']\n['Hermione', 'Harry', 'Ron']\n```\n\nNow `roster` keeps two items while `updated` has three. The flow is: create the starting list, make an new outer-list copy, append the new value to the copy, and leave the original alone.\n\nTwo common mistakes are assigning instead of copying, and saving the result of `append`. `append` changes the list in place and gives back `None`:\n\n```python\ncolors = [\"red\", \"blue\"]\nresult = colors.append(\"green\")\nprint(colors)\nprint(result)\n```\n\n```text\n['red', 'blue', 'green']\nNone\n```\n\nAlways show where each list comes from, grow a copy when preservation matters, and print both lists to check sharing.\n\nThis is a shallow copy: it creates a new outer list. If its items are themselves mutable objects, those inner objects can still be shared. The examples here use strings.",
+    "sources": [
+      "hub-python-data-structures-0001"
+    ],
+    "units": [
+      {
+        "id": "list-mutation-basics",
+        "title": "Copying and Growing Lists",
+        "explanation": "Assignment shares one list while copy plus append preserves the original; append works in place and returns None.",
+        "opening_question": "If two names share one list, what happens when you add an item through only one name?",
+        "sources": [
+          "hub-python-data-structures-0001"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "Look at the code. What is true after the last line?",
+            "code": "roster = [\"Hermione\", \"Harry\"]\nbackup = roster\nbackup.append(\"Ron\")\nprint(roster)\nprint(backup)",
+            "options": [
+              "roster stays unchanged because backup is a separate copy",
+              "roster also shows Ron because both names share one list",
+              "append returns a new list and leaves both names unchanged",
+              "assignment automatically copies the list"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "Assignment shares one list, so appending through backup is visible through roster.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "602f8aacfb875a69005926a48be7f95299c17eb878e1c02eaaee13226ddfe942",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "list_mutation"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fill ___ so the printed list adds one name while the first list stays unchanged.",
+            "code": "roster = [\"Hermione\", \"Harry\"]\nupdated = roster.copy()\n___\nprint(updated)",
+            "options": [
+              "updated.append(\"Ron\")",
+              "updated = roster",
+              "roster.append(\"Ron\")"
+            ],
+            "answer_index": 0,
+            "expected_output": "['Hermione', 'Harry', 'Ron']",
+            "explanation": "Copy first, then append Ron to the copy, leaving roster unchanged.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "798b2f0bc40aebf9d19462f7ba6102677e7dc12bca8661d09bebd1cb5c0b8954"
+            },
+            "needs": [
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "list_mutation"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Look at the code. What happens to result and colors?",
+            "code": "colors = [\"red\", \"blue\"]\nresult = colors.append(\"green\")\nprint(colors)\nprint(result)",
+            "options": [
+              "result is a new list with green added",
+              "colors is unchanged because the result was saved",
+              "result is None and colors now ends with green",
+              "append inserts green at the front of colors"
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "append updates colors in place and returns None, so result is None.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "5e2f43f18b48544f80752531e6f5d62756ca691a7219bd9ee11b53e94045e474",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "list_mutation"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fill ___ so the first list is preserved and the second list adds one name.",
+            "code": "roster = [\"Hermione\", \"Harry\"]\nupdated = roster.copy()\n___\nprint(roster)\nprint(updated)",
+            "options": [
+              "roster.append(\"Ron\")",
+              "updated.append(\"Ron\")",
+              "updated = roster"
+            ],
+            "answer_index": 1,
+            "expected_output": "['Hermione', 'Harry']\n['Hermione', 'Harry', 'Ron']",
+            "explanation": "The fix appends to the copy, preserving roster. Appending to roster mutates the original.",
+            "sources": [
+              "hub-python-data-structures-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "6690ff6881f07c261cea52116091d72bdbb3f2fd6b1d69d01ceb5e8502b28a4b"
+            },
+            "needs": [
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "list_mutation"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 0,
+            "expected_bug_output": "['Hermione', 'Harry', 'Ron']\n['Hermione', 'Harry']",
+            "bug_verification": {
+              "observed": "['Hermione', 'Harry', 'Ron']\n['Hermione', 'Harry']",
+              "fixed_output": "['Hermione', 'Harry']\n['Hermione', 'Harry', 'Ron']",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "items = [\"red\", \"blue\"]\nbackup = items.copy()\nbackup.append(\"green\")\nprint(items)\nprint(backup)",
+          "options": [
+            "['red', 'blue']\n['red', 'blue', 'green']",
+            "['red', 'blue', 'green']\n['red', 'blue', 'green']",
+            "['red', 'blue']\n['red', 'blue']"
+          ],
+          "expected_output": "['red', 'blue']\n['red', 'blue', 'green']",
+          "explanation": "copy makes an independent list, so appending green changes only backup while items stays unchanged.",
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "7565edc1f37457d7a5a775e55a3dc4cc5554a07f9686d89d3f3f9417041c995c",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 5,
+            "output": "['red', 'blue']\n['red', 'blue', 'green']"
+          },
+          "needs": [
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "list_mutation"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "roster"
+          ],
+          "title": "Copy roster then add Ron",
+          "instructions": "Supplied input roster is a list of strings and must be preserved. Make updated as a copy of roster with Ron added at the end. For example, if roster is [\"Hermione\", \"Harry\"] then updated should be [\"Hermione\", \"Harry\", \"Ron\"] and roster must stay unchanged.",
+          "entry": "updated",
+          "starter": "updated = roster.copy()",
+          "reference_solution": "updated = roster.copy()\nupdated.append(\"Ron\")",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  "Hermione",
+                  "Harry"
+                ]
+              ],
+              "expected": [
+                "Hermione",
+                "Harry",
+                "Ron"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "Luna"
+                ]
+              ],
+              "expected": [
+                "Luna",
+                "Ron"
+              ]
+            },
+            {
+              "arguments": [
+                []
+              ],
+              "expected": [
+                "Ron"
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "verification": {
+            "source_hash": "c7e21da036018585f03949b53db351cb6f1aba5e822936a27bb831bbaeb7fe70",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "list_mutation"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "cart"
+          ],
+          "title": "Copy cart then add green",
+          "instructions": "Supplied input cart is a list of strings and must be preserved. Produce packed as the preserved list plus one more item green at the end. For example, if cart is [\"red\", \"blue\"] then packed should be [\"red\", \"blue\", \"green\"] and cart must stay unchanged.",
+          "entry": "packed",
+          "starter": "packed = cart",
+          "reference_solution": "packed = cart.copy()\npacked.append(\"green\")",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  "red",
+                  "blue"
+                ]
+              ],
+              "expected": [
+                "red",
+                "blue",
+                "green"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "yellow"
+                ]
+              ],
+              "expected": [
+                "yellow",
+                "green"
+              ]
+            },
+            {
+              "arguments": [
+                []
+              ],
+              "expected": [
+                "green"
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-data-structures-0001"
+          ],
+          "verification": {
+            "source_hash": "7d7dfb7f2f96e83a0171ee63b548a8a3f7b87640fb0587c0c76b4cb39c3a58f4",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "list_mutation"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-data-structures-0001",
+        "claim": "append adds an item to the end of a list",
+        "quote": "Add an item to the end of the list.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-data-structures-0001",
+        "claim": "copy returns a shallow copy of a list",
+        "quote": "Return a shallow copy of the list.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-data-structures-0001",
+        "claim": "list methods that only modify return None",
+        "quote": "they return the default None.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "list_mutation",
+      "worked_examples_run": 3,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-data-structures-0001",
+      "source_id": "python-data-structures",
+      "source_title": "Python · Data structures",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#more-on-lists",
+      "start": null,
+      "end": null,
+      "heading": "5.1. More on Lists",
+      "text": "Add an item to the end of the list.\nReturn a shallow copy of the list.\nthey return the default None.",
+      "truncated": true,
+      "source_offset": 0,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-data-structures",
+      "title": "Python · Data structures",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html",
+      "fetched_at": 1793519945.7708907,
+      "content_hash": "017c8239f7d174e0df5b90dbc1c7802a82aa2b5f2b5f8b07bb843c687080a948",
+      "reviewed_sections": 1,
+      "available_sections": 1,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 3,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793558190.1187258,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "The approved topic catalog has one reference/video pair; use it without a paid selection request.",
+      "source_ids": [
+        "python-data-structures",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "list_mutation",
+        "worked_examples_run": 3,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_corrections": [
+    "independent copy -> clarified",
+    "Distinguished a new outer list from a recursive independent copy."
+  ]
+}

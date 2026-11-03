@@ -1,0 +1,389 @@
+{
+  "version": "python-fundamentals-v2",
+  "course": "Python Fundamentals",
+  "unit": "all",
+  "status": "reviewed-pilot",
+  "review": {
+    "version": "python-fundamentals-v2",
+    "unit": "all",
+    "date": "2026-11-02",
+    "reviewer": "Codex AI-assisted operator QA with bounded source/semantic peer review; not an independent human teacher",
+    "human_teacher_review": false,
+    "notes_reviewed": true,
+    "questions_reviewed": true,
+    "limitations": [
+      "No independent human-teacher approval or student learning study.",
+      "Execution and exact quote gates do not establish complete semantic correctness or exhaustive grading.",
+      "V1 source lessons are reused with their original provenance; v2 progression no longer requires an extra independent task."
+    ],
+    "lesson_hashes": {
+      "variables": "dff3fd1805552ee936aad1c71d213cab127ba397eae8da2a1f5a51e09af09345",
+      "arithmetic": "1cc4c5deb304fdb70a3dbf01dd5f372dc90d65587e3adba0743571b815a7cfe0",
+      "strings": "dfc6c814296fae2cf9c07b20aaf67886ff622dd1428b412e4790dc9a7f005973",
+      "comparisons": "422ace099ce12a17cf722ec83720ee1ebded590573a3f59710002c1e62c11fd7",
+      "lists": "0d1d49d7e2991e4cdee4de9a931da7a712b8a5eac5757dff9979a63e3704ada4",
+      "indexing": "0d5becbbcd51f7c72d40ceba495a36da6d464423b5067e2846f5e582d3974428",
+      "list_mutation": "6ad6e164c2855f46675e62cb02276a6185954cca4cf6cea7355fbde74b7347b1",
+      "dictionaries": "a6e8decac8c6cd2cdcf58cb54834cc6faec855ca6a1f50e8e6e9413d17725e8d",
+      "nested_data": "734824e65f43ecacca1760448beb3797458b804e71b624c8f89ed7b62c140f82",
+      "if_else": "ed0e25157c439159f36e7ea1669b542fc67db3bc89f05a1a0d6e7ed79224aa19",
+      "boolean_logic": "829ebc0f8459f43e5323436bb6df6c147633d36f0dbc65dfc768ffa564e51136",
+      "for_loop": "0bbd136a20eb64be213a5ba8ec2284883a2843e203f79099339b41b515de5614",
+      "range": "ab6609ab437d7a7bb14857022db3535bdf60e89115c84f6421b5c0d347911701",
+      "while_loop": "766b337995d247b1d25225b945340a87609606c5c17118f2b3ef6d2e425fc857",
+      "loop_lists": "93f1477ee5f535244e34ff4009e33a01b84189002c70c30a60bc2b1096086813",
+      "loop_if_else": "29b294e8d692ad59ae53b3ecb415f2f1bd578d3abfd2cce5a5964c37f0a9654e",
+      "break": "66c01a3d3eac632d73afba64fb4fd2baad969cbf0eba93f061c9b5881989188a",
+      "continue": "e13500a32495b7656580f14416b61709dc9478a0f295d3f3c567ad9ea4270014",
+      "nested_loops": "63e00f6e1881c2e7b0a2859d9b5f996bb5229b8e7e00dd13a953ef7dbfee0f49",
+      "inner_break": "a27c9e7d0d496dd9685fd0ce2a98c38e1aab5cbda183c00137d9244285cc9377",
+      "functions": "b03e58f6cb224905f7d0ee36f2406612d121c60962cc2b8542cd43d33707c094",
+      "parameters": "3a638bea6646e2d1c989e69eb57ea55cd41f32dcf52eff264ebdd65aa8a788d9",
+      "scope": "b6a2cfbac7a437c24bd8686b979eaf8fac0240bb0aefee8cb6bbf76f5a501029",
+      "functions_data": "2a9ac4749571342c12352db1ba5048f425bfce57337c0abf2afa33c367b02aaf"
+    },
+    "lessons": [
+      {
+        "concept": "variables",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 8
+      },
+      {
+        "concept": "arithmetic",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      },
+      {
+        "concept": "strings",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 4
+      },
+      {
+        "concept": "comparisons",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 3
+      },
+      {
+        "concept": "lists",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      },
+      {
+        "concept": "indexing",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 2
+      },
+      {
+        "concept": "list_mutation",
+        "worked_examples_run": 3,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 2
+      },
+      {
+        "concept": "dictionaries",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      },
+      {
+        "concept": "nested_data",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      },
+      {
+        "concept": "if_else",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 3
+      },
+      {
+        "concept": "boolean_logic",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 5
+      },
+      {
+        "concept": "for_loop",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "range",
+        "worked_examples_run": 4,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "while_loop",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "loop_lists",
+        "worked_examples_run": 3,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "loop_if_else",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "break",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "continue",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "nested_loops",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "inner_break",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 0
+      },
+      {
+        "concept": "functions",
+        "worked_examples_run": 3,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 2
+      },
+      {
+        "concept": "parameters",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 5
+      },
+      {
+        "concept": "scope",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 5
+      },
+      {
+        "concept": "functions_data",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review.",
+        "operator_corrections": 1
+      }
+    ],
+    "failed": []
+  },
+  "graph_hash": "1cdbfc687aed773162736196dc7e0bc681fdf3b67f73e8bbea247527263b6fb6",
+  "lessons": {
+    "variables": {
+      "file": "variables.json",
+      "sha256": "dff3fd1805552ee936aad1c71d213cab127ba397eae8da2a1f5a51e09af09345"
+    },
+    "arithmetic": {
+      "file": "arithmetic.json",
+      "sha256": "1cc4c5deb304fdb70a3dbf01dd5f372dc90d65587e3adba0743571b815a7cfe0"
+    },
+    "strings": {
+      "file": "strings.json",
+      "sha256": "dfc6c814296fae2cf9c07b20aaf67886ff622dd1428b412e4790dc9a7f005973"
+    },
+    "comparisons": {
+      "file": "comparisons.json",
+      "sha256": "422ace099ce12a17cf722ec83720ee1ebded590573a3f59710002c1e62c11fd7"
+    },
+    "lists": {
+      "file": "lists.json",
+      "sha256": "0d1d49d7e2991e4cdee4de9a931da7a712b8a5eac5757dff9979a63e3704ada4"
+    },
+    "indexing": {
+      "file": "indexing.json",
+      "sha256": "0d5becbbcd51f7c72d40ceba495a36da6d464423b5067e2846f5e582d3974428"
+    },
+    "list_mutation": {
+      "file": "list_mutation.json",
+      "sha256": "6ad6e164c2855f46675e62cb02276a6185954cca4cf6cea7355fbde74b7347b1"
+    },
+    "dictionaries": {
+      "file": "dictionaries.json",
+      "sha256": "a6e8decac8c6cd2cdcf58cb54834cc6faec855ca6a1f50e8e6e9413d17725e8d"
+    },
+    "nested_data": {
+      "file": "nested_data.json",
+      "sha256": "734824e65f43ecacca1760448beb3797458b804e71b624c8f89ed7b62c140f82"
+    },
+    "if_else": {
+      "file": "if_else.json",
+      "sha256": "ed0e25157c439159f36e7ea1669b542fc67db3bc89f05a1a0d6e7ed79224aa19"
+    },
+    "boolean_logic": {
+      "file": "boolean_logic.json",
+      "sha256": "829ebc0f8459f43e5323436bb6df6c147633d36f0dbc65dfc768ffa564e51136"
+    },
+    "for_loop": {
+      "file": "for_loop.json",
+      "sha256": "0bbd136a20eb64be213a5ba8ec2284883a2843e203f79099339b41b515de5614"
+    },
+    "range": {
+      "file": "range.json",
+      "sha256": "ab6609ab437d7a7bb14857022db3535bdf60e89115c84f6421b5c0d347911701"
+    },
+    "while_loop": {
+      "file": "while_loop.json",
+      "sha256": "766b337995d247b1d25225b945340a87609606c5c17118f2b3ef6d2e425fc857"
+    },
+    "loop_lists": {
+      "file": "loop_lists.json",
+      "sha256": "93f1477ee5f535244e34ff4009e33a01b84189002c70c30a60bc2b1096086813"
+    },
+    "loop_if_else": {
+      "file": "loop_if_else.json",
+      "sha256": "29b294e8d692ad59ae53b3ecb415f2f1bd578d3abfd2cce5a5964c37f0a9654e"
+    },
+    "break": {
+      "file": "break.json",
+      "sha256": "66c01a3d3eac632d73afba64fb4fd2baad969cbf0eba93f061c9b5881989188a"
+    },
+    "continue": {
+      "file": "continue.json",
+      "sha256": "e13500a32495b7656580f14416b61709dc9478a0f295d3f3c567ad9ea4270014"
+    },
+    "nested_loops": {
+      "file": "nested_loops.json",
+      "sha256": "63e00f6e1881c2e7b0a2859d9b5f996bb5229b8e7e00dd13a953ef7dbfee0f49"
+    },
+    "inner_break": {
+      "file": "inner_break.json",
+      "sha256": "a27c9e7d0d496dd9685fd0ce2a98c38e1aab5cbda183c00137d9244285cc9377"
+    },
+    "functions": {
+      "file": "functions.json",
+      "sha256": "b03e58f6cb224905f7d0ee36f2406612d121c60962cc2b8542cd43d33707c094"
+    },
+    "parameters": {
+      "file": "parameters.json",
+      "sha256": "3a638bea6646e2d1c989e69eb57ea55cd41f32dcf52eff264ebdd65aa8a788d9"
+    },
+    "scope": {
+      "file": "scope.json",
+      "sha256": "b6a2cfbac7a437c24bd8686b979eaf8fac0240bb0aefee8cb6bbf76f5a501029"
+    },
+    "functions_data": {
+      "file": "functions_data.json",
+      "sha256": "2a9ac4749571342c12352db1ba5048f425bfce57337c0abf2afa33c367b02aaf"
+    }
+  },
+  "scope": "Reviewed source-linked lessons first, followed by topic/debug and coding checks. Optional extra practice follows progression."
+}

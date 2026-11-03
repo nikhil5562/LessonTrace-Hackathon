@@ -1,0 +1,471 @@
+{
+  "version": "python-fundamentals-v2",
+  "concept_id": "break",
+  "title": "Stopping the nearest loop",
+  "curriculum": {
+    "title": "Stopping the nearest loop with break",
+    "answer": "## Stopping a scan with `break`\n\nA `for` loop normally visits every item in a list, one after another. Sometimes you want to stop early, as soon as you find what you were looking for. That early stop is what `break` does: it exits the nearest loop immediately.\n\nThe usual pattern is scan plus test: loop over the list, use `if` to test each value, and call `break` only when the test is true. Code after the loop then continues normally.\n\n```python\nnums = [4, 7, 2, 9]\nfor n in nums:\n    if n == 2:\n        print(\"found two\")\n        break\n    print(n)\n```\n\n```text\n4\n7\nfound two\n```\n\nHere `nums` is defined before the loop. The loop prints `4`, then `7`. When `n` becomes `2`, it prints `\"found two\"` and `break` stops the loop, so `9` is never visited.\n\n`break` belongs to the loop, not just to the `if`. It runs only when its `if` branch runs:\n\n```python\nvalues = [6, 1, 2]\nfor v in values:\n    if v > 5:\n        print(\"big\")\n        break\n    print(v)\n```\n\n```text\nbig\n```\n\nOnly `6` makes `v > 5` true, so the loop stops immediately and prints `\"big\"`. With `break` removed, the first pass would also print `6`. Later passes would print `1` and `2`. The complete output would be `big`, `6`, `1`, `2`, each on its own line.\n\nCommon mistakes are putting `break` outside the `if`, so the loop always stops after the first item, or replacing `break` with another `print`, which does not stop anything. Checked attempts are not proof of durable mastery, so keep practicing short scans with `for`, `if`, and `break`.\n",
+    "sources": [
+      "hub-python-control-flow-0001",
+      "hub-cs50-loops-0009"
+    ],
+    "units": [
+      {
+        "id": "break-first-match-scan",
+        "title": "Stopping the nearest loop",
+        "explanation": "This unit teaches break as an early exit from a for scan guarded by if. The quiz checks meaning and placement, the prediction checks exact output, and the tasks require stopping at the first match.",
+        "opening_question": "You are searching a long list for one value — do you need to look at every item after you find it?",
+        "sources": [
+          "hub-python-control-flow-0001",
+          "hub-cs50-loops-0009"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "Consider this scan. What does break do here?",
+            "code": "nums = [1, 5, 9]\nfor v in nums:\n    if v == 5:\n        print(\"five\")\n        break\n    print(v)",
+            "options": [
+              "It skips only the current item and continues.",
+              "It exits the nearest loop at once.",
+              "It restarts the loop from the first item.",
+              "It ends the whole program."
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "break exits the loop at once, so items after 5 are never visited.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "cfefe992e213c8f5322e8b8443740c9636ff41166e9f8b78a8fa7ee19df00ccb",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "break"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Consider this scan. Complete the program so it stops after finding the match.",
+            "code": "nums = [4, 7, 2, 9]\nfor n in nums:\n    if n == 2:\n        print(\"found two\")\n        ___\n    print(n)",
+            "options": [
+              "break",
+              "print(\"done\")",
+              "n = n + 1",
+              "print(n)"
+            ],
+            "answer_index": 0,
+            "expected_output": "4\n7\nfound two",
+            "explanation": "break stops the scan at the first match, so later items are never printed.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "3e5de34ea2496c784491ad1cc77319bf1f12fac94f12543ed1bf96a72b9831c0"
+            },
+            "needs": [
+              "arithmetic",
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "break"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Consider this scan. Which statement is correct?",
+            "code": "nums = [6, 1, 2]\nfor v in nums:\n    if v > 5:\n        print(\"big\")\n        break\n    print(v)",
+            "options": [
+              "It stops even when the test is false.",
+              "It prints every number and then stops.",
+              "It stops only because the test was true.",
+              "It skips the match but continues the loop."
+            ],
+            "answer_index": 2,
+            "expected_output": "",
+            "explanation": "break runs only inside the true branch, so the loop stops only because that test matched.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "bea899d8d7a8668ffdd1d1e3cc185dffd53308ee8d23d70ddea90e37a933d93d",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "break"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Consider this scan. Fix it so it stops after the first small value.",
+            "code": "nums = [8, 3, 10]\nfor v in nums:\n    if v < 5:\n        print(\"small\")\n        ___\n    print(v)",
+            "options": [
+              "break",
+              "print(v)",
+              "v = 0"
+            ],
+            "answer_index": 0,
+            "expected_output": "8\nsmall",
+            "explanation": "Only break stops the scan. Printing again continues through the rest of the list.",
+            "sources": [
+              "hub-python-control-flow-0001"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "85f819a79496901223da8b33b9944fb5478bdbcb721b3c79709ac0704686a1d1"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "break"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "8\nsmall\n3\n3\n10",
+            "bug_verification": {
+              "observed": "8\nsmall\n3\n3\n10",
+              "fixed_output": "8\nsmall",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this scan print?",
+          "code": "nums = [5, 1, 8]\nfor v in nums:\n    if v < 5:\n        print(\"small\")\n        break\n    print(v)",
+          "options": [
+            "5\nsmall",
+            "5\nsmall\n8",
+            "small\n1\n8"
+          ],
+          "expected_output": "5\nsmall",
+          "explanation": "5 is printed, then 1 makes the test true, so small is printed and break stops the loop before 8.",
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "bbe76d4b035947a32eb06434c3432d444feffbf53eeff7e59cc1947c63152271",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 8,
+            "output": "5\nsmall"
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "break"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "items",
+            "limit"
+          ],
+          "title": "First value above limit",
+          "instructions": "Scan items from first to last. Assign found to the first value greater than limit and stop the scan. If no value is greater than limit, found stays 0. For example, items [3, 8, 9] with limit 5 gives found 8. Use for, if, and break. Do not reset items or limit.",
+          "entry": "found",
+          "starter": "found = 0\nfor v in items:\n    if v > limit:\n        found = v",
+          "reference_solution": "found = 0\nfor v in items:\n    if v > limit:\n        found = v\n        break",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  3,
+                  8,
+                  4,
+                  9
+                ],
+                5
+              ],
+              "expected": 8
+            },
+            {
+              "arguments": [
+                [
+                  1,
+                  2,
+                  3
+                ],
+                5
+              ],
+              "expected": 0
+            },
+            {
+              "arguments": [
+                [
+                  6,
+                  1,
+                  7
+                ],
+                5
+              ],
+              "expected": 6
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "6790d05364862e0077b65496a8a697c4098b3f2e2f2715646d6ee46ab3f1a45f",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "break"
+          ],
+          "required_helpers": []
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "temps",
+            "cold"
+          ],
+          "title": "First cold snap",
+          "instructions": "Scan temps from first to last. Assign chilly to the first temperature less than cold and stop the scan. If no temperature is less than cold, chilly stays 0. For example, temps [4, -2, -5] with cold 0 gives chilly -2. Use for, if, and break. Do not reset temps or cold.",
+          "entry": "chilly",
+          "starter": "chilly = 0\nfor t in temps:\n    if t < cold:\n        chilly = t",
+          "reference_solution": "chilly = 0\nfor t in temps:\n    if t < cold:\n        chilly = t\n        break",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  4,
+                  -2,
+                  5,
+                  -5
+                ],
+                0
+              ],
+              "expected": -2
+            },
+            {
+              "arguments": [
+                [
+                  3,
+                  2,
+                  1
+                ],
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "arguments": [
+                [
+                  -1,
+                  2,
+                  -3
+                ],
+                0
+              ],
+              "expected": -1
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0001"
+          ],
+          "verification": {
+            "source_hash": "edc692d55e0fcda491dbc834bb326bd0365a686900f3592f929320ade8b6edb1",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 3
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "break"
+          ],
+          "required_helpers": []
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0001",
+        "claim": "break exits the innermost enclosing loop",
+        "quote": "The break statement breaks out of the innermost enclosing for or while loop:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0009",
+        "claim": "for loop iterates over a list of items",
+        "quote": "it allows you to iterate over a list of items.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "break",
+      "worked_examples_run": 2,
+      "quiz_questions": 5,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 3,
+      "fresh_cases": 3,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0001",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements",
+      "start": null,
+      "end": null,
+      "heading": "4.4. break and continue Statements",
+      "text": "The break statement breaks out of the innermost enclosing for or while loop:",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0009",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=960",
+      "start": 960.69,
+      "end": 1081.32,
+      "heading": "CS50 lecture excerpt",
+      "text": "it allows you to iterate over a list of items.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 2,
+      "available_sections": 2,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 22,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793514075.8409946,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Original source selections retained; offline operator review corrected metadata and reran all checks.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "break",
+        "worked_examples_run": 2,
+        "quiz_questions": 5,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 3,
+        "fresh_cases": 3,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "review_corrections": [
+    {
+      "field": "quiz[3].expected_bug_output",
+      "before": "8\nsmall\n3\n10",
+      "after": "8\nsmall\n3\n3\n10",
+      "reason": "Corrected the declared bug output to actual Python, including the duplicated print. Bug code, fix, explanation and model notes unchanged."
+    },
+    {
+      "field": "notes",
+      "before": "Without `break`, the loop would continue and print `1` and `2` afterward.",
+      "after": "With `break` removed, the first pass would also print `6`. Later passes would print `1` and `2`. The complete output would be `big`, `6`, `1`, `2`, each on its own line.",
+      "reason": "Made the counterfactual account for the remaining print in the first iteration; actual Python output is checked in the review."
+    }
+  ],
+  "operator_review": {
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA",
+    "human_teacher_review": false,
+    "notes_and_questions_inspected": true,
+    "checks_rerun_after_corrections": true
+  },
+  "flow": "lesson-first",
+  "reused_from": {
+    "version": "python-fundamentals-v1",
+    "sha256": "6c19bc1af1030bf63d9fcaf113b9f83fff6fe2429de6e43a229df5ccd0b19b89"
+  }
+}

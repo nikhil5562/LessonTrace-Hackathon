@@ -1,0 +1,545 @@
+{
+  "version": "python-fundamentals-v1",
+  "concept_id": "loop_if_else",
+  "title": "Choosing inside a loop",
+  "curriculum": {
+    "title": "Choosing Inside a Loop",
+    "answer": "## Choosing inside a loop\n\nA `for` loop visits each item in a list one by one. An `if/else` **inside** that loop makes a fresh choice for every item.\n\n### Pattern: test each item\n\n```python\nstudents = [\"Hermione\", \"Harry\", \"Ron\"]\nfor name in students:\n    if name == \"Harry\":\n        print(\"found\")\n    else:\n        print(\"other\")\n```\n\nWalk through it:\n\n- `students` is created first, so every name has a known origin.\n- First visit: `name` is `\"Hermione\"`, the test is false, so the `else` branch prints `other`.\n- Second visit: `name` is `\"Harry\"`, the test is true, so it prints `found`.\n- Third visit: `name` is `\"Ron\"`, the test is false, so it prints `other`.\n\nThe important part is indentation: both `if` and `else` are indented under `for`, so they run on every visit.\n\n### Pattern: count one group, notice the other\n\n```python\nnums = [4, 5, 6]\nevens = 0\nfor n in nums:\n    if n % 2 == 0:\n        evens = evens + 1\n    else:\n        print(\"odd\")\nprint(evens)\n```\n\nWalk through it:\n\n- `nums` and `evens` are created before the loop.\n- `4` is even, so `evens` becomes `1`.\n- `5` is odd, so the `else` branch prints `odd`.\n- `6` is even, so `evens` becomes `2`.\n- After the loop, `print(evens)` prints `2`.\n\nSo the full output is:\n\n```text\nodd\n2\n```\n\n### Common mistakes\n\n1. **Dedenting the `if`:** if `if/else` is lined up with `for` instead of inside it, it runs only once, after the loop, using only the last item.\n2. **Forgetting the `else` branch:** then one group gets no action. For collecting labels, every item should take one branch.\n3. **Confusing loop-`else` with `if`-`else`:** here `else` belongs to the nearby `if`, not to the whole loop. It runs once per item, not once after the loop finishes.\n",
+    "sources": [
+      "hub-python-control-flow-0003",
+      "hub-python-control-flow-0004",
+      "hub-cs50-loops-0010",
+      "hub-cs50-loops-0013"
+    ],
+    "units": [
+      {
+        "id": "loop-if-else-choice",
+        "title": "Choosing Inside a Loop",
+        "explanation": "Practice putting if/else inside for so every list item takes one branch. Checked attempts are not proof of durable mastery.",
+        "opening_question": "If a loop visits five animals, how can the program say something different for cats than for other animals?",
+        "sources": [
+          "hub-python-control-flow-0003",
+          "hub-python-control-flow-0004",
+          "hub-cs50-loops-0010",
+          "hub-cs50-loops-0013"
+        ],
+        "quiz": [
+          {
+            "kind": "concept",
+            "prompt": "What does if/else inside the loop do here?",
+            "code": "students = [\"Hermione\", \"Harry\", \"Ron\"]\nfor name in students:\n    if name == \"Harry\":\n        print(\"found\")\n    else:\n        print(\"other\")",
+            "options": [
+              "The test runs for each name and picks a branch each time",
+              "The test runs once before the loop starts",
+              "The else runs only after the whole loop finishes"
+            ],
+            "answer_index": 0,
+            "expected_output": "",
+            "explanation": "The if/else is inside the loop, so the test runs once per name and picks a branch each time.",
+            "sources": [
+              "hub-python-control-flow-0003",
+              "hub-cs50-loops-0013"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "45c072b5dcb86eaa55984f8ef47d9523fe8167337333e1af720befb401be5ee5",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "loop_if_else"
+            ],
+            "purpose": "understanding",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the even branch to count evens:",
+            "code": "nums = [4, 5, 6]\nevens = 0\nfor n in nums:\n    if n % 2 == 0:\n        ___\n    else:\n        print(\"odd\")\nprint(evens)",
+            "options": [
+              "evens = evens + 1",
+              "evens = evens + 5",
+              "print(evens)"
+            ],
+            "answer_index": 0,
+            "expected_output": "odd\n2",
+            "explanation": "Even numbers add one to evens; 5 prints odd, leaving evens as 2.",
+            "sources": [
+              "hub-python-control-flow-0003"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "c6cb0398ce390566fc9b868e0aa9b190916f02be4a1370746678539f8cf6d087"
+            },
+            "needs": [
+              "arithmetic",
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "loop_if_else"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "concept",
+            "prompt": "Which placement checks every number?",
+            "code": "nums = [10, 3, 12]\nfor n in nums:\n    if n > 5:\n        print(\"big\")\n    else:\n        print(\"small\")",
+            "options": [
+              "Move the if outside the loop to check every number",
+              "Keep the if indented inside the loop to check every number",
+              "Remove the else because a loop can have only one branch"
+            ],
+            "answer_index": 1,
+            "expected_output": "",
+            "explanation": "Indentation puts if/else inside the loop, so each number prints big or small. Outside, it would run only once.",
+            "sources": [
+              "hub-python-control-flow-0003",
+              "hub-cs50-loops-0010"
+            ],
+            "verification": {
+              "basis": "Concept context executed with actual CPython; conceptual answer remains Meta-authored",
+              "source_hash": "03ddb258513fb81c1c388778ffa41fc924537cae5583f609308681d336883483",
+              "runtime": "CPython 3.15.0 / WASI"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "loop_if_else"
+            ],
+            "purpose": "common_mistake",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Fix the missing line so passing scores print pass:",
+            "code": "scores = [70, 40]\nfor s in scores:\n    if s >= 50:\n        ___\n    else:\n        print(\"fail\")",
+            "options": [
+              "print(\"pass\")",
+              "print(\"fail\")",
+              "print(\"scores\")"
+            ],
+            "answer_index": 0,
+            "expected_output": "pass\nfail",
+            "explanation": "70 passes so it should print pass; 40 fails. The bug prints fail for both.",
+            "sources": [
+              "hub-cs50-loops-0010"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "77010632b92ba24796e455ea5115173d3834fa8d9b8a23d878c49ff5bfb3fead"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "lists",
+              "variables"
+            ],
+            "targets": [
+              "loop_if_else"
+            ],
+            "purpose": "debug",
+            "bug_option_index": 1,
+            "expected_bug_output": "fail\nfail",
+            "bug_verification": {
+              "observed": "fail\nfail",
+              "fixed_output": "pass\nfail",
+              "basis": "Bug reproduced and distinct fix passed actual Python"
+            }
+          },
+          {
+            "kind": "complete_code",
+            "prompt": "Complete the program to collect long words:",
+            "code": "words = [\"cat\", \"tiger\", \"ant\"]\nbig = []\nfor w in words:\n    if len(w) >= 4:\n        ___\n    else:\n        print(w)",
+            "options": [
+              "big.append(w)",
+              "print(\"big\")",
+              "print(w)"
+            ],
+            "answer_index": 0,
+            "expected_output": "cat\nant",
+            "explanation": "Only tiger has length 4 or more, so it is collected while cat and ant print.",
+            "sources": [
+              "hub-cs50-loops-0013"
+            ],
+            "verification": {
+              "basis": "Choices checked with actual CPython",
+              "source_hash": "9bf8edc8770a7f6348d8b33a8b69a3596f4b0cef4fce39e6c1d32a6a648dd202"
+            },
+            "needs": [
+              "comparisons",
+              "for_loop",
+              "if_else",
+              "list_mutation",
+              "lists",
+              "strings",
+              "variables"
+            ],
+            "targets": [
+              "loop_if_else"
+            ],
+            "purpose": "practice",
+            "bug_option_index": null,
+            "expected_bug_output": ""
+          }
+        ],
+        "prediction": {
+          "prompt": "What does this program print?",
+          "code": "nums = [3, 8, 2]\nfor n in nums:\n    if n > 5:\n        print(\"big\")\n    else:\n        print(\"small\")",
+          "options": [
+            "small\nbig\nsmall",
+            "big\nbig\nsmall",
+            "small\nsmall\nsmall"
+          ],
+          "expected_output": "small\nbig\nsmall",
+          "explanation": "The if/else is inside the loop, so 3 prints small, 8 prints big, and 2 prints small.",
+          "sources": [
+            "hub-python-control-flow-0003"
+          ],
+          "answer_index": 0,
+          "verification": {
+            "source_hash": "a0930133a15c0a3f8452a7d86e6d74762a23ae363e1b9d160060103e58dc1e91",
+            "runtime": "CPython 3.15.0 / WASI",
+            "steps": 11,
+            "output": "small\nbig\nsmall"
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "loop_if_else"
+          ]
+        },
+        "exercise": {
+          "kind": "program",
+          "parameters": [
+            "nums"
+          ],
+          "title": "Label Big and Small",
+          "instructions": "You are given nums, a list of numbers. Build labels, a new list with one string per number. Numbers greater than 10 become \"big\", all other numbers become \"small\", keeping the same order. Example: if nums is [12, 4, 10] then labels is [\"big\", \"small\", \"small\"]. Use a for loop over nums with if/else inside. Do not change nums.",
+          "entry": "labels",
+          "starter": "labels = []\nfor n in nums:\n    if n > 10:\n        labels.append(\"big\")",
+          "reference_solution": "labels = []\nfor n in nums:\n    if n > 10:\n        labels.append(\"big\")\n    else:\n        labels.append(\"small\")",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  12,
+                  4,
+                  10
+                ]
+              ],
+              "expected": [
+                "big",
+                "small",
+                "small"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  3
+                ]
+              ],
+              "expected": [
+                "small"
+              ]
+            },
+            {
+              "arguments": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                [
+                  11,
+                  20,
+                  2
+                ]
+              ],
+              "expected": [
+                "big",
+                "big",
+                "small"
+              ]
+            }
+          ],
+          "sources": [
+            "hub-python-control-flow-0003",
+            "hub-cs50-loops-0013"
+          ],
+          "verification": {
+            "source_hash": "c58491e64ed432bf0c065e7ea861e443d56e8768edce842c0803d65403797686",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "loop_if_else"
+          ]
+        },
+        "fresh_exercise": {
+          "kind": "program",
+          "parameters": [
+            "pets"
+          ],
+          "title": "Mark the Cat",
+          "instructions": "You are given pets, a list of strings. Build choices, a new list with one string per pet. Each \"cat\" becomes \"meow\" and every other word becomes \"quiet\", keeping the same order. Example: if pets is [\"dog\", \"cat\"] then choices is [\"quiet\", \"meow\"]. Do not change pets.",
+          "entry": "choices",
+          "starter": "choices = []\nfor p in pets:\n    if p == \"cat\":\n        choices.append(\"meow\")",
+          "reference_solution": "choices = []\nfor p in pets:\n    if p == \"cat\":\n        choices.append(\"meow\")\n    else:\n        choices.append(\"quiet\")",
+          "preserve_input": true,
+          "cases": [
+            {
+              "arguments": [
+                [
+                  "dog",
+                  "cat"
+                ]
+              ],
+              "expected": [
+                "quiet",
+                "meow"
+              ]
+            },
+            {
+              "arguments": [
+                [
+                  "cat"
+                ]
+              ],
+              "expected": [
+                "meow"
+              ]
+            },
+            {
+              "arguments": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "arguments": [
+                [
+                  "bird",
+                  "fish",
+                  "cat"
+                ]
+              ],
+              "expected": [
+                "quiet",
+                "quiet",
+                "meow"
+              ]
+            }
+          ],
+          "sources": [
+            "hub-cs50-loops-0013"
+          ],
+          "verification": {
+            "source_hash": "9bfeb588fa1904063d0494f39e6030a275af983f5704a546ac36f42206921eec",
+            "runtime": "CPython 3.15.0 / WASI",
+            "cases": 4
+          },
+          "needs": [
+            "comparisons",
+            "for_loop",
+            "if_else",
+            "list_mutation",
+            "lists",
+            "variables"
+          ],
+          "targets": [
+            "loop_if_else"
+          ]
+        }
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "source_id": "hub-python-control-flow-0003",
+        "claim": "continue moves to the next iteration of a loop",
+        "quote": "The continue statement continues with the next iteration of the loop:",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-python-control-flow-0004",
+        "claim": "else can belong to a for loop rather than an if",
+        "quote": "(Yes, this is the correct code. Look closely: the else clause belongs to the for loop, not the if statement.)",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0010",
+        "claim": "an if test can decide whether to stay in the loop",
+        "quote": "So if n is less than 0, then I think we want Python to just continue to prompt the user again.",
+        "quote_verified": true
+      },
+      {
+        "source_id": "hub-cs50-loops-0013",
+        "claim": "a list is written with square brackets",
+        "quote": "a square bracket, which means, hey, here comes a list.",
+        "quote_verified": true
+      }
+    ],
+    "course_validation": {
+      "concept": "loop_if_else",
+      "worked_examples_run": 2,
+      "quiz_questions": 6,
+      "debug_questions_reproduced": 1,
+      "practice_cases": 4,
+      "fresh_cases": 4,
+      "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+    }
+  },
+  "caption_chunks": [
+    {
+      "id": "hub-python-control-flow-0003",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements",
+      "start": null,
+      "end": null,
+      "heading": "4.4. break and continue Statements",
+      "text": "The continue statement continues with the next iteration of the loop:",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-python-control-flow-0004",
+      "source_id": "python-control-flow",
+      "source_title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#else-clauses-on-loops",
+      "start": null,
+      "end": null,
+      "heading": "4.5. else Clauses on Loops",
+      "text": "(Yes, this is the correct code. Look closely: the else clause belongs to the for loop, not the if statement.)",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0010",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=1681",
+      "start": 1681.7,
+      "end": 1800.96,
+      "heading": "CS50 lecture excerpt",
+      "text": "So if n is less than 0, then I think we want Python to just continue to prompt the user again.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    },
+    {
+      "id": "hub-cs50-loops-0013",
+      "source_id": "cs50-loops",
+      "source_title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w&t=2042",
+      "start": 2042.33,
+      "end": 2160.5,
+      "heading": "CS50 lecture excerpt",
+      "text": "a square bracket, which means, hey, here comes a list.",
+      "truncated": true,
+      "coverage": "Frozen short source anchors; not the complete passage."
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "python-control-flow",
+      "title": "Python · Official control-flow reference",
+      "kind": "web",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "fetched_at": 1793512465.1121051,
+      "content_hash": "cce451e988cfd95d2157a96a7829efc8f921b6c8868a43d7ac061be73e5217b3",
+      "reviewed_sections": 2,
+      "available_sections": 4,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    },
+    {
+      "id": "cs50-loops",
+      "title": "CS50P · Loops",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=-7xg8pGcP6w",
+      "fetched_at": 1793512465.751629,
+      "content_hash": "0b660488fd0cd1cefea48b88ba41ebee7dd358d7de2464f0b8941b1ab087f496",
+      "reviewed_sections": 2,
+      "available_sections": 17,
+      "coverage": "Selected relevant excerpts only; not a complete-source review."
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "provider": "meta",
+  "prepared_at": 1793513597.4873605,
+  "role": "base",
+  "agent_steps": [
+    {
+      "action": "choose_sources",
+      "reason": "Selected for reading: official reference covers for_loop and if_else needs, plus creator video adds loop examples for shared base lesson.",
+      "source_ids": [
+        "python-control-flow",
+        "cs50-loops"
+      ]
+    },
+    {
+      "action": "read_sources",
+      "count": 2
+    },
+    {
+      "action": "compose_and_check",
+      "repair_used": true,
+      "validation": {
+        "concept": "loop_if_else",
+        "worked_examples_run": 2,
+        "quiz_questions": 6,
+        "debug_questions_reproduced": 1,
+        "practice_cases": 4,
+        "fresh_cases": 4,
+        "scope": "Execution, prerequisite tags and source-wording checks; conceptual answers and teaching quality need review."
+      }
+    }
+  ],
+  "copyright_scope": "Original explanations and exercises with attributed short source anchors; full fetched source bodies remain in the excluded local cache.",
+  "review_status": "draft",
+  "operator_review": {
+    "date": "2026-11-01",
+    "reviewer": "Codex AI-assisted operator QA",
+    "human_teacher_review": false,
+    "notes_and_questions_inspected": true,
+    "checks_rerun_after_corrections": true
+  }
+}
